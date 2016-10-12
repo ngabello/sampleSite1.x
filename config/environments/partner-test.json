@@ -1,0 +1,16 @@
+{
+  "goApi": "https://ms-quote-intent-pt.qa-pachyderm.com/v1",
+  "vehicleData": "https://eaa-partner-test.qa-pachyderm.com/api/manufactured-vehicle",
+  "goGeoDataApi": "https://ms-geo-data-pt.qa-pachyderm.com/v1/postal-codes",
+  "ancillaryData": "https://eaa-partner-test.qa-pachyderm.com/api",
+  "vinIsoData": "https://eaa-partner-test.qa-pachyderm.com/api/viniso",
+  "externalApi": "http://leadcloud.qa.qa-pachyderm.com/api",
+  "cdnBase": "https://d33zqe5s0w8nmh.cloudfront.net",
+  "environment": "partnerTest",
+  "loggingLevel": "debug",
+  "googleTrackingId": "UA-58770845-1",
+  "appDynamicsId": "AD-AAB-AAA-CCU",
+  "dataPrefillEnabled":true,
+  "idleDuration": 540,
+  "warningDuration": 30
+}

@@ -1,0 +1,27 @@
+#quote-termination {
+  @extend .milky-background;
+  //  padding: 20px 40px 42px 40px;
+  .button-continue {
+    @extend .button-continue;
+  }
+  .btn-margin{
+    float:right;
+  }
+  margin-top: 147px;
+  div {
+    padding: 0 0 20px 0;
+    &>p{
+      padding: 20px;
+    }
+  }
+  ul, li{
+    padding: 0 0 0 16px;
+  }
+}
+@media all and (max-width: 800px) {
+  #quote-termination{
+    .btn-margin{
+      float: inherit;
+    }
+  }
+}

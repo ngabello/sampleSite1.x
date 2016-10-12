@@ -1,0 +1,42 @@
+<div class="mobile-bread-crumb">
+<div class="col-md-offset-3 col-lg-5 col-md-7" style="padding-left: 0px; padding-right: 0px;">
+  <div class="" style="background: #cccccc; color: #ffffff; ">
+    <div ng-show="currentCrumb.breadCrumbBeforeQuote">
+      <div style="display: inline-block;width: 18.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'Start'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}" class="" >
+        <div style="text-align: center" class="crumb">Start</div>
+      </div>
+
+      <div style="display: inline-block;width: 18.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'Drivers'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}">
+        <div style="text-align: center" class="crumb">Driver</div>
+      </div>
+
+      <div style="display: inline-block;width: 20.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'Vehicles'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}">
+        <div style="text-align: center" class="crumb">Vehicles</div>
+      </div>
+
+      <div style="display: inline-block;width: 18.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'Discounts'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}">
+        <div style="text-align: center"  class="crumb">Discounts</div>
+      </div>
+
+      <div style="display: inline-block;width:18.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'Quote'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}">
+        <div style="text-align: center" class="crumb">Quote</div>
+      </div>
+    </div>
+
+    <div ng-show="!currentCrumb.breadCrumbBeforeQuote">
+      <div style="display: inline-block;width:32.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'Quote'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}">
+        <div style="text-align: center" class="crumb">Quote</div>
+      </div>
+      <div style="display: inline-block;width: 32.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'ConfirmDrivers'== currentCrumb.breadCrumb || 'ConfirmVehicles'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}">
+        <div style="text-align: center" class="crumb">Policy Details</div>
+      </div>
+      <div style="display: inline-block;width: 32.33333%;padding-top: 8px; padding-bottom: 8px;" ng-style="'Payment'== currentCrumb.breadCrumb ? {background:'rgba(128, 128, 128, 0.78)'}:{}">
+        <div style="text-align: center" class="crumb">Payment</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<!--
+//rgba(255, 255, 255, 0.8);-->

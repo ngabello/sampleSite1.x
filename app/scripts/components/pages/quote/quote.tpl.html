@@ -1,0 +1,345 @@
+<spinner class="loading-msg" name="quoteSpinner">
+  <div ng-init="loadingMsg = quoteCtrlState.buttonText == 'Continue'? 'Quoting': 'Updating'" ng-include="'../views/platform/loadingTemplate.html'"></div>
+</spinner>
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-quote"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+
+    <div class="row">
+      <div id="quote-heading">
+
+        <!--quote top-->
+
+        <div id="price-heading" ng-cloak>
+          <div>
+            <img src="images/quoteFlag-01.svg"/>
+            <table>
+              <tr>
+                <td>
+                  <span ng-bind="quoteCtrlState.paymentPlan.InstallmentAmountWithoutInstallmentFee | currency"></span>
+                  <span> /month</span>
+                </td>
+              </tr>
+              <tr>
+                <td>+ <span ng-bind="quoteCtrlState.paymentPlan.InstallmentFee | currency"></span> monthly installment
+                  fee
+                </td>
+              </tr>
+              <tr>
+                <td><span ng-bind="quoteCtrlState.paymentPlan.DownPaymentAmount | currency"></span> due today</td>
+              </tr>
+              <tr>
+                <td>Pay in full and save 10%</td>
+              </tr>
+              <tr>
+                <td compare-number=""><span style="font-size: .8em;"><a ng-click="continueQuote(quoteForm.$valid)"
+                                                      style="cursor: pointer;">Continue online</a> or call</span><span
+                  style="font-size: 1.1em;color: #005288;"><a href="tel:18773219911">{{' '+ salesNumber}}</a></span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="hank-heading" class="col-md-4">
+          <div>
+            <img src="images/mobile-hank04-shadow.png"/>
+
+            <div class="button-continue">
+              <button id="btnContinue3"
+                      ng-click="continueQuote(quoteForm.$valid)" ng-disabled="ab" single-click="">{{quoteCtrlState.buttonText}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="help-block" ng-if="addonModels.legalAssist.displayMessage">Your rate includes Legal Assistance
+        coverage.
+        <span style="color:#428bca;cursor:pointer;" uib-tooltip="{{ addonModels.legalAssist.defaultText }}"
+              tooltip-trigger="click" tooltip-placement="right">Learn more</span> about this new benefit!
+      </div>
+      <div class="help-block" ng-if="addonModels.legalAssist.displayChangeMessage">
+        <small>Legal Assistance coverage updated due to driver change.</small>
+      </div>
+    </div>
+    <form name="quoteForm" novalidate>
+      <div id="quote_coverage" class="row">
+        <!-- Coverages Parent -->
+        <uib-accordion close-others="" ng-init="coverageGroup.open = false;">
+          <uib-accordion-group is-open="coverageGroup.open">
+            <uib-accordion-heading>
+              <div>
+                Your Coverage <i class="pull-right glyphicon"
+                                 ng-class="{'fa fa-chevron-down': coverageGroup.open, 'fa fa-chevron-right' : !coverageGroup.open}"></i>
+              </div>
+            </uib-accordion-heading>
+            <!-- Policy Coverages -->
+            <uib-accordion>
+              <uib-accordion-group is-open="primaryCoverageGroup.open">
+                <uib-accordion-heading>
+                  <div>
+                    Primary Coverage <i class="pull-right glyphicon"
+                                        ng-class="{'fa fa-chevron-down' : primaryCoverageGroup.open, 'fa fa-chevron-right' : !primaryCoverageGroup.open}"></i>
+                  </div>
+                </uib-accordion-heading>
+                <span class="help-block small" style="margin-top:0px;">Customize your coverage by selecting the options below</span>
+
+                <div class="row">
+                  <div class="hidden-sm hidden-xs">
+                    <div class="col-md-6 col-md-offset-3 small"><label>Coverage Amount</label></div>
+                    <div class="col-md-3 small"><label class="float-right">Yearly</label></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div ng-repeat="coverage in quoteCtrlState.policy.AvailableCoverages | filter: lineCoverageFilter | orderBy: 'SortOrder'" class="form-group " style="margin-top:10px;"
+                       ng-form="policyCoverageForm" ng-init="addForm(this, $index)"
+                       ng-class="{true: 'has-error'}[policyCoverageForm.policyCoverageItem.$invalid]">
+                    <div class="col-md-4">
+                      <small><label><a style="cursor: pointer;" ng-click="information(coverage.Name)"><i
+                        class="fa fa-question-circle"></i></a> {{ coverage.Desc }}</label></small>
+                    </div>
+                    <div class="coverage-messages" ng-messages="policyCoverageForm.policyCoverageItem.$error"
+                         ng-if="policyCoverageForm.policyCoverageItem.$error">
+                      <div ng-message="required">Please select one.</div>
+                      <div ng-message="Rule1">Uninsured/Underinsured Motorist Bodily Injury is required.</div>
+                      <div ng-message="Rule2">Uninsured/Underinsured Motorist Property Damage is required.</div>
+                      <div ng-message="Rule100">The Property Damage limit cannot exceed the per person Bodily Injury
+                        limit.
+                      </div>
+                      <div ng-message="Rule101">The Uninsured/Underinsured Motorist Bodily Injury limits may not exceed
+                        the Bodily Injury limits.
+                      </div>
+                      <div ng-message="Rule103">The Uninsured/Underinsured Motorist Property Damage limits may not
+                        exceed Property Damage Limits.
+                      </div>
+                      <div ng-message="Rule104">The Uninsured/Underinsured Motorist Bodily Injury limits must be the
+                        same as the Bodily Injury limits.
+                      </div>
+                      <div ng-message="Rule105">The Uninsured/Underinsured Motorist Property Damage limits must be the
+                        same as the Property Damage limits.
+                      </div>
+                      <div ng-message="Rule106">Uninsured/Underinsured motorist property damage coverage is only
+                        available
+                        with uninsured motorist bodily injury coverage.
+                      </div>
+                      <div ng-message="Rule107">Uninsured/Underinsured motorist bodily injury coverage is only available
+                        with uninsured motorist property damage coverage.
+                      </div>
+                    </div>
+                    <div class="col-md-5 col-xs-12"><select ng-model="coverage.SelectedValue"
+                                                            id="policyCoverageItem-{{$index}}"
+                                                            class="form-control"
+                                                            name="policyCoverageItem"
+                                                            ng-change="policyCoverageChanged(this, $index)"
+                                                            ng-options="coverageOption.Value as coverageOption.Desc for coverageOption in coverage.Items">
+                    </select></div>
+                    <div ng-if="coverage.Premium > 0" class="col-md-3 hidden-xs">
+                      <label class="float-right">{{ coverage.Premium | currency}}</label>
+                    </div>
+                    <div ng-if="coverage.Premium == 0" class="col-md-3 hidden-xs"><label
+                      class="float-right">N/A</label>
+                    </div>
+                  </div>
+                </div>
+              </uib-accordion-group>
+            </uib-accordion>
+            <!-- Vehicle coverages -->
+            <uib-accordion close-others="oneAtATime" ng-repeat="listedVehicle in quoteCtrlState.vehicles"
+                       id="{{listedVehicle.ID}}">
+              <uib-accordion-group is-open="quoteCtrlState.groups[$index].open">
+                <uib-accordion-heading>
+                  <div>
+                    Additional Coverage - {{listedVehicle.Year}} {{listedVehicle.Make}} {{listedVehicle.Model}} <i
+                    class="pull-right glyphicon"
+                    ng-class="{'fa fa-chevron-down' : listedVehicle.open, 'fa fa-chevron-right' : !listedVehicle.open}"></i>
+                  </div>
+                </uib-accordion-heading>
+                <span class="help-block small" style="margin-top:0px;">Customize your coverage by selecting the options below</span>
+
+                <div class="row">
+                  <div class="hidden-sm hidden-xs">
+                    <div class="col-md-5 col-md-offset-4 small"><label>Coverage</label></div>
+                    <div class="col-md-3 small"><label class="float-right">Yearly</label></div>
+                  </div>
+                </div>
+                <div class="body">
+                  <div class="row">
+                    <div ng-repeat="coverage in listedVehicle.AvailableCoverages | orderBy: 'SortOrder'" class="form-group {{coverage.Name}}"
+                         style="margin-top:10px;"
+                         ng-form="vehicleCoverageForm" ng-init="addVehicleForm(this, $index, listedVehicle.ID)"
+                         ng-class="{true: 'has-error'}[vehicleCoverageForm.vehicleCoverageItem.$invalid]">
+                      <div class="col-md-4">
+                        <small><label><a style="cursor: pointer;" ng-click="information(coverage.Name)"><i
+                          class="fa fa-question-circle"></i></a> {{ coverage.Desc }}</label></small>
+                      </div>
+                      <div class="coverage-messages" ng-messages="vehicleCoverageForm.vehicleCoverageItem.$error"
+                           ng-if="vehicleCoverageForm.vehicleCoverageItem.$error" style="color:maroon">
+                        <div ng-message="required">Please select one.</div>
+                        <div ng-message="Rule108">You must select either Collision coverage or Uninsured/Underinsured
+                          Motorist Property Damage coverage - you cannot carry both.
+                        </div>
+                        <div ng-message="Rule109">Collision coverage cannot be selected without Other Than Collision
+                          coverage.
+                        </div>
+                        <div ng-message="Rule110">Your Other Than Collision deductable cannot exceed your Collision
+                          deductable.
+                        </div>
+                        <div ng-message="Rule112">Collision coverage and Other Than Collision coverage are required to
+                          carry Loan/Lease Payoff Coverage.
+                        </div>
+                        <div ng-message="Rule113">Collision coverage is required to carry Rental coverage.
+                        </div>
+                        <div ng-message="Rule114">Other Than Collision coverage is required to carry Rental coverage.
+                        </div>
+                        <div ng-message="Rule115">Collision coverage and Other Than Collision coverage are required to
+                          carry Additional Custom Parts or Equipment coverage.
+                        </div>
+                        <div ng-message="Rule116">Other Than Collision coverage is required to carry Additional Custom
+                          Parts or Equipment coverage.
+                        </div>
+                      </div>
+                      <div class=" col-md-5 col-xs-12"><select ng-model="coverage.SelectedValue" name="vehicleCoverageItem"
+                                                               ng-change="vehicleCoverageChanged(this, $index, listedVehicle.ID)"
+                                                               ng-options="coverageOption.Value as coverageOption.Desc for coverageOption in coverage.Items"
+                                                               class="form-control">
+                      </select></div>
+                      <div ng-if="coverage.Premium > 0" class="col-md-3 hidden-xs"><label class="float-right">{{
+                        coverage.Premium | currency }}</label>
+                      </div>
+                      <div ng-if="coverage.Premium == 0" class="col-md-3 hidden-xs"><label
+                        class="float-right">N/A</label>
+                      </div>
+                    </div>
+                    <div ng-if="listedVehicle.Fees.length > 0" ng-repeat="fee in listedVehicle.Fees">
+                      <div class="col-md-12" style="color: gray;font-size: .8em;">Fees</div>
+                      <div class="col-md-4">
+                        <small><label>{{ fee.DisplayName }}</label></small>
+                      </div>
+                      <div class="col-md-3 col-md-offset-5"><label class="float-right">{{
+                        fee.Amount | currency }}</label></div>
+                    </div>
+                  </div>
+                </div>
+              </uib-accordion-group>
+            </uib-accordion>
+            <!--Diminshing Deductible uib-accordion -->
+            <uib-accordion diminishing-deductible="">
+              <uib-accordion-group is-open="addons.open">
+                <uib-accordion-heading>
+                  <div id="policy_addons">
+                    Additional Benefits <i class="pull-right glyphicon"
+                                              ng-class="{'fa fa-chevron-down' : addons.open, 'fa fa-chevron-right' : !addons.open}"></i>
+                  </div>
+                </uib-accordion-heading>
+                <span class="help-block small" style="margin-top:0px;">Customize your coverage by selecting the options below</span>
+
+                <div class="row">
+                  <div class="hidden-sm hidden-xs">
+                    <div class="col-md-5 col-md-offset-4 small"><label>Coverage</label></div>
+                    <div class="col-md-3 small"><label class="float-right">Yearly</label></div>
+                  </div>
+                </div>
+                <!--Diminishing Deductible-->
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-md-4">
+                      <small><label><a style="cursor: pointer;" ng-click="information('DiminishingDeductible')"><i
+                        class="fa fa-question-circle"></i></a> Diminishing Deductible</label></small>
+                    </div>
+                    <div class=" col-md-5 col-xs-12">
+                      <select class="form-control"
+                              ng-disabled="!addonModels.diminishingDeductible.eligible"
+                              ng-options="o.Value as o.Desc for o in agreeDisagreeOption"
+                              ng-model="addonModels.diminishingDeductible.SelectedValue"
+                              ng-change="policyCoverageChanged(this, 'diminishingDeductible')">
+                        <option value="">None</option>
+                      </select>
+                    </div>
+                    <div ng-if="addonModels.diminishingDeductible.fees > 0" class="col-md-3 hidden-xs">
+                      <label class="float-right">{{ addonModels.diminishingDeductible.fees | currency}}</label>
+                    </div>
+                    <div ng-if="addonModels.diminishingDeductible.fees == 0" class="col-md-3 hidden-xs"><label
+                      class="float-right">N/A</label>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" ng-if="addonModels.legalAssist.obj">
+                  <div class="form-group">
+                    <div class="col-md-4">
+                      <small><label><a style="cursor: pointer;" ng-click="information('LegalPlan')"><i
+                        class="fa fa-question-circle"></i></a> Legal Assistance</label></small>
+                    </div>
+                    <div class=" col-md-5 col-xs-12">
+                      <select class="form-control"
+                              ng-options="o.Value as addonModels.legalAssist.ShowPlanNames(o.Desc) for o in addonModels.legalAssist.obj.Items"
+                              ng-model="addonModels.legalAssist.obj.SelectedValue"
+                              ng-change="policyCoverageChanged(this, 'legalPlan')">
+                      </select>
+                    </div>
+                    <div ng-if="addonModels.legalAssist.obj.Premium > 0" class="col-md-3 hidden-xs">
+                      <label class="float-right">{{ addonModels.legalAssist.obj.Premium | currency}}</label>
+                    </div>
+                    <div ng-if="addonModels.legalAssist.obj.Premium === 0 || !addonModels.legalAssist.obj.Premium"
+                         class="col-md-3 hidden-xs"><label
+                      class="float-right">N/A</label>
+                    </div>
+
+                  </div>
+                </div>
+              </uib-accordion-group>
+            </uib-accordion>
+          </uib-accordion-group>
+        </uib-accordion>
+
+        <uib-accordion close-others="oneAtATime" ng-init="compare.open = true;" ng-hide="compareShow">
+          <uib-accordion-group is-open="compare.open">
+            <uib-accordion-heading>
+              <div id="compare_load">
+                Compare Quotes <i class="pull-right glyphicon"
+                                  ng-class="{'fa fa-chevron-down': compare.open, 'fa fa-chevron-right': !compare.open}"></i>
+              </div>
+            </uib-accordion-heading>
+            <div ng-if="!noBanner">
+              <compare-banner ng-if="showCompareBanner"></compare-banner>
+              <div ng-if="!showCompareBanner" id="quote_compare" media-alpha="Quote"></div>
+            </div>
+          </uib-accordion-group>
+        </uib-accordion>
+        <fieldset>
+          <div class="disclosure" ng-if="compareShow">
+            <p>By clicking “Continue” you authorize Elephant and its representatives to contact you at the phone number
+              provided above regarding the sale of insurance products and services. These calls may use a recorded
+              message
+              or automated dialing equipment. You are not required to provide your phone number to receive a quote.</p>
+          </div>
+          <div class="button-continue btn-margin" mobile-scroll-top="" coverage-warning="">
+            <button id="btnContinue"
+                    ng-click="continueQuote(quoteForm.$valid)" ng-disabled="ab" single-click="">{{quoteCtrlState.buttonText}}
+            </button>
+          </div>
+        </fieldset>
+        <div class="disclosure" ng-if="compareShow">
+          <p>
+            To offer you the most accurate quote we will use information from you and consumer reporting agencies, such
+            as
+            driving records, claims history, credit history, and additional
+            household information. This information is kept private and secure, and will not be sold. Please review the
+            <a
+              ng-click="policyStatement()">Privacy Policy</a> for further detail. Please answer questions
+            accurately and to the best of your knowledge. Please read our <a ng-click="fraudStatement()">Fraud
+            Policy</a>
+            for further detail.
+          </p>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

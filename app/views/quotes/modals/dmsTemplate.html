@@ -1,0 +1,41 @@
+<div id="modal-template">
+  <div class="message-modal-header {{dmsSummary.description}}">
+    <h3><i class="fa {{dmsSummary.iconClass}}"></i> {{ dmsSummary.title }}</h3>
+  </div>
+  <div class=modal-body>
+    <p>Would you like to update your quote with this information?</p>
+    <p class="message" style="font-size: 17px;color: rgba(0,0,0,.8);">{{ dmsSummary.message }}</p>
+    <!--<div class="help-block">Select all that match.</div>-->
+    <!--<table class="table table-hover">-->
+      <!--<tr ng-repeat="vehicle in passingObject" ng-click="updateAccepted(vehicle)">-->
+        <!--<td>-->
+          <!--<strong>Current Vehicle: </strong>{{vehicle.currentVehicle.Year + ' ' + vehicle.currentVehicle.Make + ' ' + vehicle.currentVehicle.Model}}<br/>-->
+          <!--<strong>Possible Match: </strong>{{vehicle.dmsVehicle.ModelYear + ' ' + vehicle.dmsVehicle.MakeName + ' ' + vehicle.dmsVehicle.ModelName}}-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<input type="checkbox" ng-checked="vehicle.checkbox" />-->
+        <!--</td>-->
+      <!--</tr>-->
+    <!--</table>-->
+    <hr ng-repeat-start="vehicle in dmsSummary.passingObject" />
+    <div class="form-group" ng-repeat-end="">
+      <div class="">
+        <label class="form-left control-label">
+          <span><strong>Current Vehicle:<br/></strong><span style="font-weight: normal;">{{vehicle.currentVehicle.Year + ' ' + vehicle.currentVehicle.Make + ' ' + vehicle.currentVehicle.Model}}</span><br/></span>
+          <span><strong>Possible Match:<br/></strong><span style="font-weight: normal;">{{vehicle.dmsVehicle.ModelYear + ' ' + vehicle.dmsVehicle.MakeName + ' ' + vehicle.dmsVehicle.ModelName}}</span></span>
+        </label>
+      </div>
+      <div title="Dms Answer" class="radioGroup">
+        <buttons-radio id="dmsAnswer" class="btn-group form-right form-100" data-toggle="buttons-radio"
+                       model='vehicle.answer' options='dmsSummary.yesNo'></buttons-radio>
+        <input type="hidden" name="dmsAnswer" type="text" ng-model="vehicle.answer">
+      </div>
+    </div>
+
+    <p><small id="contact-message" style="color:#737373;">if you continue to have issues contact a sales representative at 1-877-321-9911.</small></p>
+  </div>
+  <div class="modal-footer button-continue">
+    <!--<button class="btn btn-warning" ng-click="keepAndContinue()">No, keep my current vehicle</button>-->
+    <button class="" ng-click="updateVehicles()"><span style="font-size: 20px;">Continue</span></button>
+  </div>
+</div>

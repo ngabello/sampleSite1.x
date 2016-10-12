@@ -1,0 +1,87 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-add-vehicle"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+    <h3 class="section-header"><i class="fa fa-car fa-fw"></i> Vehicles</h3>
+
+
+    <form name="vehicleForm" novalidate>
+      <div id="vehicle_content">
+        <fieldset id="add-vehicle-year">
+          <div>
+            <uib-alert ng-repeat="alert in vehicleCtrlState.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+          </div>
+
+          <div class="form-group">
+            <div ng-if="vehicleCtrlState.vehicles.length >= 1">
+              <div ng-if="vehicleCtrlState.vehicle.ID && vehicleCtrlState.vehicles.length > 1" style="float: right;cursor: pointer;">
+                <a id="removeVehicleLink" ng-click="removeVehicle(vehicleCtrlState.vehicle.ID)">Remove</a>
+              </div>
+              <div ng-if="!vehicleCtrlState.vehicle.ID && vehicleCtrlState.vehicles.length > 0" style="float: right;cursor: pointer;">
+                <a id="cancelVehicleLink" ng-click="removeVehicle()">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="row-fluid">
+          <div>
+            <uib-alert ng-repeat="dnq in vehicleCtrlState.vehicleDNQs" type="{{dnq.type}}" close="closeVehicleDNQs($index)">
+              <div ng-bind-html="dnq.msg"></div>
+            </uib-alert>
+          </div>
+
+          <vehicle-year form="vehicleForm" state="vehicleCtrlState"></vehicle-year>
+
+          <vehicle-make form="vehicleForm" state="vehicleCtrlState"></vehicle-make>
+
+          <vehicle-model form="vehicleForm" state="vehicleCtrlState"></vehicle-model>
+
+          <vehicle-body-style form="vehicleForm" state="vehicleCtrlState"></vehicle-body-style>
+
+          <anti-theft form="vehicleForm" state="vehicleCtrlState"></anti-theft>
+
+          <custom-equipment form="vehicleForm" state="vehicleCtrlState"></custom-equipment>
+
+          <primary-use form="vehicleForm" state="vehicleCtrlState"></primary-use>
+
+          <ownership-use form="vehicleForm" state="vehicleCtrlState"></ownership-use>
+
+          <annual-mileage form="vehicleForm" state="vehicleCtrlState"></annual-mileage>
+
+          <original-owner form="vehicleForm" state="vehicleCtrlState"></original-owner>
+
+          <when-purchased form="vehicleForm" state="vehicleCtrlState"></when-purchased>
+
+          <primary-driver form="vehicleForm" state="vehicleCtrlState" ng-model="vehicleCtrlState.vehicle"></primary-driver>
+
+          <add-a-vehicle form="vehicleForm" state="vehicleCtrlState" ng-model="vehicleCtrlState.addVehicle" show="vehicleCtrlState.showAdditionalVehicle"></add-a-vehicle>
+
+        </div>
+
+
+        <fieldset class="btns">
+          <div>
+            <!--<div class="button-add-top">-->
+            <!--<button class="button-add pull-left" id="btnAddAnotherVehicle"-->
+            <!--ng-click="saveVehicle(vehicleForm, 'add')">+&nbsp;Add another vehicleCtrlState.vehicle-->
+            <!--</button>-->
+            <!--</div>-->
+            <div class="button-continue btn-margin" mobile-scroll-top="">
+              <button id="btnContinue"
+                      ng-click="saveVehicle(vehicleForm, 'save')" single-click="">Continue
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </form>
+    <div class="cost_new_desc hide">
+      The "cost new" is the price of your vehicle the year it was made. If you bought the vehicle used, do not list
+      the purchase price at that time or the vehicleCtrlState.vehicle's current value. For example, if you own a 1979 Volkswagen
+      Beetle, the average cost new in 1979 was $3,500.
+    </div>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

@@ -1,0 +1,188 @@
+<spinner class="loading-msg" name="bindSpinner">
+  <div ng-init="loadingMsg = 'Loading'" ng-include="'../views/platform/loadingTemplate.html'"></div>
+</spinner>
+<div mobile-plan-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+
+  <div id="step-billing"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+
+    <h4 class="section-header">Billing</h4>
+
+    <form name="billingForm" novalidate>
+
+      <div>
+        <uib-alert ng-repeat="alert in billingSummary.paymentAlerts" type="{{alert.type}}"
+                   close="closePaymentAlert($index)">
+          <div ng-bind-html="alert.msg"></div>
+        </uib-alert>
+      </div>
+      <div class="form-group hidden-lg" mobile-billing-payment="" id="mobile-billing-payment">
+
+      </div>
+      <name-credit-card form="billingForm" state="billingSummary"></name-credit-card>
+
+      <!-- Same Address Question -->
+      <!--<div class="form-group"
+           ng-class="{true: 'has-error'}[billingSummary.formSubmitted && billingForm.sameAddress.$invalid]">
+        <label class="control-label form-left">Same address?</label>
+
+        <div ng-messages="billingForm.sameAddress.$error" ng-if="billingSummary.formSubmitted">
+          <div ng-message="required">please choose an answer</div>
+        </div>
+        <div title="Billing address" class="radioGroup">
+          <buttons-radio class="btn-group form-100 form-right" data-toggle="buttons-radio"
+                         model='billingSummary.sameAddress'
+                         options='billingSummary.yesNoOptions'></buttons-radio>
+          <span style="font-size: 13px;color: gray;float: right;">Select "yes" if billing address is the same as garage address</span>
+          <input name="sameAddress" type="hidden" ng-model="billingSummary.sameAddress" required/>
+        </div>
+      </div>-->
+      <div uib-collapse="billingSummary.sameAddress == 'No'">
+        <div class="form-group">
+          <label class="control-label form-left">Billing address</label>
+
+          <div class="form-right">
+            <span ng-bind="billingSummary.bindRequest.BillingAddress.AddressLine1"></span>
+            <br>
+            <span ng-bind="billingSummary.bindRequest.BillingAddress.City"></span>
+            <span ng-bind="billingSummary.bindRequest.BillingAddress.State"></span>
+            <span ng-bind="billingSummary.bindRequest.BillingAddress.PostalCode"></span>
+            <br>
+            <a style="cursor: pointer" ng-click="editBillingAddress()">Edit</a>
+          </div>
+        </div>
+      </div>
+      <div
+        uib-collapse="!billingSummary.sameAddress || billingSummary.sameAddress == 'Yes'">
+        <!-- Billing Address -->
+        <!-- AddressLine1 -->
+        <div class="form-group"
+             ng-class="{true: 'has-error'}[billingSummary.formSubmitted && billingForm.billingStreetUpdate.$invalid]">
+          <label class="control-label form-left">Billing address</label>
+
+          <div ng-messages="billingForm.billingStreetUpdate.$error"
+               ng-if="billingSummary.formSubmitted && billingForm.billingStreetUpdate.$invalid">
+            <div ng-message="required">Please enter your address.</div>
+            <div ng-message="pattern">Please enter a valid street address.</div>
+          </div>
+          <input class="form-control form-right" id="billingStreetUpdate" name="billingStreetUpdate"
+                 title="Billing address" type="text" ng-pattern="/^(?=.*(\d))(?=.*[a-zA-Z])(?=.*(\W)).{5,64}$/"
+                 ng-model="billingSummary.bindRequest.BillingAddress.AddressLine1"
+                 ng-required="billingSummary.sameAddress == 'No'"/>
+
+          <label class="control-label form-left sr-only">Apt/Unit</label>
+          <input class="form-control form-right" id="billingAptUpdate" maxlength="5" name="billingAptUpdate"
+                 ng-model="billingSummary.bindRequest.BillingAddress.AddressLine2"
+                 placeholder="Apt #" title="Apt/Unit" type="text"/>
+        </div>
+
+        <!-- City -->
+        <div class="form-group"
+             ng-class="{true: 'has-error'}[billingSummary.formSubmitted && billingForm.billingCityUpdate.$invalid]">
+          <label class="control-label form-left">City</label>
+
+          <div ng-messages="billingForm.billingCityUpdate.$error"
+               ng-if="billingSummary.formSubmitted && billingForm.billingCityUpdate.$invalid">
+            <div ng-message="required">Please enter a city.</div>
+          </div>
+          <input class="form-control form-right" id="billingCityUpdate" maxlength="60" name="billingCityUpdate" ph=""
+                 title="City" type="text" value="" ng-model="billingSummary.bindRequest.BillingAddress.City"
+                 ng-required="billingSummary.sameAddress == 'No'"/>
+        </div>
+
+        <!--<!-- State -->
+        <div class="form-group">
+          <label class="control-label form-left">State</label>
+          <select class="form-control form-right" id="billingStateUpdate" name="billingStateUpdate"
+                  title="Choose a state" ng-model="billingSummary.bindRequest.BillingAddress.State"
+                  ng-required="billingSummary.sameAddress == 'No'"
+                  ng-options="state.Value as state.Desc for state in billingSummary.states">
+          </select>
+        </div>
+
+        <!-- Zipcode -->
+        <div class="form-group"
+             ng-class="{true: 'has-error'}[billingSummary.formSubmitted && billingForm.billingZipUpdate.$invalid]">
+          <label class="control-label form-left">Zip</label>
+
+          <div ng-messages="billingForm.billingZipUpdate.$error"
+               ng-if="billingSummary.formSubmitted && billingForm.billingZipUpdate.$invalid">
+            <div ng-message="required">Please enter a postal code.</div>
+            <div ng-message="pattern">Please enter a valid postal code.</div>
+          </div>
+          <input class="form-control form-right" id="billingZipUpdate" maxlength="5" name="billingZipUpdate" ph=""
+                 title="Zip code" type="tel" value="" ng-model="billingSummary.bindRequest.BillingAddress.PostalCode"
+                 ng-required="billingSummary.sameAddress == 'No'" only-digits
+                 ng-pattern="/\d{5}/"/>
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <phone-number form="billingForm" state="billingSummary" ng-model="billingSummary.bindRequest.PhoneNumber"
+                    validate=true></phone-number>
+
+      <div id="esig" class="form-group">
+        <label class="control-label form-left">E-signature</label>
+
+        <div class="form-right">
+          <span class="inline-alert">The policy must be signed by the Policy Holder</span>
+
+          <p>
+            I acknowledge that by typing my initials below, I am electronically signing the policy, which will have the
+            same legal effect as the execution of the policy document by a written signature and shall be valid evidence
+            of my intent and agreement to be bound.
+          </p>
+
+          <div style="float: left;width: 50%;line-height: 2;">
+            <div ng-messages="billingForm.accepted.$error" ng-if="billingSummary.formSubmitted">
+              <div ng-message="required">Please accept.</div>
+            </div>
+            <label for="Accept" id="Accept">Accept</label>
+
+
+            <input type="checkbox" ng-model="billingSummary.accepted" name="accepted" required/>
+          </div>
+
+          <div style="float: left;width: 50%;line-height: 2;">
+            <div ng-messages="billingForm.esigInitials.$error" ng-if="billingSummary.formSubmitted">
+              <div ng-message="required">Please enter your initials.</div>
+              <div ng-message="match">Initials must match the policy holder's initials.</div>
+            </div>
+            <label for="Initial" id="Initial">Initials</label>
+
+
+            <input class="form-control" id="esigInitials" maxlength="2" name="esigInitials" placeholder="XX"
+                   title="Initials"
+                   ng-model-options="{ updateOn: 'blur' }" ui-mask="xx"
+                   type="text" value="" ng-model="billingSummary.initials" required
+                   ui-validate="{match : 'checkInitials($value)'}"/>
+          </div>
+        </div>
+      </div>
+      <div class="disclosure">By clicking “Purchase”, I authorize Elephant Insurance to debit my down payment
+        today and to initiate recurring debits for the payment of insurance premiums and any associated fees from the
+        card specified above in accordance with the payment plan selected. Because these are electronic transactions, I
+        understand funds may be debited from my card the same day as the transaction dates. I understand that this
+        authorization will remain in effect until I cancel it verbally, electronically, or in writing at least 30 days
+        prior to the next billing date. I understand Elephant Insurance may debit my at a later date to recover amounts
+        currently or past due. I also certify that I am an authorized user of this card.
+      </div>
+      <fieldset class="btns">
+        <div class="disclosure">
+          <p>By clicking “Purchase” you authorize Elephant and its representatives to contact you at the phone number
+            provided above regarding the sale of insurance products and services. These calls may use a recorded message
+            or automated dialing equipment. You are not required to provide your phone number to receive a quote.</p>
+        </div>
+        <div class="button-continue btn-margin">
+          <button id="btnContinue" ng-click="bindPolicy(billingForm)" analytics-on="click"
+                  analytics-event="completed billing" single-click="">Purchase
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div plan-summary="" class="visible-lg"></div>
+</div>

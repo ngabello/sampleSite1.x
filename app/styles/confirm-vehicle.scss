@@ -1,0 +1,33 @@
+/*** Start confirm-vehicle ***/
+#step-confirm-vehicle{
+  @extend .milky-background;
+  .button-continue{
+    @extend .button-continue;
+  }
+  .btn-margin{
+    margin-top: 50px;
+    float: right;
+  }
+  .form-group{
+    h4{
+      color:#015289;
+      margin-top: 0;
+    }
+    input[type="checkbox"]{
+      margin-left: 5px;
+
+    }
+  }
+  hr{
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media all and (max-width: 800px) {
+  #step-confirm-vehicle {
+    .btn-margin {
+      float: inherit;
+    }
+  }
+}
+/*** End confirm-vehicle ***/

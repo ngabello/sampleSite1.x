@@ -1,0 +1,143 @@
+/*** step billing ***/
+
+#step-billing {
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+  }
+  .disclosure{
+    margin-top: 20px;
+  }
+  .pf {
+    float: right;
+    margin-top: -31px;
+    font-size: 23px;
+    margin-right: 10px;
+    color: #015289;
+  }
+  .btn-margin {
+    margin-top: 0;
+    float: right;
+  }
+  #billingStreetUpdate {
+    width: 36%;
+    float: left;
+
+  }
+  #billingAptUpdate {
+    width: 12%;
+    margin-left: 1%;
+  }
+
+  #esig {
+    .form-right {
+      span:nth-child(1) {
+        font-size: .8em;
+        color: #015289;
+      }
+    }
+    #Accept {
+      //clear: both;
+      //float: left;
+      //margin-right: 20px;
+    }
+    #Initial {
+      //float: left;
+      //margin-right: 10px;
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+    p {
+      font-size: .75em;
+    }
+    input[type="checkbox"] {
+      margin-right: 20px;
+      margin-left: 5px;
+    }
+    input[type="text"] {
+      width: 44%;
+      float: right;
+    }
+
+  }
+  #mobile-billing-payment {
+    label{
+      color: $dark-blue;
+    }
+    .form-control{
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #cccccc;
+    }
+    ul {
+      list-style: none;
+      #payment-amount {
+        font-size: 2.2em;
+        color: #659837;
+      }
+      .plan-detail {
+        :first-child{
+          color: gray;
+        }
+        .money-payment-small {
+          font-size: .8em;
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1199px) {
+  #mobile-plan-summary {
+    padding: 0;
+    margin-top: 74px;
+  }
+  #step-billing {
+    //    padding-top: 20px;
+
+    #billingStreetUpdate {
+      width: 47%;
+    }
+    //    margin-top: 0;
+  }
+
+}
+
+@media all and (max-width: 800px) {
+
+  #step-billing {
+    .btn-margin {
+      float: inherit;
+    }
+    #esig {
+      #Accept {
+        //float: inherit;
+      }
+      input[type="checkbox"] {
+        //float: inherit;
+      }
+      input[type="text"] {
+        //float: inherit;
+                //width: 100%;
+               // margin-top: 10px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 499px) {
+  #step-billing {
+    #billingStreetUpdate {
+      width: 67%;
+      margin-right: 2%;
+    }
+    #billingAptUpdate {
+      width: 30%;
+    }
+  }
+
+}
+
+/*** End billing ***/

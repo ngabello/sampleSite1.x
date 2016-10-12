@@ -1,0 +1,22 @@
+<div id="modal-template">
+  <div class="message-modal-header {{description}}">
+    <h3><i class="fa {{iconClass}}"></i> {{ title }}</h3>
+  </div>
+  <div class=modal-body>
+    <p class="message" style="font-size: 15px;color: rgba(0,0,0,.8);">
+      Most finance companies require <strong>Comprehensive</strong> and <strong>Collision Coverage</strong>. We strongly
+      suggest you add coverage or
+      contact your finance company before purchasing a policy without <strong>Comprehensive</strong> and <strong>Collision
+      Coverage</strong>.
+    </p>
+
+    <ul style="padding: 15px;" >
+        <li ng-repeat="vehicle in passingObject">{{vehicle.Year + ' ' + vehicle.Make + ' ' + vehicle.Model}}</li>
+      </ul>
+    <p><small style="color:#737373;">If you need additional assistance, please call 1-877-321-9911.</small></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" ng-click="coverageContinue()">Continue without Coverage</button>
+    <button class="btn btn-primary" ng-click="coverageContinue(1)">Add coverage</button>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row">
+  <div id="step-brokers"
+       class="customer2 margin animated fadeIn"
+       disable-back-button="" style="font-size: 18px;">
+
+    <div>
+      <div>
+        <h3 class="section-header">The Road to Savings Starts Here</h3>
+      </div>
+      <div class="" style="text-align: center;padding: 0 20px;">
+        <h3 class="intro-text">{{leadCloudSummary.state}} drivers could save with discounts <br/> worth up to 40%* on
+          their auto insurance</h3>
+      </div>
+      <div id="broker-hank">
+        <img src="images/Hank-crop-205x335.png"/>
+      </div>
+      <div id="broker-container">
+        <div class="blue-content">
+          <span><a ng-click="(leadCloudSummary.continueEnabled)? startQuote() : false"
+                   ng-style="{'text-decoration': !leadCloudSummary.continueEnabled? 'none' : false}" single-click="">Continue</a> to complete your Elephant quote using the information you've already entered.</span>
+
+          <h3>Save a trunkload with our discounts.</h3>
+          <ul>
+            <li>Instant savings with a 12% online discount.</li>
+            <li>Save up to 20% with multi-vehicle discount.</li>
+            <li>Bundle your Home, Renters, Motorcycle and Life insurance for more savings</li>
+          </ul>
+        </div>
+        <div style="margin:20px 0 20px 0;">
+          <div id="disclaimer-container" class="broker-disclaimer">
+            <span>*Varies by state, coverage and eligibility requirements. Your savings may vary</span><br/>
+
+            <div style="margin-top: 5px;"><i class="fa fa-lock"></i> Information is secure and won't be shared.</div>
+          </div>
+
+          <div class="button-continue btn-margin" ng-if="leadCloudSummary.continueEnabled">
+            <button class="" id="btnContinue" ng-click="startQuote()" single-click="">
+              <span>Continue</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

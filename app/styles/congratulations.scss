@@ -1,0 +1,246 @@
+#step-congratulations {
+  p {
+    font-size: .8em;
+  }
+  h4 {
+    color: $dark-blue;
+  }
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+  }
+  #welcome {
+    color: $dark-blue;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .btn-margin {
+    float: right;
+  }
+
+  #congratulations-image {
+    width: 390px;
+    float: left;
+  }
+  #congratulations-hank-image {
+    //    float: left;
+    width: 80%;
+  }
+  #congratulations-label {
+    padding: 0 10px 0 10px;
+  }
+
+  #congratulations-info {
+    font-size: .8em;
+    .list-text {
+      padding: 0 10px 0 10px;
+      width: 25%;
+      float: left;
+    }
+    div:first-child, div:nth-child(2) {
+      margin-top: 10px;
+      span:first-child {
+        font-weight: bold;
+      }
+      span:nth-child(n+2) {
+        font-size: .8em;
+      }
+    }
+    #ancillary-offers {
+      width: 50%;
+      float: left;
+      background: #ffffff;
+      border: solid 1pt #666;
+      .legal-offer{
+        padding: 10px 10px 15px 10px;
+      }
+      border-radius: 2px;
+      margin-top: 20px;
+      a {
+        margin: 0;
+        background-color: #009D59;
+        color: #ffffff;
+        border: 0;
+        padding: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+          background-color: #02AB62;
+        }
+        &:active {
+          background-color: #009D59;
+        }
+      }
+    }
+    @extend .button-continue;
+    #ancillary-bundle {
+      font-style: italic;
+      color: #015289;
+      //border: solid 1pt #666;
+      width: 100%;
+
+    }
+    #ancillary-bundle {
+      div:first-child {
+        font-size: 25px;
+        background: #ffffff;
+        padding-left: 5px;
+        font-weight: bold;
+        width: 100%;
+      }
+    }
+    #ancillary-bundle div:nth-child(2) {
+      background: #CECECE;
+    }
+    #ancillary-bundle .clearfix {
+      background: #CECECE;
+    }
+    figure {
+      float: left;
+      padding: 15px;
+      text-align: center;
+    }
+    .two-icons {
+      figure {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+      i {
+        display: block;
+        float: left;
+        margin-top: 25px;
+        font-size: 1.5em;
+      }
+    }
+    #ancillary-bundle .ancillary-button {
+      padding: 10px;
+      width: 40%;
+      float: left;
+      //font-size: 1em;
+    }
+  }
+  #legal-container {
+    padding: 0 20px 0 20px;
+    #legal-text {
+      background: rgba(0, 0, 0, .1);
+      font-size: .75em;
+      padding: 10px;
+    }
+  }
+  width: 870px;
+  margin: 110px auto 82px auto;
+}
+
+@media all and (max-width: 900px) {
+  #step-congratulations {
+    width: 100%;
+    #legal-container {
+      padding: 0;
+    }
+  }
+}
+
+@media all and (max-width: 844px) {
+  #step-congratulations {
+    #congratulations-info {
+      #ancillary-bundle {
+        figure {
+          padding-left: 9%;
+        }
+        .ancillary-button {
+          width: 100%;
+          font-size: 1.2em;
+        }
+      }
+      .two-icons {
+        figure {
+          padding-left: 13%;
+          padding-right: 13%;
+        }
+        i {
+          margin-left: 5%;
+          margin-right: 7%;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  #step-congratulations {
+    #congratulations-hank-image {
+      display: none;
+    }
+    .btn-margin {
+      float: inherit;
+    }
+    margin-top: 61px;
+  }
+}
+
+@media all and (max-width: 719px) {
+  #step-congratulations {
+    #congratulations-info {
+      #ancillary-bundle {
+        div:first-child {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  #step-congratulations {
+    #congratulations-info {
+      .list-text {
+        width: 50%;
+      }
+      #ancillary-offers {
+        width: 100%;
+      }
+      #ancillary-bundle {
+        div:first-child {
+          text-align: center;
+          font-size: 25px;
+        }
+        figure {
+          padding-left: 14%;
+        }
+      }
+      .two-icons {
+        figure {
+          //padding-left: 15%;
+          padding-right: 15%;
+        }
+        i {
+          margin-left: 7%;
+          margin-right: 7%;
+          font-size: 2em;
+        }
+        img {
+          width: 120%;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 502px) {
+  #step-congratulations {
+    #congratulations-info {
+      .two-icons {
+        i {
+          margin-left: 2%;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 410px) {
+  #step-congratulations {
+    #welcome {
+      font-size: 1.6em;
+    }
+  }
+}

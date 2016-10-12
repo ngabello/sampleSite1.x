@@ -1,0 +1,92 @@
+<div id="mobile-nav-summary">
+  <div class="hamburger">
+    <div class="hamburger-inner">
+      <div class="bar bar1"></div>
+      <div class="bar bar2 cross"></div>
+      <div class="bar bar3 cross "></div>
+      <div class="bar bar4"></div>
+    </div>
+  </div>
+
+  <div class="mobile-menu">
+    <div class="mobile-menu-inner">
+      <ul class="list-unstyled">
+        <li class="hidden-md"><a href="tel:18553537426"><i class="fa fa-phone-square"></i></a></li>
+
+        <li ng-if="planSummary.drivers.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('drivers')" style="cursor: pointer;">
+            Drivers <i class="pull-right glyphicon"
+                       ng-class="{'fa fa-chevron-down': driversOpen, 'fa fa-chevron-right': !driversOpen}"></i>
+          </div>
+
+          <div class="" uib-collapse="!driversOpen">
+
+            <ul ng-repeat="driver in planSummary.drivers" class="list-unstyled">
+              <li>
+                <div ng-if="driver.PrimaryDriver">
+
+                  {{ driver.FirstName+' ' +driver.LastName }}
+                </div>
+                <div ng-if="!driver.PrimaryDriver">
+
+                  {{ driver.FirstName+' ' +driver.LastName }}
+                </div>
+              </li>
+            </ul>
+
+
+          </div>
+        </li>
+
+        <li ng-if="planSummary.vehicles.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('vehicles')" style="cursor: pointer;">
+            Vehicles
+            <i class="pull-right glyphicon"
+               ng-class="{'fa fa-chevron-down': vehiclesOpen, 'fa fa-chevron-right': !vehiclesOpen}"></i>
+          </div>
+
+          <div class="" uib-collapse="!vehiclesOpen">
+            <ul>
+              <li ng-repeat="vehicle in planSummary.vehicles" class="list-unstyled">
+                <div ng-if="vehicle.Model">
+                  {{ vehicle.Year + ' ' + vehicle.Make + ' ' +  vehicle.Model }}
+                </div>
+                <div ng-if="!vehicle.Model">
+                  {{ vehicle.Year + ' ' + vehicle.Make }}
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </li>
+
+        <!-- Discounts -->
+        <li ng-if="planSummary.discounts.length > 0">
+          <hr>
+          <div class="submenu">
+            Discounts:
+          </div>
+
+          <ul class="side-discounts">
+            <li ng-repeat="discount in planSummary.discounts | filter: discountFilter" class="list-unstyled">
+              <i class=""></i> {{ discount.Desc.replace('Discount', '') }}
+            </li>
+          </ul>
+        </li>
+        </li>
+        <li ng-if="planSummary.quoteIntent.EffectiveDate">
+          <div class="submenu">
+            Policy Terms
+          </div>
+          <div class="">
+
+            {{ planSummary.quoteIntent.EffectiveDate | date: 'MM/dd/yyyy'}}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

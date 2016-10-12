@@ -1,0 +1,46 @@
+/*** start discount page ***/
+#step-discount{
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+  }
+  .btn-margin{
+    clear: both;
+    margin-top: 50px;
+    float: right;
+  }
+  ul{
+    padding: 0 20px 0 32px;
+    list-style: none;
+  }
+  .sub-section-header{
+    margin-bottom: 20px;
+  }
+  .explanations{
+    color: gray;
+    font-size: 12px;
+    padding-left: 50px;
+  }
+   #discount-message{
+    padding: 0 0 0 20px;
+  }
+}
+
+@media all and (max-width: 800px){
+  #step-discount{
+    .btn-margin {
+      float: inherit;
+    }
+  }
+}
+@media all and (max-width: 400px){
+  #step-discount{
+    ul{
+      padding: 0;
+    }
+    .explanations{
+      padding: 0;
+    }
+  }
+}
+/*** end discount page ***/

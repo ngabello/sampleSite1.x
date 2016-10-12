@@ -1,0 +1,517 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/sass-bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css({.tmp,app}) styles/main.css -->
+  <!--<link rel="stylesheet" href="styles/font-awesome.min.css">-->
+  <link rel="stylesheet" href="styles/snackbar.min.css"/>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/paymentfont.min.css">
+  <!-- endbuild -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.min.css"/>
+  <script src="//cdn.optimizely.com/js/276324066.js"></script>
+  <!--<script>window['optimizely'] = window['optimizely'] || [];window['optimizely'].push(["activate"]);</script>-->
+
+
+  <!--<script type="text/javascript" src="//d1pvkh5g3u3d4w.cloudfront.net/loggly.tracker.js" async></script>-->
+  <script type="text/javascript" src="//cloudfront.loggly.com/js/loggly.tracker.min.js" async></script>
+
+  <script>
+    var _LTracker = _LTracker || [];
+    _LTracker.push({'logglyKey': '@@logglyKey'});
+  </script>
+</head>
+<body ng-app="consumerWeb.App" class="sign_up" style="display: block;">
+<!--[if IE 9]>
+<script src="https://d1pvkh5g3u3d4w.cloudfront.net/xdomain.js"></script>
+<script>
+  xdomain.slaves({
+  @@xDomainPlaceHolder1,
+  @@xDomainPlaceHolder2,
+  @@xDomainPlaceHolder3,
+  @@xDomainPlaceHolder4
+  });
+</script>
+<![endif]-->
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+<div class="body-wrap">
+  <div class="snackbar-container" data-snackbar="true"></div>
+  <nav class="navbar navbar-fixed-top" role="navigation" header="">
+    <div class="">
+      <div class="navbar-header col-md-offset-3 col-md-3">
+
+        <!--click to call-->
+
+        <!--<a href="tel:18553537426"><i class="fa fa-phone-square visible-xs-2 hidden-sm hidden-md hidden-lg"></i></a>-->
+
+        <a class="col-xs-9" href="http://www.pachyderm.com" target="_blank"><img class="nav-logo"
+                                                                                src="images/ElephantAuto_Logo_REV_rgb.svg"
+                                                                                alt="..."/></a>
+      </div>
+
+      <div id="main-number" class="col-md-offest-10 col-md-4 col-lg-2 visible-lg visible-md" style="padding: 5px;">
+        <a href="tel:18773212096"
+           style="color: white;font-style: italic;font-size: 25px;text-decoration: none;float: right;">
+          <strong>1.877.321.2096</strong></a></div>
+    </div>
+  </nav>
+
+
+  <!--CONTENT-->
+  <div ng-controller="mainController" id="content" class="" single-enter-key="" optimizely-easteregg="">
+    <spinner class="loading-msg" name="loadingSpinner">
+      <div ng-init="loadingMsg = 'Loading'" ng-include="'../views/platform/loadingTemplate.html'"></div>
+    </spinner>
+    <div class="loading"></div>
+    <div id="mainContent" ng-optimizely="" ui-view></div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <div class="text-center copyright">
+
+    <p>
+      © <span id="copy-year">2015</span> Elephant Insurance Services, LLC. All rights reserved.&nbsp;&nbsp;
+      <a href="http://pachyderm.com/privacy" target="_blank">Privacy &amp; Security</a>&nbsp;|&nbsp;
+      <a href="http://pachyderm.com/terms-of-use" target="_blank"> Terms of Use</a>&nbsp;|&nbsp;
+      <a href="http://pachyderm.com/sitemap" target="_blank">Site Map</a>
+    </p>
+
+ <div id="siteSecure">
+<ul>
+    <li> <!-- McAfee SECURE Engagement Trustmark for pachyderm.com --> <a target="_blank" href="https://www.mcafeesecure.com/verify?host=pachyderm.com"><img class="mfes-trustmark" src="//cdn.ywxi.net/meter/pachyderm.com/102.gif?w=90" width="90" height="37" title="McAfee SECURE sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" alt="McAfee SECURE sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="window.open('https://www.mcafeesecure.com/verify?host=pachyderm.com'); return false;" style="border-width: 0px; border-style: solid;" /></a> <!-- End McAfee SECURE Engagement Trustmark for pachyderm.com --> </li>
+    <li><img src="https://ssl.comodo.com/images/comodo_secure_seal_113x59_transp.png" alt="Wildcard SSL" width="113" height="59" style="border: 0px;" /><br /></li>
+    <li> <img alt="BBB Acredited Business" src="http://d5prcm06amy2t.cloudfront.net/cms/images/bbb_logo.png" /> </li>
+</ul>
+</div>
+  </div>
+
+
+
+</div>
+<script>
+  (function () {
+    document.getElementById("copy-year").innerHTML = new Date().getFullYear().toString();
+  })();
+</script>
+
+
+<!--&lt;!&ndash; Google Tag Manager &ndash;&gt;-->
+<!--<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5ZBFG3"-->
+<!--height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>-->
+<!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':-->
+<!--new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],-->
+<!--j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=-->
+<!--'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);-->
+<!--})(window,document,'script','dataLayer','GTM-5ZBFG3');</script>-->
+<!--&lt;!&ndash; End Google Tag Manager &ndash;&gt;-->
+
+<!--Segment.io-->
+<script type="text/javascript">
+  !function () {
+    var analytics = window.analytics = window.analytics || [];
+    if (analytics.invoked)window.console && console.error && console.error("Segment snippet included twice."); else {
+      analytics.invoked = !0;
+      analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "group", "track", "ready", "alias", "page", "once", "off", "on"];
+      analytics.factory = function (t) {
+        return function () {
+          var e = Array.prototype.slice.call(arguments);
+          e.unshift(t);
+          analytics.push(e);
+          return analytics
+        }
+      };
+      for (var t = 0; t < analytics.methods.length; t++) {
+        var e = analytics.methods[t];
+        analytics[e] = analytics.factory(e)
+      }
+      analytics.load = function (t) {
+        var e = document.createElement("script");
+        e.type = "text/javascript";
+        e.async = !0;
+        e.src = ("https:" === document.location.protocol ? "https://" : "http://") + "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
+        var n = document.getElementsByTagName("script")[0];
+        n.parentNode.insertBefore(e, n)
+      };
+      analytics.SNIPPET_VERSION = "3.0.0";
+      analytics.load("@@segmentIOId");
+      analytics.page(null, null, null, {
+        integrations:{
+          'Google Analytics': false
+        }
+      })
+    }
+  }();
+</script>
+<!--End Segment.io-->
+
+<!-- Qualaroo -->
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  _kiq.push(['disableAuto']); //This prevents Qualaroo from automatically loading a survey
+  (function(){
+    setTimeout(function(){
+      var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+      s.async = true; s.src = '@@qualaroo'; f.parentNode.insertBefore(s, f);
+      // timeout set longer to work with our app
+    }, 2000);
+  })();
+</script>
+
+<!-- build:js(.) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/userinfo/1.1.0/userinfo.min.js"></script>
+
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/sass-bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/ng-idle/angular-idle.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+<script src="bower_components/angular-ui-date/src/date.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
+<script src="bower_components/angular-ui-validate/dist/validate.js"></script>
+<script src="bower_components/humanize-duration/humanize-duration.js"></script>
+<script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/Utilities/stringUtilities.js"></script>
+<script src="scripts/Utilities/dateUtilities.js"></script>
+<script src="scripts/Utilities/VinValidator.js"></script>
+<!--<script src="scripts/Utilities/OptionItems.js"></script>-->
+<script src="scripts/Utilities/DLPatternsByState.js"></script>
+<script src="scripts/Utilities/@@appDynamics"></script>
+<script src="scripts/Utilities/ng-surprise.min.js"></script>
+<script src="scripts/Utilities/guidGenerator.js"></script>
+<script src="scripts/Utilities/enumerations.js"></script>
+
+
+<script src="scripts/helpers/coverageRepresentation.js"></script>
+
+<script src="scripts/services/quotes/quoteErrorListener.js"></script>
+<script src="scripts/services/platform/Idle/idleListener.js"></script>
+<script src="scripts/services/platform/Idle/idleModule.js"></script>
+<script src="scripts/services/platform/modal/ModalService.js"></script>
+<script src="scripts/services/platform/modal/module.js"></script>
+<script src="scripts/services/platform/modal/ModalController.js"></script>
+
+
+<!-- Directives -->
+<script src="scripts/directives/navSummary.js"></script>
+<script src="scripts/directives/optimizely.js"></script>
+<script src="scripts/directives/buttons-radio.js"></script>
+<script src="scripts/directives/validDateFormatter.js"></script>
+<script src="scripts/directives/compareTo.js"></script>
+
+<script src="scripts/directives/header.js"></script>
+<script src="scripts/directives/mediaAlpha.js"></script>
+<script src="scripts/directives/planSummary.js"></script>
+<script src="scripts/directives/onlyDigits.js"></script>
+<script src="scripts/directives/creditCardValidator.js"></script>
+<script src="scripts/directives/angularStrapModified.js"></script>
+<script src="scripts/directives/ssnMask.js"></script>
+<script src="scripts/directives/refresh.js"></script>
+<script src="scripts/directives/capitalizeFirst.js"></script>
+<script src="scripts/directives/navSharedCtrl.js"></script>
+<script src="scripts/directives/planSharedCtrl.js"></script>
+<script src="scripts/directives/mobileNavSummary.js"></script>
+<script src="scripts/directives/mobilePlanSummary.js"></script>
+<script src="scripts/directives/mobileBillingPayment.js"></script>
+<script src="scripts/directives/mobileScrollTop.js"></script>
+<script src="scripts/directives/coverageWarning.js"></script>
+<script src="scripts/directives/legalPlanSummary.js"></script>
+<script src="scripts/directives/eventTracking.js"></script>
+<script src="scripts/directives/diminishingDeductible.js"></script>
+<script src="scripts/directives/errorScroll.js"></script>
+<script src="scripts/directives/lienholderTypeAheadEdit.js"></script>
+<script src="scripts/directives/singleClick.js"></script>
+<script src="scripts/directives/singleEnterKey.js"></script>
+<script src="scripts/directives/optimizelyEasteregg.js"></script>
+<script src="scripts/directives/everQuote.js"></script>
+<script src="scripts/directives/trackOccupation.js"></script>
+<script src="scripts/appEntryPoints/directives/compareNumber.js"></script>
+<script src="scripts/appEntryPoints/directives/defaultLanding.js"></script>
+<script src="scripts/appEntryPoints/directives/toyLanding.js"></script>
+<script src="scripts/directives/breadCrumbs.js"></script>
+<script src="scripts/directives/occupationDirective.js"></script>
+<script src="scripts/directives/billingUtility.js"></script>
+<script src="scripts/directives/compareBanner.js"></script>
+<script src="scripts/directives/validateSubmit.js"></script>
+
+
+<script src="scripts/main.js"></script>
+<!-- Config -->
+<script src="scripts/config/config.js"></script>
+
+<!-- Model scripts -->
+<script src="scripts/models/quotes/driver.js"></script>
+<script src="scripts/models/quotes/clientData.js"></script>
+<script src="scripts/models/quotes/vehicle.js"></script>
+<script src="scripts/models/quotes/policy.js"></script>
+<script src="scripts/models/quotes/coverage.js"></script>
+<script src="scripts/models/quotes/quote.js"></script>
+<script src="scripts/models/quotes/quoteIntentDoc.js"></script>
+<script src="scripts/models/quotes/incident.js"></script>
+<script src="scripts/models/quotes/address.js"></script>
+<script src="scripts/models/quotes/ancillary.js"></script>
+<script src="scripts/models/quotes/dms.js"></script>
+<script src="scripts/models/quotes/lead.js"></script>
+<script src="scripts/models/quotes/quoteState.js"></script>
+<script src="scripts/models/quotes/payment.js"></script>
+<script src="scripts/models/quotes/modelHelper.js"></script>
+<script src="scripts/models/quotes/channelSource.js"></script>
+<script src="scripts/models/quotes/module.js"></script>
+<!-- end Model scripts -->
+
+<!-- Prefill -->
+<script src="scripts/appEntryPoints/controllers/BaseLandingCtrl.js"></script>
+<script src="scripts/appEntryPoints/controllers/PostalLandingCtrl.js"></script>
+<script src="scripts/appEntryPoints/controllers/BrokerLandingCtrl.js"></script>
+<script src="scripts/appEntryPoints/controllers/ComparenowLandingCtrl.js"></script>
+<script src="scripts/appEntryPoints/services/quoteRetrieveService.js"></script>
+<script src="scripts/appEntryPoints/controllers/LeadCloudLandingCtrl.js"></script>
+
+<!-- Controller scripts -->
+<script src="scripts/appEntryPoints/controllers/QuoteRetrieveCtrl.js"></script>
+<script src="scripts/appEntryPoints/controllers/PostalCodeCtrl.js"></script>
+<script src="scripts/components/pages/policyHolder/PolicyHolderCtrl.js"></script>
+<script src="scripts/components/pages/driver/DriverCtrl.js"></script>
+<script src="scripts/components/pages/driverDetails/DriverDetailsCtrl.js"></script>
+<script src="scripts/components/pages/driverHistory/DriverHistory.js"></script>
+<script src="scripts/components/pages/additionalHistory/AdditionalHistoryCtrl.js"></script>
+<script src="scripts/components/pages/vehicle/VehicleCtrl.js"></script>
+<script src="scripts/components/pages/driverAssignment/DriverAssignmentCtrl.js"></script>
+<script src="scripts/components/pages/vehicleAssignment/VehicleAssignmentCtrl.js"></script>
+<script src="scripts/components/pages/discounts/DiscountsCtrl.js"></script>
+<script src="scripts/components/pages/quote/QuoteCtrl.js"></script>
+
+<script src="scripts/components/pages/confirmDriver/ConfirmDriverCtrl.js"></script>
+<script src="scripts/components/pages/confirmVehicle/ConfirmVehicleCtrl.js"></script>
+<script src="scripts/components/pages/payments/PaymentCtrl.js"></script>
+<script src="scripts/components/pages/billing/BillingCtrl.js"></script>
+<script src="scripts/components/pages/quoteOverview/OverviewCtrl.js"></script>
+<script src="scripts/components/pages/congratulations/Congratulations.js"></script>
+<script src="scripts/components/pages/additionalDriver/AdditionalDriverCtrl.js"></script>
+<script src="scripts/components/pages/ancillaryCheckout/AncillaryCheckoutCtrl.js"></script>
+<script src="scripts/components/pages/quoteTermination/QuoteTerminationCtrl.js"></script>
+
+<!-- CustomerJourney -->
+<script src="scripts/customerJourneys/classicJourney/field-components/ADRatingsFactors.js"></script>
+
+<!-- CustomerJourney_2.0 -->
+
+
+<!--J3_v1-->
+<script src="scripts/customerJourneys/j3_v1/pages/vehicle/VehicleCtrl_j3_v1.js"></script>
+<script src="scripts/customerJourneys/j3_v1/pages/additionalHistory/AdditionalHistoryCtrl_j3_v1.js"></script>
+<script src="scripts/customerJourneys/j3_v1/pages/driverHistory/DriverHistory_j3_v1.js"></script>
+<!-- Filters -->
+
+<!-- Services -->
+<script src="scripts/services/quotes/driverService.js"></script>
+<script src="scripts/services/quotes/addressService.js"></script>
+<script src="scripts/services/quotes/coverageValidationService.js"></script>
+<script src="scripts/services/quotes/errorService.js"></script>
+<script src="scripts/services/quotes/messageService.js"></script>
+<script src="scripts/services/quotes/ancillaryDisplayService.js"></script>
+<script src="scripts/services/quotes/legalAssistService.js"></script>
+<script src="scripts/services/quotes/quoteIntentMappingService.js"></script>
+<script src="scripts/services/quotes/vehicleService.js"></script>
+<script src="scripts/services/quotes/leadCloudMappingService.js"></script>
+<script src="scripts/services/quotes/incidentService.js"></script>
+<script src="scripts/services/quotes/diminishingDeductService.js"></script>
+<script src="scripts/services/quotes/module.js"></script>
+
+<!-- Field Components -->
+<!-- driver -->
+<script src="scripts/components/field-components/driver/firstNameMI.js"></script>
+<script src="scripts/components/field-components/driver/lastNameSX.js"></script>
+<script src="scripts/components/field-components/driver/driverName.js"></script>
+<script src="scripts/components/field-components/driver/birthDate.js"></script>
+<script src="scripts/components/field-components/driver/phoneNumber.js"></script>
+<script src="scripts/components/field-components/driver/emailAddress.js"></script>
+<script src="scripts/components/field-components/driver/gender.js"></script>
+<script src="scripts/components/field-components/driver/maritalStatus.js"></script>
+<script src="scripts/components/field-components/driver/maritalStatusLabel.js"></script>
+<script src="scripts/components/field-components/driver/residencyType.js"></script>
+<script src="scripts/components/field-components/driver/yearsAtResidence.js"></script>
+<script src="scripts/components/field-components/driver/educationLevel.js"></script>
+<script src="scripts/components/field-components/driver/employmentStatus.js"></script>
+<script src="scripts/components/field-components/driver/occupation.js"></script>
+<script src="scripts/components/field-components/driver/military.js"></script>
+<script src="scripts/components/field-components/driver/attendingSchool.js"></script>
+<script src="scripts/components/field-components/driver/goodStudent.js"></script>
+<script src="scripts/components/field-components/driver/licenseStatus.js"></script>
+<script src="scripts/components/field-components/driver/currentInsurance.js"></script>
+<script src="scripts/components/field-components/driver/ownVehicleAndInsurance.js"></script>
+<script src="scripts/components/field-components/driver/insuranceReason.js"></script>
+<script src="scripts/components/field-components/driver/insuranceLapse.js"></script>
+<script src="scripts/components/field-components/driver/ageFirstLicensed.js"></script>
+<script src="scripts/components/field-components/driver/insuranceCompany.js"></script>
+<script src="scripts/components/field-components/driver/yearsWithCompany.js"></script>
+<script src="scripts/components/field-components/driver/insurancePremium.js"></script>
+<script src="scripts/components/field-components/driver/bodilyInjuryLimit.js"></script>
+<script src="scripts/components/field-components/driver/otherDrivers.js"></script>
+<script src="scripts/components/field-components/driver/vehiclesInZipcode.js"></script>
+<script src="scripts/components/field-components/driver/addDriver.js"></script>
+<script src="scripts/components/field-components/driver/studentEnrollment.js"></script>
+<script src="scripts/components/field-components/driver/relationshipToInsured.js"></script>
+<script src="scripts/components/field-components/driver/drivesTwice.js"></script>
+<script src="scripts/components/field-components/driver/primaryVehicle.js"></script>
+
+<!-- vehicle -->
+<script src="scripts/components/field-components/vehicle/vehicleYear.js"></script>
+<script src="scripts/components/field-components/vehicle/vehicleMake.js"></script>
+<script src="scripts/components/field-components/vehicle/vehicleModel.js"></script>
+<script src="scripts/components/field-components/vehicle/vehicleBodyStyle.js"></script>
+<script src="scripts/components/field-components/vehicle/antiTheft.js"></script>
+<script src="scripts/components/field-components/vehicle/customEquipment.js"></script>
+<script src="scripts/components/field-components/vehicle/primaryUse.js"></script>
+<script src="scripts/components/field-components/vehicle/ownershipUse.js"></script>
+<script src="scripts/components/field-components/vehicle/annualMileage.js"></script>
+<script src="scripts/components/field-components/vehicle/originalOwner.js"></script>
+<script src="scripts/components/field-components/vehicle/whenPurchased.js"></script>
+<script src="scripts/components/field-components/vehicle/primaryUse.js"></script>
+<script src="scripts/components/field-components/vehicle/primaryDriver.js"></script>
+<script src="scripts/components/field-components/vehicle/addAVehicle.js"></script>
+<!-- address -->
+<script src="scripts/components/field-components/address/garageAddress.js"></script>
+<!-- policy -->
+<script src="scripts/components/field-components/policy/policyStartDate.js"></script>
+<script src="scripts/components/field-components/policy/ownMotorcycle.js"></script>
+<script src="scripts/components/field-components/policy/policyTemplates.js"></script>
+<!-- payment -->
+<script src="scripts/components/field-components/payment/nameCreditCard.js"></script>
+
+<!-- disclaimer -->
+<script src="scripts/components/field-components/disclaimers/useInfoDisclaimer.js"></script>
+<script src="scripts/components/field-components/disclaimers/authorizationDisclaimer.js"></script>
+
+<script src="scripts/components/field-components/staticDirective.js"></script>
+<script src="scripts/components/field-components/module.js"></script>
+
+
+
+<!--End field components-->
+
+<!-- Platform scripts -->
+<script src="scripts/services/platform/apiservices/goGeoDataService.js"></script>
+<script src="scripts/services/platform/apiservices/ancillarydataservice.js"></script>
+<script src="scripts/services/platform/apiservices/vinIsoDataService.js"></script>
+<script src="scripts/services/platform/apiservices/externalAPIDataService.js"></script>
+<script src="scripts/services/platform/apiservices/goDataService.js"></script>
+<script src="scripts/services/platform/apiservices/module.js"></script>
+
+<script src="scripts/services/platform/loading/CallTrackerService.js"></script>
+<script src="scripts/services/platform/loading/LoadingIndicationDirective.js"></script>
+<script src="scripts/services/platform/loading/LoadingIndicationService.js"></script>
+<script src="scripts/services/platform/loading/module.js"></script>
+<script src="scripts/services/platform/data/lookupdataservice.js"></script>
+
+<script src="scripts/services/platform/journeyManagement/journeyService.js"></script>
+<script src="scripts/services/platform/journeyManagement/module.js"></script>
+
+<script src="scripts/services/platform/logging/LoggingEventService.js"></script>
+<script src="scripts/services/platform/logging/module.js"></script>
+
+<script src="scripts/services/platform/event/eventService.js"></script>
+<script src="scripts/services/platform/event/module.js"></script>
+
+<script src="scripts/services/platform/tracking/generalTrackingService.js"></script>
+<script src="scripts/services/platform/tracking/segmentIoTrackingService.js"></script>
+<script src="scripts/services/platform/tracking/optimizelyTrackingService.js"></script>
+<script src="scripts/services/platform/tracking/convertTrackingService.js"></script>
+
+<script src="scripts/services/platform/tracking/appdynamicsTrackingService.js"></script>
+<script src="scripts/services/platform/tracking/gaTrackingService.js"></script>
+<script src="scripts/services/platform/tracking/speedTrackingService.js"></script>
+<script src="scripts/services/platform/tracking/qualarooTrackingService.js"></script>
+<script src="scripts/services/platform/tracking/module.js"></script>
+<script src="scripts/Utilities/segmentio.js"></script>
+<script src="scripts/Utilities/environment/envconfig.js"></script>
+
+<!-- Marketing JS -->
+<script src="scripts/marketing/flowtype.js"></script>
+<script src="scripts/marketing/svgeezy.min.js"></script>
+<script src="scripts/marketing/placeholders.min.js"></script>
+<script src="scripts/marketing/setflowtype.js"></script>
+<script src="scripts/marketing/jquery-mobile-menu-min.js"></script>
+<script src="scripts/marketing/TweenMax.min.js"></script>
+<script src="scripts/marketing/snackbar.min.js"></script>
+<script src="scripts/marketing/angular.snackbar.js"></script>
+<!-- end Marketing JS -->
+
+<!-- App Entry Points -->
+<script src="scripts/appEntryPoints/config/FlowStateConfig.js"></script>
+<script src="scripts/appEntryPoints/app.js"></script>
+
+<!-- Classic Journey -->
+<script src="scripts/customerJourneys/classicJourney/app.js"></script>
+
+<!-- Classic Journey 2.0 -->
+<script src="scripts/customerJourneys/classicJourney_2.0/app.js"></script>
+
+<!-- end Platform scripts -->
+<!-- endbuild -->
+<!--Media Alpha script-->
+<script src="//insurance.mediaalpha.com/js/serve.js" async></script>
+
+<!-- build:js scripts/templates.js -->
+<script src="scripts/templates.js"></script>
+<!-- endbuild -->
+
+</body>
+
+
+</html>

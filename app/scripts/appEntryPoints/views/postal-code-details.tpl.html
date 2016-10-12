@@ -1,0 +1,64 @@
+<div id="mobileMenu" mobile-nav-summary="" class="visible-xs visible-sm"></div>
+<!-- <li>↑</li><li>↑</li><li>↑</li><li>←</li>  -->
+<div data-surprise="classicJourney1Driver1VehicleIL" data-surprise-trigger="86,49,73,76,49,49"></div>
+<div data-surprise="classicJourney1Driver1VehicleIN" data-surprise-trigger="86,49,73,78,49,49"></div>
+<div data-surprise="classicJourney1Driver1VehicleMD" data-surprise-trigger="86,49,77,68,49,49"></div>
+<div data-surprise="classicJourney1Driver1VehicleTN" data-surprise-trigger="86,49,84,78,49,49"></div>
+<div data-surprise="classicJourney1Driver1VehicleTX" data-surprise-trigger="86,49,84,88,49,49"></div>
+<div data-surprise="classicJourney1Driver1VehicleVA" data-surprise-trigger="86,49,86,65,49,49"></div><!--v1va11-->
+<div data-surprise="classicJourney2Driver2Vehicle" data-surprise-trigger="50,50,38,38,38,37"></div>
+<div data-surprise="classicJourney3Driver3Vehicle" data-surprise-trigger="51,51,38,38,38,37"></div>
+<div data-surprise="classicJourney4Driver4Vehicle" data-surprise-trigger="52,52,38,38,38,37"></div>
+<div data-surprise="classicJourneyDMSPrefill" data-surprise-trigger="68,77,83,38,38,38,37"></div>
+<div data-surprise="classicJourneyDMS42Prefill" data-surprise-trigger="68,77,83,52,50,38,38,38,37"></div>
+<div data-surprise="classicJourney_2" data-surprise-trigger="40,40,40,39"></div>
+<div class="row">
+  </div>
+  <img src="images/postal-hank.png" class="visible-lg" style="max-width:617px;position: absolute;right: 0;bottom: 0;">
+  <div id="step-postal-code" class="customer customer2 col-sm-12  col-md-5 animated fadeIn" style="width: 100%" error-scroll="">
+    <form name="autoZipForm" novalidate="">
+
+      <!--  MOBILE QUOTE WIDGET-->
+      <div id="postal-code" class="">
+        <!--<div id="postal-hank-image">-->
+          <!--<img style="width:296px;" src="//d5prcm06amy2t.cloudfront.net/quote/Hank-StartQuote2014.png"/>-->
+        <!--</div>-->
+        <div class="input-group">
+          <div id="postal-block">
+            <span id="postal-header">Savings ahead!</span><br/>
+            <span id="postal-message">Get an auto insurance quote<br/>
+            online and save up to 15%</span>
+          </div>
+          <div class="form-group"
+               ng-class="{true: 'has-error'}[formSubmitted && autoZipForm.customerZip.$invalid]">
+            <div ng-messages="autoZipForm.customerZip.$error" ng-if="formSubmitted">
+              <div ng-message="required">Please enter a postal code.</div>
+              <div ng-message="pattern">Please enter a valid postal code.</div>
+              <div ng-message="invalidCode">Please verify your postal code.</div>
+            </div>
+            <input type="tel" class="form-control text-center form-23" id="customerZip" maxlength="5" only-digits
+                   ng-pattern="/\d{5}/"
+                   tabindex="1" title="Zip code" type="tel" name="customerZip" ng-model="zipCode" placeholder="Zip Code" required>
+          </div>
+          <div class="button-continue" analytics-on="click" analytics-event="completed postal-code">
+            <button class="" style="font-size:20px;" id="btnStartQuote" ng-click="getZipCode(autoZipForm)" single-click="">
+              <span>Get Quote</span>
+            </button>
+          </div>
+          <a class="" href="#/quote-retrieve" analytics-on="click" analytics-event="clicked retrieve quote"> <i
+            class="fa fa-history"></i> &nbsp;Retrieve a saved quote</a>
+        </div>
+        <!-- /input-group -->
+
+
+
+      </div>
+    </form>
+
+    <br class="clearfix"/>
+
+    <div class="col-sm-12 col-md-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;font-size: 14px;">
+    </div>
+  </div>
+
+</div>

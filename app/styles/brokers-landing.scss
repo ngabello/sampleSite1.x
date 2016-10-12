@@ -1,0 +1,129 @@
+/*** start brokers landing page ***/
+#step-brokers{
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+    button{
+      margin-top: 0;
+    }
+  }
+  width: 690px;
+  padding-bottom: 0;
+  margin-top: 147px;
+  margin-left: auto;
+  margin-right: auto;
+  .section-header{
+    background: #005288;
+    font-size: 25px;
+    text-align: center;
+    font-style: italic;
+  }
+  .intro-text{
+    font-size: 1.4em;
+    color: #005288;
+    margin-bottom: 30px;
+  }
+  .btn-margin{
+    float: right;
+  }
+  .retrieve-message{
+    padding: 10px 0 0px 20px;
+  }
+  .broker-disclaimer{
+    font-size: .6em;
+    color: #666;
+  }
+  #broker-hank{
+    float: left;
+    width: 10%;
+  }
+  #broker-container{
+    color: #ffffff;
+    float: right;
+    width:480px;
+    padding: 0 20px;
+    h3{
+      margin-top: 10px;
+      color: #005288;
+    }
+    .blue-content{
+      padding: 20px;
+      background: #3797FA;
+      a{
+        color: #ffffff;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+    fieldset{
+      padding: 20px 0;
+    }
+    ul{
+      padding: 0 20px;
+    }
+    #disclaimer-container{
+      width: 62%;
+      float: left;
+    }
+  }
+}
+
+//@media all and (max-width: 922px) and (min-width: ){
+//  #step-brokers{
+//    #broker-container{
+//      font-size: .9em;
+//    }
+//  }
+//}
+@media all and (max-width: 800px) {
+  #step-brokers{
+    .btn-margin{
+      float: inherit;
+    }
+    margin-top: 61px;
+    #broker-container{
+      .blue-content{
+        font-size: .9em;
+      }
+      #disclaimer-container{
+        width: 100%;
+        float: none;
+      }
+    }
+  }
+
+}
+@media all and (max-width: 730px) {
+  #step-brokers{
+    width: 100%;
+  }
+}
+@media all and (max-width: 674px){
+  #step-brokers{
+    .section-header{
+      font-size: 20px;
+    }
+    .intro-text{
+      font-size: .9em;
+    }
+    #broker-hank{
+      display: none;
+    }
+    #broker-container{
+      h3{
+        display: none;
+      }
+      ul {
+        display:none;
+        //padding: 0;
+      }
+      width: 100%;
+      #disclaimer-container{
+        margin-bottom: 5px;
+
+      }
+    }
+  }
+}
+
+/* end brokers page*/

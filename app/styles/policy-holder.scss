@@ -1,0 +1,94 @@
+/* start policy holder page */
+#step-policy-holder{
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+  }
+  .btn-margin{
+    float:right;
+  }
+  .form-right{
+    width: 55%;
+  }
+  padding-bottom: 0;
+  .form-md{
+    width:34%;
+    float:left;
+  }
+  #customerCity{
+    float: left;
+    width: 34%;
+  }
+  .form-sm{
+    width: 19%;
+    float: left;
+  }
+  .form-left{
+    width: 41%;
+  }
+
+
+}
+@media all and (max-width: 1868px) {
+  #step-policy-holder {
+
+
+  }
+}
+@media all and (max-width: 1199px){
+  #step-policy-holder {
+    .form-left {
+      width: 35%;
+      margin-right: 4%;
+    }
+
+    .form-right {
+      width: 61%;
+    }
+    #customerCity{
+      width: 40%;
+    }
+    .form-md{
+      width:40%;
+      float:left;
+    }
+    #state {
+      float: left;
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  #step-policy-holder{
+    .btn-margin{
+      float: inherit;
+    }
+  }
+}
+@media all and (max-width: 767px){
+  #step-policy-holder {
+    //padding-top: 15px;
+    //margin-top: 60px;
+    .form-left{
+      width: 100%;
+    }
+    .form-sm{
+      width:34%;
+    }
+    .form-md {
+      width: 64%;
+    }
+    .form-lg {
+      width: 100%;
+    }
+    #customerCity {
+      width: 64%;
+    }
+  }
+}
+@media all and (max-width: 764px) {
+  #step-policy-holder {
+
+  }
+}
+/*** end policy holder page***/

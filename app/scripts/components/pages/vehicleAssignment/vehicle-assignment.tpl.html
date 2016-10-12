@@ -1,0 +1,39 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-Driver-Assignment"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+    <h3 class="section-header">Drivers</h3>
+
+    <form name="vehicleAssignmentForm" novalidate>
+      <div>
+        <small class="help-block">Select which driver operates each vehicle the most.</small>
+      </div>
+
+      <div class="row-fluid">
+        <div class="form-group" ng-repeat="vehicle in vehicleAssignmentCtrlState.vehicles"
+             ng-form="assignmentForm">
+
+          <label class="control-label form-left">{{vehicle.Year + ' ' + vehicle.Make + ' ' + vehicle.Model}}</label>
+
+          <div ng-messages="assignmentForm.vehicleAssignment.$error" ng-if="vehicleAssignmentCtrlState.formSubmitted">
+            <div ng-message="required">primary vehicle is required</div>
+          </div>
+          <select class="form-control form-right" id="vehicle-{{$index}}" ng-model="vehicle.PrimaryDriverID" name="vehicleAssignment"
+                  ng-options="driver.ID as driver.getFullName() for driver in vehicleAssignmentCtrlState.drivers"
+                  required>
+            <option value="">Select</option>
+          </select>
+        </div>
+      </div>
+      <div class="button-continue btn-margin">
+        <button id="btnContinue" ng-click="saveVehicleAssignment(vehicleAssignmentForm.$valid)">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

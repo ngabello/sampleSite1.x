@@ -1,0 +1,114 @@
+<spinner class="loading-msg" name="confirmVehicleSpinner">
+  <div ng-init="loadingMsg = 'Loading'" ng-include="'../views/platform/loadingTemplate.html'"></div>
+</spinner>
+
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-confirm-vehicle"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn" refresh="" error-scroll="">
+    <h4 class="section-header">Confirm Vehicles</h4>
+
+    <form name="vehicleConfirmationForm" novalidate>
+      <div class="row-fluid">
+        <div class="form-group">
+
+          <div ng-repeat="vehicle in confirmVehicleSummary.vehicles" class="form-group"
+               ng-form="vehicleForm" ng-init="addForm(this, $index)">
+            <h4><span ng-bind="vehicle.Year"></span> <span ng-bind="vehicle.Make"></span> <span ng-bind="vehicle.Model"></span></h4>
+
+            <!-- Is there damage -->
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[confirmVehicleSummary.formSubmitted && vehicleForm.damage.$invalid]"
+                 data-toggle="buttons">
+              <label class="control-label form-left">
+                <span>Is there damage to the vehicle?</span>
+              </label>
+
+              <div ng-messages="vehicleForm.damage.$error" ng-if="confirmVehicleSummary.formSubmitted">
+                <div ng-message="required">your answer is required</div>
+              </div>
+              <buttons-radio class="btn-group form-100 form-right" data-toggle="buttons-radio"
+                             model="vehicle.IsDamaged" identifier="'rdIsDamaged' + vehicle.Year + vehicle.Make + vehicle.Model" options='confirmVehicleSummary.radioChoices.trueFalse'></buttons-radio>
+              <input type="hidden" name="damage" type="text" ng-model="vehicle.IsDamaged" required/>
+            </div>
+
+            <!-- Vehicle Damage -->
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[confirmVehicleSummary.formSubmitted && vehicleForm.damageDesc.$invalid]"
+                 ng-if="vehicle.IsDamaged === true">
+              <label class="control-label form-left">Please describe the damage</label>
+
+              <div ng-messages="vehicleForm.damageDesc.$error" ng-if="confirmVehicleSummary.formSubmitted">
+                <div ng-message="required">your answer is required</div>
+              </div>
+              <input class="form-control form-right" maxlength="255" name="damageDesc" id="damageDesc{{vehicle.Year+ vehicle.Make + vehicle.Model}}" type="text"
+                     title="Please describe the damage"
+                     ng-model="vehicle.DamageDescription"
+                     required/>
+            </div>
+
+            <div class="help-block" ng-if="vehicle.IsDamaged">
+              <small>Include the location and extent of the damage. <i>Ex: Dent on driver door.</i></small>
+            </div>
+
+            <div ng-if="vehicle.hasNoRatings" class="alert alert-danger">
+              We were unable to locate your VIN in our system.
+              Please call us at {{ confirmVehicleSummary.contactPhone }} to complete your purchase. Our agents are waiting to assist you!
+            </div>
+            <!-- VIN -->
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[confirmVehicleSummary.formSubmitted && vehicleForm.vin.$invalid]">
+              <label class="control-label form-left">
+                <span>VIN number</span>
+              </label>
+
+              <div ng-messages="vehicleForm.vin.$error" ng-if="confirmVehicleSummary.formSubmitted">
+                <div ng-message="required">VIN is required</div>
+                <div ng-message="minlength">VIN is invalid</div>
+                <div ng-message="maxlength">VIN is invalid</div>
+                <div ng-message="badVIN">VIN is invalid</div>
+                <div ng-message="noMatch">VIN is incorrect
+                </div>
+                <div ng-message="validating"></div>
+                <div ng-message="duplicate">Duplicate vehicle identification number</div>
+              </div>
+              <input class="form-control form-right" maxlength="17" ng-minlength="17" name="vin" id="vin{{vehicle.Year+ vehicle.Make + vehicle.Model}}" title="VIN number"
+                     type="text"
+                     ng-change="validateVIN(this, vehicle)"
+                     ng-model="vehicle.Vin"
+                     autocomplete="off"
+                     autocorrect="off"
+                     required/>
+            </div>
+
+            <div ng-if="vehicle.Ownership == confirmVehicleSummary.enums.EnumVehicleOwnerships.MakePayments">
+              <!-- Lien Holder Name -->
+              <div class="form-group"
+                   ng-class="{true: 'has-error'}[confirmVehicleSummary.formSubmitted && vehicleForm.lienHolder.$invalid]">
+                <label class="control-label form-left">Lienholder name</label>
+                <div ng-messages="vehicleForm.lienHolder.$error"
+                     ng-if="confirmVehicleSummary.formSubmitted && vehicle.Ownership == confirmVehicleSummary.enums.EnumVehicleOwnerships.MakePayments ">
+                  <div ng-message="required">Please select from the list</div>
+                </div>
+                <input class="form-control form-right" type="text" ng-model="vehicle.Lienholder.Name" placeholder="Type to search" autocomplete="off"
+                       uib-typeahead="a.Name for a in confirmVehicleSummary.lienHolders | lienholderTypeAheadEdit:$viewValue | limitTo:15"
+                       class="form-control" name="lienHolder" id="lienHolder{{vehicle.Year + vehicle.Make + vehicle.Model}}" required/>
+              </div>
+
+            </div>
+            <hr>
+          </div>
+        </div>
+
+      </div>
+      <div class="button-continue btn-margin">
+        <button id="btnContinue" ng-click="saveConfirmedVehicles(vehicleConfirmationForm)"
+                analytics-on="click" analytics-event="completed confirm-vehicle" single-click="">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

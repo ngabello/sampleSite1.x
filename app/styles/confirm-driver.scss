@@ -1,0 +1,28 @@
+/*** Start confirm-driver ***/
+#step-confirm-driver{
+  @extend .milky-background;
+  .button-continue{
+    @extend .button-continue;
+  }
+  .btn-margin{
+    margin-top: 50px;
+    float: right;
+  }
+  .form-group{
+    h4{
+      color:#015289;
+    }
+  }
+  hr{
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media all and (max-width: 800px) {
+  #step-confirm-driver {
+    .btn-margin {
+      float: inherit;
+    }
+  }
+}
+/*** End confirm-driver ***/

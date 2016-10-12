@@ -1,0 +1,40 @@
+angular.module('environment.config', [])
+      .constant('environmentLink', {
+        //QA1
+        internalApi: "http://eia-qa1.qa-pachyderm.com/api",
+        //internalApi: "http://localhost:25640/api",
+        geoCode: "http://eaa-qa1.qa-pachyderm.com/api/geodata-lookup/ratable-postal-codes",
+        ancillaryData: "http://eaa-qa1.qa-pachyderm.com/api",
+        vinIsoData: 'http://eaa-qa1.qa-pachyderm.com/api/viniso',
+        //externalApi: 'http://localhost:24697/api',
+        externalApi: 'https://leadcloud.qa.qa-pachyderm.com/api',
+
+        //QA2
+        //internalApi: "http://eia-qa2.qa-pachyderm.com/api",
+        ////internalApi: "http://localhost:25640/api",
+        //geoCode: "http://eaa-qa2.qa-pachyderm.com/api/geodata-lookup/ratable-postal-codes",
+        //ancillaryData: "http://eaa-qa2.qa-pachyderm.com/api/reference-data-lookup",
+        //vinIsoData: 'http://eaa-qa2.qa-pachyderm.com/api/viniso',
+
+        //Partner-Test
+        //internalApi: "http://eia-partner-test.qa-pachyderm.com/api",
+        //internalApi: "http://localhost:25640/api",
+        //geoCode: "http://eaa-partner-test.qa-pachyderm.com/api/geodata-lookup/ratable-postal-codes",
+        //vinIsoData: 'http://eaa-partner-test.qa-pachyderm.com/api/viniso',
+
+        cdnBase: "http://ci.qa-pachyderm.com/journey.json",
+        environment: 'dev'
+      })
+      .constant('logLevel', {
+        level: 'debug'
+      })
+      .constant('googleTracking', {
+        googleTrackingId: 'UA-58770845-1'
+      })
+      .constant('appDynamics', {
+        appDynamicsId: 'AD-AAB-AAA-CCU'
+      })
+      .constant('constDataPrefill',{
+        enabled:true
+      })
+    ;

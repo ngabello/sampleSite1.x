@@ -1,0 +1,24 @@
+﻿/* #Sidebar */
+#leftSidebar {  }
+#rightSidebar h5 a { margin-left: 3px;font-size: 0.9em; }
+#rightSidebar { width: 256px; display: inline-block; min-height: 450px; float: left; /*background: url('../../images/call-center-rep-photo.png') no-repeat 115px 0px;*/ margin-top: -86px; }
+#rightSidebarInner { width: 203px; margin: 86px auto 0px auto; background-color: #fff; }
+#rightSidebarInner > div { margin: 10px 0 15px 10px; display: inline-block; overflow: hidden; width: auto; }
+#rightSidebar #sideFaq ul  { width: 160px; }
+#rightSidebar #side-faq li { margin-bottom: 3px; }
+#needHelp h2 { margin-bottom: 5px; }
+#myQuoteBody { border: 1px solid #ccc; height: auto; margin-top: -2px; width: 179px; margin-left: 2px; border-top: none; overflow: hidden; }
+#myQuoteBody > ul { padding: 8px; }
+#myQuoteBody > ul > li { display: block; min-height: 23px; padding: 8px; /* margin-bottom: 10px; */ }
+#myQuoteBody > ul > li.policy-doc { min-height: 0; padding: 0 0 2px 0; }
+#myQuoteBody > ul > li.policy-doc a { white-space: pre; white-space: pre-wrap; white-space: pre-line; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: -moz-pre-wrap; white-space: -hp-pre-wrap; word-wrap: break-word; }
+#myQuoteBody > ul > li p { height: inherit; padding: 5px 0 0 40px; font-size: 0.675em; display: inline-block; max-width: 95px; }
+#myQuoteBody > ul > li span.my-quote-edit { font-size: 1em; display: inline-block; margin: 3px 0 0 0; /* float: right; redacted for Jeff's sidebar changes */ }
+#quoteAddress { background: transparent url('../../images/ui/home.png') no-repeat 10px 10px; }
+#quoteCar { background: transparent url('../../images/ui/car.png') no-repeat 5px 10px; }
+#quoteId { background: transparent url('../../images/ui/id.png') no-repeat 10px 10px; }
+#quoteDiscount { background: transparent url('../../images/ui/discount.png') no-repeat 18px 6px; }
+#quoteEmail { background: transparent url('../../images/ui/email.png') no-repeat 15px 3px; padding-left: 50px !important; }
+#quotePrint { background: transparent url('../../images/ui/print.png') no-repeat 15px 6px; padding-left: 50px !important; }
+#quotePolicy { background: transparent url(../../images/ui/policy.png) no-repeat 15px 10px; }
+#quoteCoverages { background: transparent url(../../images/ui/mq-coverages.png) no-repeat 15px 10px; }

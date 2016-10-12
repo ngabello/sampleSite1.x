@@ -1,0 +1,55 @@
+/**********************start Ancillary Checkout *************************/
+/************************************************************************/
+#step-ancillary-Checkout {
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+  }
+  .btn-margin {
+    float: right;
+  }
+  h5{
+    color: #015289;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  li{
+    list-style: none;
+  }
+  #checkout-protection{
+    li {
+      margin-left: 20px;
+    }
+    i{
+      margin-right: 10px;
+    }
+  }
+  #checkout-text {
+    font-size: .9em;
+    tr > td:nth-child(2) {
+      font-size: .75em;
+    }
+  }
+  #btnCancel{
+    padding: 20px;
+  }
+  .help-block{
+    margin-top: 50px;
+    text-align: right;
+  }
+  .pf {
+    float: right;
+    margin-top: -31px;
+    font-size: 23px;
+    margin-right: 10px;
+    color: #015289;
+  }
+  margin-top: 110px;
+}
+@media all and (max-width: 1199px) {
+  #step-ancillary-Checkout{
+    margin-top: 0;
+  }
+}
+/********************** end Ancillary Checkout *************************/
+/************************************************************************/

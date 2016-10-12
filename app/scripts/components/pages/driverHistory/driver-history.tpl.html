@@ -1,0 +1,149 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-driver-history"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+
+    <h3 class="section-header"><i class="fa fa-file-text fa-fw"></i>Drivers - History</h3>
+
+
+    <form name="driverHistoryForm" novalidate="">
+      <div class="row-fluid">
+        <div ng-class="{true: 'has-error'}[driverHistoryCtrlState.formSubmitted && driverHistoryForm.driverIncidents.$invalid]"
+             uib-collapse="driverHistoryCtrlState.driverIncidents.length > 0">
+
+          <div class="form-group">
+            <label class="form-left control-label">Have any drivers had any accidents, violations or claims during
+              the past 5 years?</label>
+
+            <div ng-messages="driverHistoryForm.driverIncidents.$error" ng-if="driverHistoryCtrlState.formSubmitted" style="color:maroon">
+              <div ng-message="required">Please choose your answer.</div>
+            </div>
+            <div title="Indicate accidents" class="radioGroup">
+              <buttons-radio class="btn-group form-right form-100" data-toggle="buttons-radio"
+                             model='driverHistoryCtrlState.hasIncidents'
+                             identifier="'rdDriverIncidents'"
+                             options='driverHistoryCtrlState.radio.trueFalse'></buttons-radio>
+              <input type="hidden" id="driverIncidents" name="driverIncidents" ng-model="driverHistoryCtrlState.hasIncidents">
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+          <div class="">
+            <label class="form-left control-label">Have any drivers been convicted of any non-traffic related crimes
+              in the past 7 years?</label>
+          </div>
+          <div title="Indicate conviction" class="radioGroup">
+            <buttons-radio id="convictions" class="btn-group form-right form-100" data-toggle="buttons-radio"
+                           model='driverHistoryCtrlState.convictionQuestion.HasConviction'
+                           identifier="'rdDriverConvictions'"
+                           options='driverHistoryCtrlState.radio.yesNoUnsure'></buttons-radio>
+            <input type="hidden" id="driverConvictions" name="driverConvictions" ng-model="driverHistoryCtrlState.convictionQuestion.HasConviction">
+          </div>
+        </div>
+
+        <div class="row margin-top incidents-box">
+          <div class="col-md-12 col-xs-12" id="incidents" ng-repeat="driverIncident in driverHistoryCtrlState.driverIncidents"
+               ng-click="removeIncident(driverIncident)">
+            <div class="col-md-8 col-xs-8">
+              <span>{{ ::getDisplayName(driverIncident.DriverID)}}</span>
+              <br/>
+              <span>{{ ::getDisplayIncidentType(driverIncident.IncidentTypeID) }}</span>
+              <br/>
+              <span>{{ ::driverIncident.Date }}</span>
+            </div>
+            <div class="col-md-3 col-xs-3">
+              <i class="fa fa-times" id="incidents-remove"></i>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div uib-collapse="driverHistoryCtrlState.hasIncidents == false || !driverHistoryCtrlState.hasIncidents">
+            <h4 style="color: #015289;">Traffic incidents</h4>
+
+            <div id="incident-top">
+
+              <div class="form-group" ng-class="{true: 'has-error'}[driverHistoryCtrlState.incidentSubmitted && driverHistoryForm.driver.$invalid]">
+                <label class="control-label form-left">Driver</label>
+                <div ng-messages="driverHistoryForm.driver.$error" ng-if="driverHistoryCtrlState.incidentSubmitted" style="color:maroon">
+                  <div ng-message="required">Please select a driver</div>
+                </div>
+                <div ng-if="driverHistoryCtrlState.drivers.length == 1">{{driverHistoryCtrlState.drivers[0].FirstName + ' ' + driverHistoryCtrlState.drivers[0].LastName}}</div>
+
+                <select ng-if="driverHistoryCtrlState.drivers.length > 1" id="driver" class="form-control form-right" name="driver" ng-model="driverHistoryCtrlState.incident.DriverID"
+                        ng-options="driver.ID as driver.FirstName + ' ' + driver.LastName for driver in driverHistoryCtrlState.drivers">
+                  <option value="">Select</option>
+                </select>
+
+              </div>
+
+              <!-- Incident Type -->
+              <div class="form-group"
+                   ng-class="{true: 'has-error'}[driverHistoryCtrlState.incidentSubmitted && driverHistoryForm.incidentType.$invalid]">
+                <label class="control-label form-left">Incident type</label>
+
+                <div ng-messages="driverHistoryForm.incidentType.$error" ng-if="driverHistoryCtrlState.incidentSubmitted" style="color:maroon">
+                  <div ng-message="required">Please select an incident type.</div>
+                </div>
+                <select class="form-control form-right" id="incident-type" name="incidentType"
+                        ng-model="driverHistoryCtrlState.incident.IncidentTypeID"
+                        ng-options="a.Value as a.Desc for a in driverHistoryCtrlState.listIncidents">
+                  <option value="">Select</option>
+                </select>
+              </div>
+
+              <!-- Incident Date -->
+              <div class="form-group"
+                   ng-class="{true: 'has-error'}[driverHistoryCtrlState.incidentSubmitted && driverHistoryForm.incidentDate.$invalid]">
+                <label class="control-label form-left">Date</label>
+
+                <div ng-messages="driverHistoryForm.incidentDate.$error" ng-if="driverHistoryCtrlState.incidentSubmitted" style="color:maroon">
+                  <div ng-message="required">Please enter an incident date.</div>
+                  <div ng-message="datetime">Please enter a valid date.</div>
+                  <div ng-message="futureDate">Please enter a non future date.</div>
+                  <div ng-message="pastDate">must be within the past 5 years.</div>
+                </div>
+                <input class="form-control form-right" id="incidentDate" name="incidentDate"
+                       title="Incident Date" type="tel" ui-mask="99-99-9999"
+                       ng-model="driverHistoryCtrlState.incident.Date" valid-date max-age="0"/>
+              </div>
+              <!--ng-required="driver.HasIncidents == true"-->
+
+              <!-- Add an incident -->
+              <div class="form-group"
+                   ng-class="{true: 'has-error'}[driverHistoryCtrlState.formSubmitted && driverHistoryForm.addIncident.$invalid]"
+                   data-toggle="buttons">
+                <label class="control-label form-left">
+                  <span>More incidents to add?</span>
+                </label>
+
+                <div title="Indicate accidents" class="radioGroup">
+                  <buttons-radio class="btn-group form-100 form-right" data-toggle="buttons-radio"
+                                 model='driverHistoryCtrlState.addIncident.selected'
+                                 identifier="'rdAddIncident'"
+                                 options='driverHistoryCtrlState.radio.trueFalse'></buttons-radio>
+                  <input type="hidden" id="addIncident" name="addIncident.selected" ng-model="driverHistoryCtrlState.addIncident.selected">
+                </div>
+              </div>
+              <div ng-messages="driverHistoryForm.addVehicle.$error" ng-if="driverHistoryCtrlState.formSubmitted">
+                <div ng-message="required">Please choose an answer.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-continue btn-margin">
+            <button id="btnContinue"
+                    ng-click="savePolicyHolder(driverHistoryForm)" single-click="">Continue
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

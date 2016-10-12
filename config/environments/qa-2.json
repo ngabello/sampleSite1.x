@@ -1,0 +1,14 @@
+{
+  "goApi": "https://ms-quote-intent-qa2.qa-pachyderm.com/v1",
+  "goGeoDataApi": "https://ms-geo-data-qa2.qa-pachyderm.com/v1/postal-codes",
+  "ancillaryData": "https://eaa-qa2.qa-pachyderm.com/api",
+  "vinIsoData": "https://eaa-qa2.qa-pachyderm.com/api/viniso",
+  "externalApi": "https://eea-qa2.qa-pachyderm.com/api",
+  "cdnBase": "https://d1ylzfc0d4bkav.cloudfront.net",
+  "environment": "qa2",
+  "loggingLevel": "warn",
+  "googleTrackingId": "UA-58770845-1",
+  "appDynamicsId": "AD-AAB-AAA-CCU",
+  "idleDuration": 300,
+  "warningDuration": 30
+}

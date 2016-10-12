@@ -1,0 +1,44 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-driver"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn" refresh="" error-scroll="">
+    <h3 class="section-header"></i>Driver - <span ng-bind="policyHolderP1.driver.FirstName"></span> <span ng-bind="policyHolderP1.driver.LastName"></span></h3>
+
+    <form name="driverForm" novalidate="" validate-submit="submitForm(this.driverForm)">
+      <div class="row-fluid">
+
+        <gender form="driverForm" ng-model="policyHolderP1.driver.Gender"></gender>
+
+        <div ng-if="!policyHolderP1.hasSpouse">
+        <marital-status form="driverForm" driver-model="policyHolderP1.driver" ng-model="policyHolderP1.driver.MaritalStatus"></marital-status>
+        </div>
+        <div ng-if="policyHolderP1.hasSpouse">
+          <marital-status-label></marital-status-label>
+        </div>
+
+        <residency-type form="driverForm" ng-model="policyHolderP1.driver.ResidenceOwnership"></residency-type>
+
+        <years-at-residence form="driverForm" ng-model="policyHolderP1.driver"></years-at-residence>
+
+        <education-level form="driverForm" ng-model="policyHolderP1.driver.HighestEducationLevel"></education-level>
+
+        <employment-status form="driverForm" ng-model="policyHolderP1.driver"></employment-status>
+
+        <occupation form="driverForm" ng-model="policyHolderP1.driver"></occupation>
+
+        <military form="driverForm" ng-model="policyHolderP1.driver"></military>
+
+        <attending-school form="driverForm" ng-model="policyHolderP1.driver"></attending-school>
+
+        <good-student form="driverForm" ng-model="policyHolderP1.driver"></good-student>
+
+      </div>
+      <div class="button-continue btn-margin">
+        <button class="" id="btnContinue" type="submit"><span>Continue</span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

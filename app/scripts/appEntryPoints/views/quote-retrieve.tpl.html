@@ -1,0 +1,112 @@
+
+<div ng-if="quoteRetrieveFailed">
+  <h1>Sorry, your quote has expired. Please start a new quote.</h1>
+</div>
+<div class="row">
+  <div id="step-retrieve-quote"
+       class="customer customer2 col-sm-12 col-lg-offset-3 col-md-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       disable-back-button="">
+
+    <div ng-if="!isTimeOut">
+      <div>
+        <h3 class="section-header">Great to see you again.</h3>
+      </div>
+      <div class="retrieve-message">
+        <small class="help-block">Complete the information below to retrieve your quote.</small>
+      </div>
+    </div>
+
+    <div ng-if="isTimeOut">
+      <div>
+        <h3 class="section-header">Your session has timed-out</h3>
+      </div>
+      <div class="retrieve-message">
+        <small class="help-block">Complete the information below to start where you left off.</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <uib-alert ng-repeat="alert in quoteRetrieveSummary.quoteNotFoundMsgs" type="{{alert.type}}"
+             close="closeAlert($index)">
+        <div ng-bind-html="alert.msg"></div>
+      </uib-alert>
+    </div>
+
+    <form name="quoteRetrieveForm" novalidate>
+      <div class="row-fluid">
+        <!-- Email Address -->
+        <div class="form-group"
+             ng-class="{true: 'has-error'}[quoteRetrieveSummary.formSubmitted && quoteRetrieveForm.email.$invalid]">
+          <label class="control-label form-left">Email address</label>
+
+          <div ng-messages="quoteRetrieveForm.email.$error" ng-if="quoteRetrieveSummary.formSubmitted">
+            <div ng-message="required">Please enter a valid e-mail address</div>
+            <div ng-message="email">Please enter a valid email address</div>
+          </div>
+          <input class="form-control form-right" id="email" name="email" type="email" title="Enter email address"
+                 placeholder="Email Address"
+                 ng-model="search.email" ng-model-options="{ updateOn: 'blur' }" required/>
+
+        </div>
+
+        <!-- Birth Date -->
+        <div class="form-group"
+             ng-class="{true: 'has-error'}[quoteRetrieveSummary.formSubmitted && quoteRetrieveForm.customerDob.$invalid]">
+          <label class="control-label form-left">
+            <span>Birth date</span>
+          </label>
+
+          <div ng-messages="quoteRetrieveForm.customerDob.$error" ng-if="quoteRetrieveSummary.formSubmitted">
+            <div ng-message="required">please enter a birthdate</div>
+            <div ng-message="validRange">driver age must be between 18 and 98</div>
+          </div>
+          <input class="form-control form-right" id="customerDob" name="customerDob" ui-mask="99-99-9999"
+                 title="Birth date" type="tel"
+                 ng-model="search.dob" required valid-date><!--valid-date-->
+        </div>
+
+        <!-- Last Name-->
+        <div class="form-group"
+             ng-class="{true: 'has-error'}[quoteRetrieveSummary.formSubmitted && quoteRetrieveForm.customerLname.$invalid]">
+
+          <label class="control-label form-left">
+            <span>Last name</span>
+          </label>
+
+          <div ng-messages="quoteRetrieveForm.customerLname.$error" ng-if="quoteRetrieveSummary.formSubmitted">
+            <div ng-message="required">please enter your last name</div>
+          </div>
+          <input class="form-control form-right" id="customerLname" maxlength="30"
+                 name="customerLname" placeholder="Last Name" title="Last name" type="text" ng-model="search.lastName"
+                 required>
+        </div>
+
+        <!-- Policy Start Date -->
+        <div ng-if="quoteRetrieveSummary.policyStartDateRequired" class="form-group"
+             ng-class="{true: 'has-error'}[quoteRetrieveSummary.formSubmitted && quoteRetrieveForm.policyStartDate.$invalid]">
+          <label class="control-label form-left">New coverage start date</label>
+
+          <input type="text" ui-date="quoteRetrieveSummary.dateOptions" ng-model="search.policyStartDate"
+                 class="form-control form-right" name="policyStartDate"
+                 ng-required="quoteRetrieveSummary.policyStartDateRequired">
+
+          <div ng-messages="quoteRetrieveForm.policyStartDate.$error" ng-if="quoteRetrieveSummary.formSubmitted"
+               class="form-right">
+            <div ng-message="required">The coverage start date of your quote is not valid. Please pick a new coverage
+              start
+              date that is in the future
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <fieldset class="btns">
+        <div class="button-continue btn-margin">
+          <button class="" id="btnContinue" ng-click="retrieveQuote(quoteRetrieveForm.$valid)">
+            <span>Retrieve Quote</span>
+          </button>
+        </div>
+      </fieldset>
+      <div class="top-right-link"><a href="#/postal-code">Start a new quote</a></div>
+    </form>
+  </div>
+</div>

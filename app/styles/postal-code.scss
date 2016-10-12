@@ -1,0 +1,105 @@
+/*postal code start*/
+#step-postal-code{
+  margin-top: 112px;
+  margin-bottom: 90px;
+  form{
+    padding: 0;
+  }
+}
+
+@media all and (max-width: 998px) {
+  #step-postal-code {
+    margin-top: 61px;
+  }
+}
+
+@media all and (max-width:800px){
+  #step-postal-code{
+    padding-right: 15px;
+  }
+}
+#postal-code{
+  @extend .milky-background;
+  padding: 20px;
+  height: 340px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 62px;
+  width: 600px;
+  .section-header{
+    margin-bottom: 10px;
+  }
+  h1{
+    @extend .section-header;
+    color: #ffffff;
+  }
+
+  #postal-hank-image{
+    float: left;
+  }
+  .form-control{
+    border-radius: 4px;
+  }
+  .input-group{
+    //    position: absolute;
+    display: block;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    #postal-block{
+      margin-bottom: 20px;
+    }
+    a{
+      display: block;
+      text-align: center;
+      font-size: 1.3em;
+      margin-top: 10px;
+    }
+    div{
+      text-align: center;
+
+      #postal-header{
+        color: #3797FA;
+        font-size: 2.2em;
+      }
+      #postal-message{
+        color: $dark-blue;
+        font-size: 1.2em;
+      }
+//      width: 282px;
+      h2{
+
+      }
+    }
+  }
+  @extend .button-continue;
+}
+
+@media all and (max-width:800px) {
+  #postal-code{
+    width: 100%;
+    margin-bottom:172px;
+//    margin-top: 135px;
+    #postal-hank-image{
+      display: none;
+    }
+    .input-group{
+      top: 0%;
+      width: 100%;
+      margin-left: inherit;
+      div{
+        width:100%;
+        h2{
+
+        }
+      }
+    }
+  }
+}
+@media all and (max-width:768px) {
+  #postal-code{
+    margin-top: 0;
+  }
+}
+
+/*postal code end*/

@@ -1,0 +1,90 @@
+<spinner class="loading-msg" name="paymentSpinner">
+  <div ng-init="loadingMsg = 'Loading'" ng-include="'../views/platform/loadingTemplate.html'"></div>
+</spinner>
+
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-payment-plan" class="customer customer2 col-sm-12  margin animated fadeIn" refresh="">
+    <h4 class="section-header">Confirm payment plan</h4>
+
+    <div style="padding: 0 10px 0 10px;">
+      <div ng-if="paymentCtrlState.previousQuote < paymentCtrlState.lastQuote" class="alert-warning">
+        <hr>
+        <p style="padding: 5px;">Your price has changed (<a style="cursor: pointer;" ng-click="changeModal()">see
+          why</a>)</p>
+        <hr>
+      </div>
+      <div ng-if="paymentCtrlState.previousQuote > paymentCtrlState.lastQuote" class="alert-success">
+        <hr>
+        <p style="padding: 5px;">Congratulations! You're a safe driver, so we've lowered your premium.</p>
+        <hr>
+      </div>
+    </div>
+    <form>
+      <div class="row">
+        <div class="payment-box three-plans"
+             ng-repeat="paymentPlan in paymentCtrlState.paymentPlans | orderBy: 'SortOrder'"
+             ng-class="{'highlight-payment-box': paymentPlan.ID == 'PayPlan:Full'}"
+             ng-click="setPayPlan(paymentPlan.ID)">
+          <div class="pay-line-1">
+          <span ng-show="paymentPlan.ID == 'PayPlan:Full'"><img
+            src="images/saveBadge-03.svg"></span>
+            <span ng-bind="planView(paymentPlan.ID)"></span><br/>
+            <div ng-if="paymentPlan.NumberOfInstallments > 0">
+              <span ng-bind="paymentPlan.InstallmentAmount | currency"></span><br/>
+              <span ng-if="paymentPlan.NumberOfInstallments > 1">monthly</span><span ng-if="paymentPlan.NumberOfInstallments == 1 ">1 payment</span>
+            </div>
+            <div ng-if="paymentPlan.NumberOfInstallments === 0">
+              <span ng-bind="paymentPlan.DownPaymentAmount | currency"></span><br/>
+              <span>due today</span>
+            </div>
+          </div>
+
+          <div class="pay-line-2">
+
+            <div ng-class="{'payment-hide':paymentPlan.NumberOfInstallments === 0}">
+              <span ng-bind="paymentPlan.DownPaymentAmount | currency"></span><br/>
+              <span>due today</span>
+            </div>
+
+            <div class="button-continue">
+              <input type="radio" name="payment" ng-model="paymentCtrlState.paymentPlanId" value="{{paymentPlan.ID}}"> </input>
+              <!--<button ng-click="setPayPlan(paymentPlan.ID)" analytics-on="click" analytics-event="completed payment-plans">Checkout
+              </button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal-assistance">
+        <div class="legal-banner">
+          <h3> Add Legal Assistance </h3>
+          <ul style="padding-left: 18px;">
+            <li>
+              Receive legal coverage for <b>{{paymentCtrlState.legalCost | currency}}</b> a month
+            </li>
+            <li>
+              Includes traffic infraction coverage, advice & consultation with an attorney
+            </li>
+          </ul>
+           <div style="cursor: pointer;color:white;text-decoration: underline;text-align: right;" ng-click="information('LegalPlan')">Learn More</div>
+
+        </div>
+
+      </div>
+
+      <div class="legal-select">
+        <input type="checkbox" ng-model="paymentCtrlState.isLegalSelected"> Yes, I would like to add Legal
+        Assistance</input>
+      </div>
+      <div class="button-continue btn-margin">
+        <button ng-click="submitPayPlan()" analytics-on="click" analytics-event="completed payment-plans">Continue
+        </button>
+      </div>
+
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

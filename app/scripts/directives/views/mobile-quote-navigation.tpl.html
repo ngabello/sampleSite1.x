@@ -1,0 +1,98 @@
+<div id="mobile-nav-summary">
+  <div class="hamburger">
+    <div class="hamburger-inner">
+      <div class="bar bar1"></div>
+      <div class="bar bar2 cross"></div>
+      <div class="bar bar3 cross "></div>
+      <div class="bar bar4"></div>
+    </div>
+  </div>
+
+  <div class="mobile-menu">
+    <div class="mobile-menu-inner">
+      <ul class="list-unstyled">
+        <li class="hidden-md"><a href="tel:18553537426"><i class="fa fa-phone-square"></i></a></li>
+
+        <div class="submenu" ng-if="navSummary.quote.QuoteNumber">My Quote:</div>
+        <li>{{ navSummary.quote.QuoteNumber }}</li>
+
+        <li ng-if="navSummary.drivers.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('drivers')" style="cursor: pointer;">
+            Drivers <i class="pull-right glyphicon"
+                       ng-class="{'fa fa-chevron-down': driversOpen, 'fa fa-chevron-right': !driversOpen}"></i>
+          </div>
+
+          <div class="" uib-collapse="!driversOpen">
+
+            <ul ng-repeat="driver in navSummary.drivers" class="list-unstyled">
+              <li>
+                <div ng-if="driver.PrimaryDriver">
+                   <a class="" href="#/{{navSummary.journeyPrefix}}policy-holder/{{ driver.ID}}">
+                     <span style="float:left;">Edit</span> {{ driver.FirstName+' ' +driver.LastName }}</a>
+                </div>
+                <div ng-if="!driver.PrimaryDriver">
+                 <a class="" href="#/{{navSummary.journeyPrefix}}additional-driver/{{ driver.ID}}">
+                   <span style="float:left;">Edit</span>  {{ driver.FirstName+' ' +driver.LastName }}</a>
+                </div>
+              </li>
+            </ul>
+            <a ng-if="navSummary.addDriverEnabled" href="#/{{navSummary.journeyPrefix}}additional-driver/0"><i class="fa fa-plus fa-fw"></i> add driver</a>
+
+          </div>
+        </li>
+
+
+
+        <li ng-if="navSummary.vehicles.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('vehicles')" style="cursor: pointer;">
+            Vehicles
+            <i class="pull-right glyphicon"
+               ng-class="{'fa fa-chevron-down': vehiclesOpen, 'fa fa-chevron-right': !vehiclesOpen}"></i>
+          </div>
+
+          <div class="" uib-collapse="!vehiclesOpen">
+            <ul >
+              <li ng-repeat="vehicle in navSummary.vehicles" class="list-unstyled">
+                <div ng-if="vehicle.Model">
+                  <a class="" href="#/{{navSummary.journeyPrefix}}vehicle/{{ vehicle.ID}}">
+                    <span style="float:left;">Edit</span> {{ vehicle.Year + ' ' + vehicle.Make + ' ' +  vehicle.Model }}</a>
+                </div>
+                <div ng-if="!vehicle.Model">
+                  <a class="">
+                    <span style="float:left;">Edit</span> {{ vehicle.Year + ' ' + vehicle.Make }}</a>
+                </div>
+              </li>
+            </ul>
+            <a href="#/{{navSummary.journeyPrefix}}vehicle/0"><i class="fa fa-plus fa-fw"></i> add vehicle</a>
+          </div>
+        </li>
+
+        <!-- Discounts -->
+        <li ng-if="navSummary.discounts.length > 0">
+          <hr>
+          <div class="submenu">
+            Discounts:
+          </div>
+
+          <ul class="side-discounts">
+            <li ng-repeat="discount in navSummary.discounts | filter: discountFilter" class="list-unstyled">
+              <i class=""></i> {{ discount.Desc.replace('Discount', '') }}
+            </li>
+          </ul>
+        </li>
+        </li>
+        <li ng-if="navSummary.quoteIntent.Policy.EffectiveDate && navSummary.policyTermsEnabled">
+          <div class="">
+            <i class="fa fa-home fa-fw"></i> Policy Terms
+          </div>
+          <div class="">
+            <a class="" href="#/{{navSummary.journeyPrefix}}driver-details/{{ navSummary.policyHolder.ID}}">
+              <span style="float:left;">Edit</span>{{ navSummary.quoteIntent.Policy.EffectiveDate | date: 'MM/dd/yyyy'}}</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

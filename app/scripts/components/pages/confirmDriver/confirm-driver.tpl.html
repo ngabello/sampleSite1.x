@@ -1,0 +1,78 @@
+<!--suppress XmlDuplicatedId -->
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-confirm-driver"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+    <h4 class="section-header">Confirm Drivers</h4>
+
+    <form name="driverConfirmationForm" novalidate>
+      <div class="row-fluid">
+        <div class="form-group" ng-repeat="driver in confirmDriverCtrlState.ratedDrivers" ng-form="driverForm"
+             ng-init="addForm(this, $index)">
+          <div ng-if="driver.LicenseStatus !== 'Foreign'">
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[confirmDriverCtrlState.formSubmitted && driverForm.driverLicense.$invalid]">
+              <h4><span ng-bind="driver.FirstName"></span> <span ng-bind="driver.LastName"></span></h4>
+              <label class="control-label form-left">Driver’s license number</label>
+              <div ng-messages="driverForm.driverLicense.$error" ng-if="confirmDriverCtrlState.formSubmitted">
+                <div ng-message="required">Driver's license number is required.</div>
+                <div ng-message="license">Invalid driver's license</div>
+                <div ng-message="duplicate">Duplicate driver's license number</div>
+              </div>
+              <input class="form-control form-right" maxlength="20" type="text"
+                     id="driver-{{driver.getDriverId()}}"
+                     ng-model="driver.LicenseNumber" name="driverLicense"
+                     ng-model-options="{ updateOn: 'blur' }" title="Driver’s License Number"
+                     required ng-change="validateDL(this, $index)"/>
+            </div>
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[confirmDriverCtrlState.formSubmitted && driverForm.driverState.$invalid]">
+              <label class="control-label form-left">License state</label>
+              <div ng-messages="driverForm.driverState.$error" ng-if="confirmDriverCtrlState.formSubmitted">
+                <div ng-message="required">driver's license state is required</div>
+              </div>
+              <select class="form-control form-right" name="driverState"
+                      id="driverState-{{driver.FirstName + driver.MiddleName + driver.LastName}}"
+                      ng-model="driver.LicenseState" title="License State"
+                      ng-options="state.Value as state.Desc for state in confirmDriverCtrlState.states"
+                      ng-change="validateDL(this, $index)"
+                      required>
+              </select>
+            </div>
+          </div>
+          <!-- Foreign license-->
+          <div ng-if="driver.LicenseStatus === 'Foreign'">
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[confirmDriverCtrlState.formSubmitted && driverForm.driverLicense.$invalid]">
+              <h4><span ng-bind="driver.FirstName"></span> <span ng-bind="driver.LastName"></span></h4>
+              <label class="control-label form-left">Driver’s license number</label>
+              <div ng-messages="driverForm.driverLicense.$error" ng-if="confirmDriverCtrlState.formSubmitted">
+                <div ng-message="required">Driver's license number is required.</div>
+              </div>
+              <input class="form-control form-right" maxlength="20" type="text"
+                     id="driver-{{driver.getDriverId()}}"
+                     ng-model="driver.LicenseNumber" name="driverLicense"
+                     title="Driver’s License Number"
+                     required/>
+            </div>
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[confirmDriverCtrlState.formSubmitted && driverForm.driverState.$invalid]">
+              <label class="control-label form-left">License</label>
+              <div class="form-right">Non-US License</div>
+            </div>
+          </div>
+          <span style="font-size: 13px;color: gray;" ng-if="confirmDriverCtrlState.addressState != driver.LicenseState">If you have an out-of-state license, it must be updated within 30 days of your policy purchase date.</span>
+          <hr>
+        </div>
+      </div>
+      <div class="button-continue btn-margin">
+        <button id="btnContinue" analytics-on="click" analytics-event="completed confirm driver"
+                ng-click="saveConfirmedDrivers(driverConfirmationForm)" single-click="">Continue
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

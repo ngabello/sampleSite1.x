@@ -1,0 +1,545 @@
+
+/**** variables ****/
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$blue: #428bca;
+$hover-blue: #3C79B0;
+$button-padding: 5px 20px;
+
+$primary-btn: rgba(0, 82, 136, .6);
+$primary-btn-hover: rgba(0, 82, 136, 1);
+$second-primary: none repeat scroll 0 0 rgba(0, 132, 203, 1);
+
+$orange-btn: #F78A03;
+$orange-btn-hover: #E07C02;
+
+  //spinner
+  $offset: 187;
+  $duration: 1.4s;
+/**** end variables ****/
+/**** mixins ****/
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin transition($transition ) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  transition: $transition;
+}
+/**** end mixins ****/
+
+html{
+  height: 100%;
+}
+body{
+  background: url('//d5prcm06amy2t.cloudfront.net/cms/landing+pages/ppcquote.jpg') no-repeat center center fixed;
+  background-size: 2000px;
+  color: rgba(0, 0, 0, .87);
+  height: 100%;
+
+}
+.body-wrap{
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0,0,0,.1);
+}
+h1, h2, h3, strong{
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+
+}
+h4{
+  margin-top: 0px;
+  font-weight: bold;
+}
+h3{
+  margin-top: 0;
+  font-size: 18px;
+}
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+hr{
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.snackbar {
+  background-color: #323232;
+  color: #FFFFFF;
+  font-size: 14px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  height: 0;
+  -moz-transition: -moz-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0 linear 0.2s, padding 0 linear 0.2s, height 0 linear 0.2s;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0 linear 0.2s, padding 0 linear 0.2s, height 0 linear 0.2s;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0 linear 0.2s, padding 0 linear 0.2s, height 0 linear 0.2s;
+  -moz-transform: translateY(200%);
+  -webkit-transform: translateY(200%);
+  transform: translateY(200%);
+}
+.snackbar.snackbar-opened {
+  padding: 14px 15px;
+  //margin-bottom: 20px;
+  height: auto;
+  -moz-transition: -moz-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0 linear 0.2s;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0 linear 0.2s;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0 linear 0.2s, height 0 linear 0.2s;
+  -moz-transform: none;
+  -webkit-transform: none;
+  transform: none;
+}
+.float-right{
+  float: right;
+}
+[ng-message]{
+  color: maroon;
+  &:not(#step-quote){
+    font-size: 14px;
+  }
+}
+[ng-bind-html="alert.msg"], [ng-bind-html="dnq.msg"]{
+  font-size: .75em;
+}
+
+
+.scroll-header-active{
+  background: rgba(0, 51, 102, 0.8);
+  @include transition(all .2s ease-out 0);
+  z-index: 1;
+}
+.scroll-header-inactive{
+  background: transparent;
+  @include transition(all .2s ease-out 0);
+}
+.section-header{
+  border-radius: 2px 2px 0 0;
+  background-color: rgba(66, 139, 202, 0.8);
+  padding: 13px;
+  color: #ffffff;
+  margin-bottom: 25px;
+  box-shadow: 0px 2px 11px 0px #333;
+}
+.sub-section-header{
+  border-radius: 4px;
+  background-color: #9A9A9A;
+  padding: 10px;
+  color: #ffffff;
+}
+
+
+
+.copyright{
+  position: absolute;
+  background-color: rgba(225,225,225, .8);
+  padding: 15px;
+  padding-bottom: 8px;
+  width: 100%;
+  bottom: 0;
+//  z-index: 1000;
+}
+#bbb{
+  img{
+    width:100px;
+    float: right;
+    margin-top: -8px;
+  }
+}
+
+@media all and (max-width: 991px) {
+  #bbb{
+    img{
+      display: none;
+    }
+  }
+}
+/************************ Form classes **********************************/
+/************************************************************************/
+form{
+  padding: 0px 20px 20px 20px;
+}
+.form-100{
+  width:100%;
+}
+
+.form-50{
+  width:50%;
+  float:left;
+}
+
+.customer{
+  font-size:1em;
+}
+
+.form-group:after{
+  clear: both;
+
+}
+
+.form-group{
+  margin-bottom:5%;
+  overflow: hidden;
+}
+
+@media (min-width: 500px) {
+
+  .help-block{
+    margin-top: -12px;
+    margin-bottom: 20px;
+  }
+
+  .form-group{
+    margin-bottom: 15px;
+  }
+
+  .customer{
+    font-size:.5em;
+  }
+
+  .form-right{
+    width:60%;
+    float:left;
+
+  }
+
+  .form-ph{
+    width:100%;
+    float:left;
+
+  }
+  .offset-form-right{
+    margin-left:40%;
+  }
+
+  .form-left{
+    width:36%;
+    float:left;
+    margin-right:4%;
+    line-height:120%;
+  }
+
+  .form-group-50{
+    width:100%;
+
+  }
+
+  .form-group-50-right{
+    width:100%;
+    margin-left: 0px;
+  }
+}
+
+@media (min-width: 768px) {
+  .form-left{
+    width: 36%;
+    margin-right:4%;
+  }
+  .form-right{
+    width: 60%;
+  }
+  .offset-form-right{
+    margin-left:40%;
+  }
+}
+
+@media (min-width: 992px) {
+  .form-left{
+    width: 36%;
+    margin-right:4%;
+  }
+  .form-right{
+    width: 60%;
+  }
+  .offset-form-right{
+    margin-left:40%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .form-left{
+    width: 46%;
+    margin-right:4%;
+  }
+  .form-right{
+    width: 50%;
+  }
+  .offset-form-right{
+    margin-left:50%;
+  }
+}
+
+input[type=checkbox] {
+  /* All browsers except webkit*/
+  transform: scale(1.75);
+
+  /* Webkit browsers*/
+  -webkit-transform: scale(1.5);
+}
+
+.form-control{
+  font-size:inherit;
+  height:auto !important;
+}
+
+.edit-converage {
+  background: $blue;
+  padding: $button-padding;
+  color: #ffffff;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background: $hover-blue;
+    @include transition(background .5s 0 0);
+  }
+}
+
+.form-margin{
+  margin-left: 2%;
+}
+.form-margin-end{
+  margin-left: 10px;
+}
+//.form-sm{
+//  width: 14%;
+//  float: left;
+//}
+
+
+
+#state{
+  line-height: 2;
+}
+/************************ End form classes ******************************/
+/************************************************************************/
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+.modal-dialog{
+  margin-top: 100px;
+}
+.modal-body{
+  h5{
+    color: #015289;
+    font-weight: bold;
+  }
+}
+.btn {
+  font-size: inherit;
+  height: auto;
+}
+
+/***********************bootstrap hacks**********************************/
+/************************************************************************/
+.navbar-default .navbar-nav>li>a{
+  padding-top: 24px;
+  padding-bottom: 22px;
+}
+.navbar-header{
+  padding: 2px 2px 14px 2px;
+  i{
+    font-size: 54px;
+    color: whitesmoke;
+    float: right;
+    cursor: pointer;
+
+    &:active{
+      color: $blue;
+    }
+  }
+}
+.nav-logo{
+  width:230px;
+}
+.has-error .not-required, .has-success .not-required{
+  border-color: #ccc;
+}
+
+.has-error .not-required:focus,  .has-success .not-required:focus{
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.has-error > .btn-group > .btn-default,.has-error > .btn-group > .btn-default:hover, .has-error > .btn-group > .btn-default:focus, .has-error > .btn-group > .btn-default:active, .has-error > .btn-group > .btn-default.active, .has-error > .btn-group > .open>.dropdown-toggle.btn-default{
+  border-color: #a94442;
+}
+
+.has-error .btn:active, .has-error .btn.active{
+  -webkit-box-shadow: inset 0 3px 5px rgba(169, 68, 66,.125);
+  box-shadow: inset 0 3px 5px rgba(169, 68, 66,.125);
+
+}
+
+.has-success > .btn-group > .btn-default,.has-success > .btn-group > .btn-default:hover, .has-success > .btn-group > .btn-default:focus, .has-success > .btn-group > .btn-default:active, .has-success > .btn-group > .btn-default.active, .has-success > .btn-group > .open>.dropdown-toggle.btn-default{
+  border-color: #3c763d;
+}
+
+.has-success .btn:active, .has-success .btn.active{
+  -webkit-box-shadow: inset 0 3px 5px rgba(60, 118, 61,.125);
+  box-shadow: inset 0 3px 5px rgba(60, 118, 61,.125);
+
+}
+//.btn-default {
+//  color: #333333;
+//  background-color: white;
+//  border-color: transparent;
+//  box-shadow: 0 8px 9px -7px #333;
+//  &:hover{
+//   border-color: transparent;
+//  }
+//  .active{
+//    border-color: #669933;
+//  }
+//}
+.drawer-hamberger{
+  padding-top: 0;
+}
+.drawer-default .drawer-brand {
+  span {
+    padding: 20px 15px;
+    font-size: 22px;
+    color: #fff;
+  }
+}
+#clicked-menu{
+  float: right;
+  padding-top: 10px;
+  background: transparent;
+  border: transparent;
+}
+/*******************end bootstrap hacks**********************************/
+/************************************************************************/
+
+/*** Postal icons ***/
+.icons{
+  width: 384px;
+  height: 187px;
+  margin-left: auto;
+  margin-right: auto;
+
+  div{
+    float:left;
+    width: 128px;
+  }
+  a{
+    @include transition(all .2s ease-out 0);
+    color: rgba(0, 82, 136, .6);
+    background: rgba(255,255,255, .4);
+    border-radius: 100%;
+    border: solid 1px rgb(0, 82, 136);
+    display: block;
+    font-size: 3em;
+    height: 2.5em;
+    line-height: 2.5em;
+    position: relative;
+    text-align: center;
+    width: 2.5em;
+    &:hover{
+      @include transition(all .2s ease-out 0);
+      background: rgba(255,255,255, .8);
+      font-size: 3.75em;
+      color: rgba(0, 82, 136, 1);
+    }
+  }
+}
+@media all and (max-width: 800px){
+  .icons{
+    width: 291px;
+    div{
+      width: 97px;
+      a{
+        font-size:2em;
+        &:hover{
+          font-size:2.75em;
+        }
+      }
+    }
+  }
+}
+/*** end postal icons ***/
+/**************************Page Imports**********************************/
+/************************************************************************/
+@import "reuse";
+@import "retrieve-quote";
+@import "postal-code";
+@import "policy-holder";
+@import "driver";
+@import "driver-details";
+@import "additional-driver.scss";
+@import "driver-history";
+@import "additional-history";
+@import "vehicle";
+@import "driver-assignment";
+@import "discounts";
+@import "quote";
+@import "confirm-driver";
+@import "confirm-vehicle";
+@import "payment";
+@import "billing";
+@import "ancillary";
+@import "ancillary-checkout";
+@import "overview";
+@import "platform";
+@import "congratulations";
+@import "quote-termination";
+@import "brokers-landing";
+@import "general-themes";
+@import "optimizely-overrides";
+/************************End Page Imports********************************/
+/************************************************************************/
+
+
+@media all and (max-width: 764px){
+  .margin{
+    margin-top:87px;
+  }
+  .nav-logo{
+    width: 190px;
+  }
+}
+@media all and (max-width: 1199px){
+
+}
+@media all and (max-width: 991px) {
+  .margin{
+    margin-top:0px;
+    margin-bottom: 280px;
+  }
+}
+
+
+#siteSecure {
+    padding-top: 10px;
+}
+
+#siteSecure ul{
+    min-height: 75px;
+
+    border: none;
+
+    border-width: 0px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 10px;
+    list-style-type: none;
+    width: 75%;
+  text-align: center;
+    position: static;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#siteSecure ul li {display: inline-block;
+ list-style-type: none;
+     padding: 0.5em 1em 0 1em;
+    vertical-align: middle;
+}
+
+

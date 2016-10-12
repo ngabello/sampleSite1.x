@@ -1,0 +1,19 @@
+/*** start driver page ***/
+#step-driver{
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+  }
+  .btn-margin{
+    float:right;
+  }
+}
+
+@media all and (max-width: 800px) {
+  #step-driver{
+    .btn-margin{
+      float: inherit;
+    }
+  }
+}
+/*** end driver page***/

@@ -1,0 +1,31 @@
+<div class="animated fadeIn bread-crumb hidden-xs hidden-sm">
+  <div class="col-md-offset-3 col-lg-5 col-md-7"
+       style="padding-left: 0px; padding-right: 0px;background: #f8f8f8;border-radius:2px;">
+    <div ng-repeat="car in ::breadCrumbItems"
+         ng-class="breadCrumbItems.length === 4 ? 'bc-item-large' : 'bc-item-small'">
+
+      <img ng-if="car.Selected" src="images/car.svg" class="car"/>
+    </div>
+    <div class="hidden-xs hidden-sm" style="background: #5B97CB;color: #ffffff;border-radius: 0 0 2px 2px;">
+      <div class="bc-item"
+           ng-class="breadCrumbItems.length === 4 ? 'bc-item-large' : 'bc-item-small'"
+           ng-repeat="breadCrumbItem in ::breadCrumbItems">
+        <div style="margin: auto;text-align: center;" class="crumb"><span ng-bind="breadCrumbItem.Text"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Mobile breadcrumb-->
+<div class="mobile-bread-crumb hidden-md hidden-lg">
+  <div class="col-md-offset-3 col-lg-5 col-md-7"
+       style="padding-left: 0px; padding-right: 0px;">
+    <div class="" style="background: #cccccc; color: #ffffff; ">
+      <div ng-style="mobileCrumb.Selected ? {background:'rgba(128, 128, 128, 0.78)'}:{}"
+           ng-repeat="mobileCrumb in ::breadCrumbItems"
+           ng-class="breadCrumbItems.length === 4 ? 'mobile-bc-large' : 'mobile-bc-small'">
+        <div style="text-align: center" class="crumb" ng-bind="mobileCrumb.Text"></div>
+      </div>
+    </div>
+  </div>
+</div>

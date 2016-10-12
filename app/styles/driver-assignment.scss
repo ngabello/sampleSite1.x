@@ -1,0 +1,19 @@
+/*** start driver assignment ***/
+#step-Driver-Assignment{
+  @extend .milky-background;
+  .button-continue {
+    @extend .button-continue;
+  }
+  .btn-margin{
+    float: right;
+  }
+}
+
+@media all and (max-width: 800px) {
+  #step-Driver-Assignment{
+    .btn-margin{
+      float: inherit;
+    }
+  }
+}
+/*** end driver assignment ***/

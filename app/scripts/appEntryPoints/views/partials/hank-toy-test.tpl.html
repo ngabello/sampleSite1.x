@@ -1,0 +1,107 @@
+<style>
+  #hank-toy {
+    width: 690px;
+    margin-top: 147px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    background: #0587c6;
+    padding: 20px 0 0 100px;
+  }
+  #hank-toy h1{
+    /*text-align: center;*/
+    font-size: 40px;
+
+  }
+  #hank-toy .broker-hank{
+    float: right;
+    margin-top: 30px;
+  }
+  #hank-toy .button-continue{
+    float: left;
+    margin-top: 57px;
+  }
+  #hank-toy .notice{
+    font-size: 10px;
+    float: left;
+    width: 259px;
+    margin-top: 125px;
+  }
+  #hank-toy .broker-hank-small{
+    display: none;
+    margin-top: 20px;;
+  }
+  #hank-toy .broker-hank-small img {
+    width: 34%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  @media all and (max-width: 800px) {
+    #hank-toy{
+      margin-top: 61px;
+    }
+  }
+  @media all and (max-width: 730px) {
+    #hank-toy{
+      width: 100%;
+      padding: 20px;
+    }
+    #hank-toy h1{
+    text-align: center;
+    }
+    #hank-toy .broker-hank{
+      display: none;
+    }
+    #hank-toy .broker-hank-small{
+      display: inherit;
+    }
+    #hank-toy .button-continue{
+      float: none;
+      margin-top: 30px;
+    }
+    #hank-toy .notice{
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+  @media all and (max-width: 522px) {
+    #hank-toy h1{
+      font-size: 30px;
+    }
+  }
+  @media all and (max-width: 400px) {
+    #hank-toy h1{
+      font-size: 24px;
+    }
+  }
+
+</style>
+<div class="row">
+  <div id="hank-toy" class="customer2 margin animated fadeIn"
+       disable-back-button="" style="font-size: 18px;">
+    <div>
+      <h1>FREE HANK ELEPHANT <br/>TOY WITH PURCHASE<sup style="font-size: .5em;">*</sup></h1>
+    </div>
+
+    <div class="button-continue btn-margin" ng-if="leadCloudSummary.continueEnabled">
+      <button class="" id="btnContinue" ng-click="startQuote()" single-click="">
+        <span>Continue</span>
+      </button>
+    </div>
+    <div class="broker-hank-small" ng-click="(leadCloudSummary.continueEnabled)? startQuote() : false">
+      <img src="../../../../../images/hank-toy-small.png">
+    </div>
+    <div class="broker-hank">
+      <img src="../../../../../images/hank-toy-crop.png"/>
+    </div>
+    <div class="notice">
+      <i class="fa fa-lock"></i> Information is secure and won’t be shared.
+      *Valid for VA policy purchased via Bankrate between 10/6/15 -11/6/15
+      Please allow 6-8 weeks for delivery. Address on file will be
+      used for delivery.
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+</div>

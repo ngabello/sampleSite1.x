@@ -1,0 +1,56 @@
+  <!--<script type="text/javascript">-->
+    <!--/* Elephant / Quote Page Results */-->
+
+    <!--function fixDOB(dob) {-->
+      <!--var pieces = dob.split('-');-->
+      <!--var last = pieces.splice(-1, 1);-->
+      <!--var joined = last.concat(pieces).join('-');-->
+
+      <!--return joined-->
+    <!--}-->
+
+    <!--var info = function(){-->
+      <!--var params = {}, queries, temp, i, l;-->
+      <!--queries = window.location.href.split('?')[1].split('&');-->
+      <!--for ( i = 0, l = queries.length; i < l; i++ ) {-->
+        <!--temp = queries[i].split('=');-->
+        <!--params[temp[0]] = temp[1];-->
+      <!--}-->
+
+      <!--return params;-->
+    <!--}();-->
+
+    <!--info.dob = fixDOB(info.dob);-->
+    <!--info.homeowner = (info.homeowner == 'OwnHome') ? 1 : 0;-->
+
+    <!--var MediaAlphaExchange = {-->
+      <!--"type": "ad_unit",-->
+      <!--"placement_id": "T_JGFEjpyqWdositFKMI9xwkDiggRQ",-->
+      <!--"version": "17",-->
+      <!--"sub_1": "test sub id",-->
+      <!--"data": {-->
+        <!--"zip": info.zip,-->
+        <!--"currently_insured": info.insured,-->
+        <!--"home_owner": info.homeowner,-->
+        <!--"drivers":{-->
+          <!--"birth_date": info.dob,-->
+          <!--"gender": info.gender,-->
+          <!--"first_licensed": info.ageFL-->
+        <!--}-->
+      <!--}-->
+    <!--};-->
+  <!--</script>-->
+  <!--<script src="//insurance.mediaalpha.com/js/serve.js"></script>-->
+  <script type="text/javascript">
+    /* Elephant / Quote Page Results */
+    var MediaAlphaExchange = {
+      "type": "ad_unit",
+      "placement_id": "T_JGFEjpyqWdositFKMI9xwkDiggRQ",
+      "version": "17",
+      "sub_1": "test sub id",
+      "data": {
+        "zip": "90210"
+      }
+    };
+  </script>
+  <script src="//insurance.mediaalpha.com/js/serve.js"></script>

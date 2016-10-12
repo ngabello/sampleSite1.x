@@ -1,0 +1,388 @@
+{
+  "QuoteRetrieve": {
+    "pageName": "quoteRetrieve",
+    "pageUrl": "/quote-retrieve",
+    "landingPage": true,
+    "conditions": [
+      {
+        "test": "PolicyStatus",
+        "priority": 0,
+        "expected": "Quoted",
+        "nextPage": "quote"
+      },
+      {
+        "test": "PolicyStatus",
+        "priority": 1,
+        "expected": "Draft",
+        "nextPage": "vehicle"
+      },
+      {
+        "test": "PolicyStatus",
+        "priority": 2,
+        "expected": null,
+        "nextPage": "vehicle"
+      }
+    ]
+  },
+  "PostalLanding": {
+    "pageName": "postalLanding",
+    "nextPage": "vehicle",
+    "pageUrl": "/postal-landing/",
+    "landingPage": true,
+    "touched": null,
+    "current": false,
+    "conditions": [],
+    "startPage": false
+  },
+  "BrokersLanding": {
+    "pageName": "brokersLanding",
+    "nextPage": "vehicle",
+    "pageUrl": "/brokers-landing",
+    "landingPage": true,
+    "touched": null,
+    "current": false,
+    "conditions": [],
+    "startPage": false
+  },
+  "LeadLanding": {
+    "pageName": "leadLanding",
+    "nextPage": "vehicle",
+    "pageUrl": "/lc-landing/",
+    "landingPage": true,
+    "touched": null,
+    "current": false,
+    "conditions": [],
+    "startPage": false
+  },
+  "PostalCode": {
+    "pageName": "root.postalCodeDetails",
+    "nextPage": "vehicle",
+    "landingPage": true,
+    "pageUrl": "/postal-code",
+    "conditions": [],
+    "startPage": true
+  },
+  "PolicyHolder": {
+    "pageName": "policyHolder",
+    "nextPage": "driver",
+    "pageUrl": "/policy-holder/",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":true},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "startPage": true,
+    "conditions": [],
+    "url": "/policy-holder/{driverId}",
+    "templateUrl": "../scripts/components/pages/policyHolder/policy-holder.tpl.html",
+    "controller": "PolicyHolderCtrl()",
+    "controllerAs": "policyHolder",
+    "data":{}
+  },
+  "Driver": {
+    "pageName": "driver",
+    "nextPage": "driverDetails",
+    "pageUrl": "/driver/",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":true},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "conditions": [],
+    "url": "/driver/{driverId}",
+    "templateUrl": "../scripts/components/pages/driver/driver.tpl.html",
+    "controller": "DriverCtrl()",
+    "controllerAs": "policyHolderP1"
+  },
+  "DriverDetails": {
+    "pageName": "driverDetails",
+    "pageUrl": "/driver-details/",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":true},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "conditions": [
+      {
+        "test": "AdditionalDrivers",
+        "priority": 1,
+        "expected": "Yes",
+        "nextPage": "additionalDriver",
+        "includeArgs": false
+      },
+      {
+        "test": "AdditionalDrivers",
+        "priority": 2,
+        "expected": "No",
+        "nextPage": "driverHistory"
+      }
+    ],
+    "url": "/driver-details/{driverId}",
+    "templateUrl": "../scripts/customerJourneys/j3_v1/pages/driverDetails/driver-details.tpl.html",
+    "controller": "DriverDetailsCtrl()",
+    "controllerAs": "driverDetails"
+  },
+  "AdditionalDriver": {
+    "pageName": "additionalDriver",
+    "nextPage": "driverHistory",
+    "pageUrl": "/additional-driver/",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":true},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "conditions": [],
+    "url": "/additional-driver/{driverId}",
+    "templateUrl": "../scripts/customerJourneys/j3_v1/pages/additionalDriver/additional-driver.tpl.html",
+    "controller": "AdditionalDriverCtrl()",
+    "controllerAs": "additionalDriver"
+  },
+  "DriverHistory": {
+    "pageName": "driverHistory",
+    "pageUrl": "/driver-history/",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":true},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "conditions": [
+      {
+        "test": "AssignmentsNeeded",
+        "priority": 3,
+        "expected": true,
+        "nextPage": "vehicleAssignment"
+      },
+      {
+        "test": "AssignmentsNeeded",
+        "priority": 2,
+        "expected": false,
+        "nextPage": "discounts"
+      },
+      {
+        "test": "HasConviction",
+        "priority": 1,
+        "expected": "Yes",
+        "nextPage": "additionalHistory",
+        "includeArgs": false
+      }
+    ],
+    "url": "/driver-history/{driverId}",
+    "templateUrl": "../scripts/components/pages/driverHistory/driver-history.tpl.html",
+    "controller": "DriverHistoryCtrl_j3_v1()",
+    "controllerAs": "driverHistory"
+  },
+  "AdditionalHistory": {
+    "pageName": "additionalHistory",
+    "pageUrl": "/additional-history",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":true},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "conditions": [
+      {
+        "test": "AssignmentsNeeded",
+        "priority": 1,
+        "expected": true,
+        "nextPage": "vehicleAssignment"
+      },
+      {
+        "test": "AssignmentsNeeded",
+        "priority": 2,
+        "expected": false,
+        "nextPage": "discounts"
+      }
+    ],
+    "url": "/additional-history",
+    "templateUrl": "../scripts/components/pages/additionalHistory/additional-history.tpl.html",
+    "controller": "AdditionalHistoryCtrl_j3_v1()",
+    "controllerAs": "additionalHistory"
+  },
+  "Vehicle": {
+    "pageName": "vehicle",
+    "pageUrl": "/vehicle/",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":true},
+      {"Order": 2, "Text": "Drivers", "Selected":false},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "nextPage": "policyHolder",
+    "conditions": [],
+    "url": "/vehicle/{vehicleId}",
+    "templateUrl": "../scripts/customerJourneys/j3_v1/pages/vehicle/vehicle.tpl.html",
+    "controller": "VehicleCtrl_j3_v1()",
+    "controllerAs": "vehicle"
+  },
+  "VehicleAssignment": {
+    "pageName": "vehicleAssignment",
+    "nextPage": "discounts",
+    "pageUrl": "/vehicle-assignment",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":true},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ],
+    "conditions": [],
+    "url": "/vehicle-assignment",
+    "templateUrl": "../scripts/components/pages/vehicleAssignment/vehicle-assignment.tpl.html",
+    "controller": "VehicleAssignmentCtrl()",
+    "controllerAs": "vehicleAssignment"
+  },
+  "Discounts": {
+    "pageName": "discounts",
+    "nextPage": "quote",
+    "pageUrl": "/discounts",
+    "conditions": [],
+    "url": "/discounts",
+    "templateUrl": "../scripts/components/pages/discounts/discounts.tpl.html",
+    "controller": "DiscountsCtrl()",
+    "controllerAs": "discount",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":false},
+      {"Order": 3, "Text": "Discounts", "Selected":true},
+      {"Order": 4, "Text": "Quote", "Selected":false}
+    ]
+  },
+  "Quote": {
+    "pageName": "quote",
+    "pageUrl": "/quote",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Vehicles", "Selected":false},
+      {"Order": 2, "Text": "Drivers", "Selected":false},
+      {"Order": 3, "Text": "Discounts", "Selected":false},
+      {"Order": 4, "Text": "Quote", "Selected":true}
+    ],
+    "conditions": [
+      {
+        "test": "LicenseNumberNeeded",
+        "priority": 1,
+        "expected": true,
+        "nextPage": "confirmDriver"
+      },
+      {
+        "test": "LicenseNumberNeeded",
+        "priority": 2,
+        "expected": false,
+        "nextPage": "confirmVehicle"
+      }
+    ],
+    "url": "/quote",
+    "templateUrl": "../scripts/components/pages/quote/quote.tpl.html",
+    "controller": "QuoteCtrl()",
+    "controllerAs": "quote"
+  },
+  "ConfirmDriver": {
+    "pageName": "confirmDriver",
+    "nextPage": "confirmVehicle",
+    "pageUrl": "/confirm-driver",
+    "conditions": [],
+    "url": "/confirm-driver",
+    "templateUrl": "../scripts/components/pages/confirmDriver/confirm-driver.tpl.html",
+    "controller": "ConfirmDriverCtrl()",
+    "controllerAs": "confirmDriver",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Quote", "Selected":false},
+      {"Order": 2, "Text": "Confirm Drivers", "Selected":true},
+      {"Order": 3, "Text": "Confirm Vehicles", "Selected":false},
+      {"Order": 4, "Text": "Payment", "Selected":false}
+    ]
+  },
+  "ConfirmVehicle": {
+    "pageName": "confirmVehicle",
+    "nextPage": "payment",
+    "conditions": [],
+    "pageUrl": "/confirm-vehicle",
+    "url": "/confirm-vehicle",
+    "templateUrl": "../scripts/components/pages/confirmVehicle/confirm-vehicle.tpl.html",
+    "controller": "ConfirmVehicleCtrl()",
+    "controllerAs": "confirmVehicle",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Quote", "Selected":false},
+      {"Order": 2, "Text": "Confirm Drivers", "Selected":false},
+      {"Order": 3, "Text": "Confirm Vehicles", "Selected":true},
+      {"Order": 4, "Text": "Payment", "Selected":false}
+    ]
+  },
+  "Payment": {
+    "pageName": "payment",
+    "nextPage": "billing",
+    "pageUrl": "/payment",
+    "conditions": [],
+    "url": "/payment",
+    "templateUrl": "../scripts/components/pages/payments/payment.tpl.html",
+    "controller": "PaymentCtrl()",
+    "controllerAs": "payment",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Quote", "Selected":false},
+      {"Order": 2, "Text": "Confirm Drivers", "Selected":false},
+      {"Order": 3, "Text": "Confirm Vehicles", "Selected":false},
+      {"Order": 4, "Text": "Payment", "Selected":true}
+    ]
+  },
+  "Billing": {
+    "pageName": "billing",
+    "nextPage": "congratulations",
+    "pageUrl": "/billing",
+    "conditions": [],
+    "url": "/billing",
+    "templateUrl": "../scripts/components/pages/billing/billing.tpl.html",
+    "controller": "BillingCtrl()",
+    "controllerAs": "billing",
+    "breadCrumbs": [
+      {"Order": 1, "Text": "Quote", "Selected":false},
+      {"Order": 2, "Text": "Confirm Drivers", "Selected":false},
+      {"Order": 3, "Text": "Confirm Vehicles", "Selected":false},
+      {"Order": 4, "Text": "Payment", "Selected":true}
+    ]
+  },
+  "QuoteOverview": {
+    "pageName": "overview",
+    "nextPage": "",
+    "pageUrl": "/overview",
+    "conditions": [],
+    "url": "/overview",
+    "templateUrl": "../scripts/components/pages/quoteOverview/overview.tpl.html",
+    "controller": "OverviewCtrl()",
+    "controllerAs": "overview"
+  },
+  "Congratulations": {
+    "pageName": "congratulations",
+    "nextPage": "ancillaryCheckout",
+    "pageUrl": "/congratulations",
+    "conditions": [],
+    "lastPage": true,
+    "url": "/congratulations",
+    "templateUrl": "../scripts/components/pages/congratulations/congratulations.tpl.html",
+    "controller": "CongratulationsCtrl()",
+    "controllerAs": "congrats"
+  },
+  "AncillaryCheckout": {
+    "pageName": "ancillaryCheckout",
+    "nextPage": "congratulations",
+    "pageUrl": "/ancillary-checkout",
+    "conditions": [],
+    "url": "/ancillary-checkout",
+    "templateUrl": "../scripts/components/pages/ancillaryCheckout/ancillary-checkout.tpl.html",
+    "controller": "AncillaryCheckoutCtrl()",
+    "controllerAs": "ancillaryCheckout"
+  },
+  "QuoteTermination": {
+    "pageName": "quoteTermination",
+    "nextPage": null,
+    "pageUrl": "/quote-termination",
+    "conditions": [],
+    "url": "/quote-termination?state&id",
+    "templateUrl": "../scripts/components/pages/quoteTermination/quote-termination.tpl.html",
+    "controller": "QuoteTerminationCtrl()",
+    "controllerAs": "quoteTermination"
+  }
+}

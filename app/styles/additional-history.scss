@@ -1,0 +1,16 @@
+#step-additional-history{
+  @extend .milky-background;
+  .button-continue{
+    @extend .button-continue;
+  }
+  .btn-margin{
+    float: right;
+  }
+}
+@media all and (max-width: 800px) {
+  #step-additional-history {
+    .btn-margin {
+      float: inherit;
+    }
+  }
+}

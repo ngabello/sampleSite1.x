@@ -1,0 +1,57 @@
+<div id="legal-plan-summary">
+
+
+  <div id="order-summary-panel">
+    <h4 class="section-header">Order Summary</h4>
+
+    <div class="inner-panel">
+      <span>Legal Protection Plan:</span><br/>
+      <table class="table">
+        <tr>
+          <td>Price</td>
+          <td>Drivers</td>
+          <td>Total</td>
+        </tr>
+        <tr>
+          <td ng-bind="'$' + ancillaryCheckoutSummary.legalPlan.IndividualCost + '/month*'"></td>
+          <td ng-bind="ancillaryCheckoutSummary.legalPlan.Drivers.length"></td>
+          <td ng-bind="'$' + ancillaryCheckoutSummary.legalPlan.PlanCost + '/month**'"></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td ng-bind="ancillaryCheckoutSummary.legalPlan.PlanCost | currency"></td>
+        </tr>
+      </table>
+      <div class="button-continue btn-margin">
+        <button id="btnContinue"
+                ng-click="makePayment(ancillaryForm.$valid)">Purchase
+        </button>
+      </div>
+      <div class="help-block" style="font-size: .8em;clear: both;">By submitting this payment, you agree to the Terms
+        and
+        Conditions.
+      </div>
+    </div>
+  </div>
+
+
+  <div id="plan-summary-panel">
+    <h4 id="plan-summary-header" class="section-header">Plan Summary</h4>
+
+    <div class="inner-panel">
+      <p style="background: rgba(0,0,0,.1);padding: 10px;"><strong>Individual Legal Protection Plan for
+        driver(s): </strong><br/>
+      <table>
+        <tr ng-repeat="driver in ancillaryCheckoutSummary.legalPlan.Drivers">
+          <td ng-bind="'-' + driver"></td>
+        </tr>
+      </table>
+      <span class="help-block">
+      Plan Effective Date: {{ancillaryCheckoutSummary.legalPlan.EffectiveDate + ' - ' +
+      ancillaryCheckoutSummary.legalPlan.EndDate}}</span>
+      <hr class="hidden-lg">
+    </div>
+  </div>
+
+</div>

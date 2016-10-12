@@ -1,0 +1,271 @@
+/*** start quote page ***/
+#step-quote{
+  @extend .milky-background;
+  padding: 20px 40px 42px 40px;
+
+  #quote-heading{
+    #price-heading{
+      div:first-child{
+        margin: auto;
+      }
+      table {
+        tr:first-child {
+          color: #659837;
+          font-size: 2.5em;
+          margin-top: 10px;
+          display: inline-block;
+          span:nth-child(2){
+            color: #0084cb;
+            font-size: .70em;
+          }
+        }
+        :nth-child(2){
+          color: gray;
+          font-size: .75em;
+        }
+        :nth-child(3){
+          color: #0084cb;
+          font-size: 1.75em;
+        }
+        :nth-child(4){
+          color: #659837;
+
+        }
+      }
+      //      :nth-child(3){
+      //        color: #0084cb;
+      //        font-size: 1.75em;
+      //      }
+      //      :nth-child(4){
+      //        color: rgba(0,0,0,.7);
+      //        font-size: 16px;
+      //        display: block;
+      //        border-bottom: solid 1pt rgba(0,0,0, .7);
+      //        width: 253px;
+      //        padding-bottom: 10px;
+      //        padding-left: 20px;
+      //      }
+      //      :nth-child(5){
+      //        color: gray;
+      //        font-size: .75em;
+      //      }
+      //      :nth-child(6){
+      //        font-size: 1.75em;
+      //        color: #0084cb;
+      //      }
+      //      :nth-child(7){
+      //        font-size: 1.75em;
+      //        color: #0084cb;
+      //      }
+      //      :nth-child(8){
+      //        color: #659837;
+      //      }
+      //      :nth-child(9){
+      //        color: #659837;
+      //        font-size: .75em;
+      //      }
+      padding: 0 0 0 20px;
+      width: 66%;
+      float:left;
+      height: 271px;
+      img{
+        position:absolute;z-index: -1;height: 230px;left: 0;top: 11px;
+      }
+    }
+    #hank-heading{
+      img {
+        float: right;
+        width: 162px;
+      }
+      button{
+        position: absolute;
+        right: 0;
+        top: 56%;
+        width:195px;
+      }
+    }
+  }
+  label{
+    min-height: 24px;
+    font-size: .9em;
+  }
+  .coverage-messages{
+    div {
+      font-size: 10px;
+      width: 48%;
+      margin-left: 35%;
+    }
+  }
+  .button-continue{
+    @extend .button-continue;
+    button{
+      width: auto;
+    }
+  }
+  .btn-margin{
+    margin-top: 10px;
+    float: right;
+  }
+  .row{
+    margin-left:-22px;
+    margin-right:-22px;
+  }
+  .panel-default>.panel-heading{
+    background: rgba(0, 132, 203, 0.5);
+    color: #ffffff;
+    &:hover{
+      background: $primary-btn-hover;
+    }
+    a{
+      text-decoration: none;
+      &:hover{
+        color: #ffffff;
+      }
+    }
+  }
+  .fa-question-circle{
+    color: #659837;
+    font-size: 21px;
+  }
+  .panel-collapse{
+    .panel-default>.panel-heading{
+      background: rgba(0, 132, 203, 0.5);
+      color: #ffffff;
+      &:hover{
+        background: $primary-btn-hover;
+      }
+      a{
+        text-decoration: none;
+        &:hover{
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  form{
+    padding: 0;
+  }
+
+}
+
+@media all and (min-width: 1200px) and (max-width: 1350px){
+  #step-quote{
+    #price-heading{
+      table {
+        font-size: .80em;
+      }
+    }
+  }
+}
+@media all and (max-width: 991px){
+  #step-quote{
+    #quote-heading{
+      width: 100%;
+      #price-heading{
+        background: #ffffff;
+        border-radius: 4px;
+        margin: auto auto 10px auto;
+        float: none;
+        width: 100%;
+        img{
+          display: none;
+        }
+      }
+      #hank-heading{
+        position: absolute;
+        right: 18px;
+        top: 0;
+        .button-continue{
+          //          position: absolute;
+          //          top: -81px;
+          //          left: 5%;
+          //          width: 90%;
+          //          button{
+          //            width: 100%;
+          //          }
+        }
+        img{
+        }
+      }
+    }
+    .coverage-messages{
+      div {
+        padding-left: 15px;
+        margin-left: 0;
+        width: 100%;
+      }
+
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .max-ad-button {
+    display: table-cell !important;
+  }
+}
+@media all and (max-width: 687px) {
+  #step-quote {
+    .button-continue{
+      width: 100%;
+      button {
+        width: 100%;
+      }
+    }
+    .max-ad-description{
+      display: none;
+    }
+    #quote-heading {
+      width: 100%;
+
+      #price-heading {
+        background: #ffffff;
+        border-radius: 4px;
+        margin: auto auto 10px auto;
+        float: none;
+        width: 100%;
+        div:first-child{
+          width: 300px;
+        }
+        img {
+          display: none;
+        }
+      }
+      #hank-heading {
+        position: relative;
+
+        .button-continue {
+          left: 2.5%;
+          position: relative;
+          top: -94px;
+          button {
+            width: 95%;
+            top: 8px;
+          }
+        }
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .btn-margin{
+    float: inherit;
+  }
+}
+@media all and (min-width: 688px) {
+  #step-quote{
+    #compareBanner-mb{
+      display: none;
+    }
+  }
+}
+@media all and(max-width: 687px){
+  #step-quote{
+    #compareBanner-dt{
+      display: none;
+    }
+  }
+}
+
+/*** end quote page ***/

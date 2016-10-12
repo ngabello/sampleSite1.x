@@ -1,0 +1,55 @@
+<div class="form-group"
+     ng-class="{true: 'has-error'}[$ctrl.state.formSubmitted && $ctrl.form.billingCardholder.$invalid]">
+  <label class="control-label form-left">Name on card</label>
+
+  <div ng-messages="$ctrl.form.billingCardholder.$error" ng-if="$ctrl.state.formSubmitted">
+    <div ng-message="required">Please enter the cardholder name.</div>
+    <div ng-message="lastName">Last name is required</div>
+  </div>
+  <input class="form-control form-right inspectletIgnore" id="billingCardholder" maxlength="70"
+         name="billingCardholder" ph=""
+         title="Card holder name" type="text" ng-model="billingInformation.CreditCard.NameOnCard"
+         capitalize-first required/>
+  <span style="font-size: 13px;color: gray;float: right;">full name as it appears on your credit card</span>
+</div>
+
+<!-- Credit Card Number -->
+  <div class="form-group"
+       ng-class="{true: 'has-error'}[$ctrl.state.formSubmitted && $ctrl.form.billingCCNumber.$invalid]">
+    <label class="control-label form-left">Card number
+    </label>
+
+    <div ng-messages="form.billingCCNumber.$error" ng-if="$ctrl.state.formSubmitted">
+      <div ng-message="required">Please enter the card number.</div>
+      <div ng-message="invalidCard">Please enter a valid credit card.</div>
+      <div ng-message="notRecognized">We currently do not support this credit card type.</div>
+    </div>
+    <div>
+      <input class="form-control form-right inspectletIgnore" id="billingCardNumber" maxlength="16"
+             name="billingCCNumber" ph=""
+             title="Credit card number" type="tel" ng-model="$ctrl.state.bindRequest.CreditCard.Number" required/>
+          <span class="pf animated"
+                ng-class="{'pf-visa bounceIn': getCreditCardIssuer($ctrl.state.bindRequest.CreditCard.Number) == cardNames.Visa,
+             'pf-mastercard bounceIn': getCreditCardIssuer($ctrl.state.bindRequest.CreditCard.Number) == cardNames.MasterCard,
+             'pf-american-express bounceIn': getCreditCardIssuer($ctrl.state.bindRequest.CreditCard.Number) == cardNames.AmericanExpress,
+             'pf-discover bounceIn': getCreditCardIssuer($ctrl.state.bindRequest.CreditCard.Number) == cardNames.Discover
+              }"></span>
+    </div>
+  </div>
+  <!-- Card expiration date -->
+  <div class="form-group"
+       ng-class="{true: 'has-error'}[$ctrl.state.formSubmitted && $ctrl.form.billingExpDate.$invalid]">
+    <label class="control-label form-left">Expiration date</label>
+
+    <div ng-messages="$ctrl.form.billingExpDate.$error" ng-if="$ctrl.state.formSubmitted">
+      <div ng-message="required">Please enter the expiration date.</div>
+      <div ng-message="invalidFormat">Please enter a valid expiration date.</div>
+      <div ng-message="pastDate">Credit card expiration date can not be expired.</div>
+    </div>
+    <input class="form-control form-right inspectletIgnore" id="billingExpDate" name="billingExpDate"
+           title="Expiration date" type="tel"
+           ng-model-options="{ updateOn: 'blur' }"
+           ng-model="$ctrl.state.bindRequest.CreditCard.ExpirationDate" ui-mask="99/9999"
+           ui-validate="{pastDate : 'checkExpirationDate($value)'}" required/>
+  </div>
+

@@ -1,0 +1,119 @@
+<div id="plan-summary">
+  <!--New template-->
+  <div class="desktop-menu">
+    <div class="desktop-menu-inner">
+      <ul class="list-unstyled">
+
+
+
+        <li>
+          <div class="submenu"> Payment due today</div>
+          <ul>
+            <li id="payment-amount">{{ billingSummary.bindRequest.PayPlan.DownPaymentAmount | currency}}</li>
+
+
+            <li class="plan-detail" ng-if="billingSummary.bindRequest.PayPlan.NumberOfInstallments > 1">
+              <span class="">and {{ billingSummary.bindRequest.PayPlan.NumberOfInstallments }} payments of <span
+                class="money-payment-small">{{ billingSummary.bindRequest.PayPlan.InstallmentAmount | currency}}</span></span><br/>
+            </li>
+            <li class="plan-detail" ng-if="billingSummary.bindRequest.PayPlan.NumberOfInstallments == 1">
+              <span class="">and 1 payment of <span class="money-payment-small">{{ billingSummary.bindRequest.PayPlan.InstallmentAmount | currency}}</span></span><br/>
+
+            </li>
+            <li class="plan-detail" ng-if="billingSummary.bindRequest.PayPlan.NumberOfInstallments == 0">
+              <div ng-if="planSummary.address.State == 'TX'">
+                <span class="savings">You save  15%!</span>
+              </div>
+              <div ng-if="planSummary.address.State != 'TX'">
+                <span class="savings">You save  10%!</span>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+
+
+        <li>
+          <hr>
+
+          <div class="submenu">My Quote:</div>
+          {{ planSummary.quote.QuoteNumber }}
+        </li>
+
+        <li ng-if="planSummary.drivers.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('drivers')" style="cursor: pointer;">
+            Drivers <i class="pull-right glyphicon"
+                       ng-class="{'fa fa-chevron-down': driversOpen, 'fa fa-chevron-right': !driversOpen}"></i>
+          </div>
+
+          <div class="" uib-collapse="!driversOpen">
+
+            <ul ng-repeat="driver in planSummary.drivers" class="list-unstyled">
+              <li>
+                <div ng-if="driver.PrimaryDriver">
+
+                    {{ driver.FirstName+' ' +driver.LastName }}
+                </div>
+                <div ng-if="!driver.PrimaryDriver">
+
+                    {{ driver.FirstName+' ' +driver.LastName }}
+                </div>
+              </li>
+            </ul>
+
+
+          </div>
+        </li>
+
+        <li ng-if="planSummary.vehicles.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('vehicles')" style="cursor: pointer;">
+            Vehicles
+            <i class="pull-right glyphicon"
+               ng-class="{'fa fa-chevron-down': vehiclesOpen, 'fa fa-chevron-right': !vehiclesOpen}"></i>
+          </div>
+
+          <div class="" uib-collapse="!vehiclesOpen">
+            <ul>
+              <li ng-repeat="vehicle in planSummary.vehicles" class="list-unstyled">
+                <div ng-if="vehicle.Model">
+                  {{ vehicle.Year + ' ' + vehicle.Make + ' ' +  vehicle.Model }}
+                </div>
+                <div ng-if="!vehicle.Model">
+                  {{ vehicle.Year + ' ' + vehicle.Make }}
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </li>
+
+        <!-- Discounts -->
+        <!--<li ng-if="planSummary.discounts.length > 0">-->
+        <li>
+          <hr>
+          <div class="submenu">
+            Discounts:
+          </div>
+
+          <ul class="side-discounts">
+            <li ng-repeat="discount in planSummary.discounts | filter: discountFilter" class="list-unstyled">
+              <i class=""></i> {{ discount.Desc.replace('Discount', '') }}
+            </li>
+          </ul>
+        </li>
+        </li>
+        <li ng-if="planSummary.policy.EffectiveDate">
+          <div class="submenu">
+            Policy Terms
+          </div>
+          <div class="">
+
+            {{ planSummary.policy.EffectiveDate | date: 'MM/dd/yyyy'}}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

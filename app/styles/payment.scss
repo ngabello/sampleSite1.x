@@ -1,0 +1,284 @@
+/*** Start payment-plan ***/
+#step-payment-plan {
+  @extend .milky-background;
+  width: 800px;
+  margin-left: 25%;
+  //margin-top: 147px;
+  .button-continue {
+    @extend .button-continue;
+    margin-bottom: 0;
+  }
+  .btn-margin {
+    //margin-top: 50px;
+    float: right;
+  }
+  .form-group {
+    h4 {
+      color: #015289;
+    }
+  }
+  hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 10px 0 10px 0;
+  }
+  p{
+    font-size: .75em;
+  }
+  input[type="radio"]{
+    margin: 28px 0 0;
+    transform: scale(2);
+    -webkit-transform: scale(2);
+  }
+  .payment-box, .highlight-payment-box {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    text-align: center;
+
+    .button-continue {
+      font-size: .8em;
+      padding-bottom: 20px;
+      button {
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+//        display: block;
+        position: relative;
+        padding: 0 .5em 0 .5em;
+        height: 2.6em;
+      }
+    }
+    .pay-line-1 {
+      background: #0084cb;
+      color: #ffffff;
+      border-radius: 4px 4px 0 0;
+      padding: 10px 2px 0px 2px;
+      line-height: 1.3;
+      box-shadow: inset 0 0 10px #666;
+      -webkit-box-shadow: inset 0 0 6px #666;
+      span:nth-child(1) {
+        display: block;
+        height: 6px;
+      }
+      span:nth-child(2) {
+        font-size: .8em;
+        display: block;
+        height: 6px;
+      }
+      div span:nth-child(1) {
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+      div span:nth-child(3) {
+        font-style: italic;
+        font-size: .75em;
+      }
+    }
+    .pay-line-2 {
+      background: #ffffff;
+      height: 100%;
+      //line-height: 1.1;
+      box-shadow: inset 0 0 10px #666;
+      -webkit-box-shadow: inset 0 0 6px #666;
+      border-radius: 0 0 4px 4px;
+      padding-bottom: 20px;
+      .payment-hide {
+        visibility: hidden;
+      }
+      span:nth-child(3) {
+        color: #659837;
+        font-size: 14px;
+      }
+      span:nth-child(1) {
+        color: #659837;
+        font-weight: bold;
+      }
+    }
+    .pay-line-3 {
+      background: #ffffff;
+    }
+  }
+  .three-plans{
+    width: 33%;
+  }
+  .highlight-payment-box {
+    padding: 0;
+    .pay-line-1 {
+      background: #63992F;
+      line-height: 1.2;
+      padding: 16px 0 6px 0;
+      img {
+        position: relative;
+        top: -21px;
+        left: 75px;
+      }
+      span:nth-child(1) {
+        font-size: 1em;
+      }
+      span:nth-child(3) {
+        font-size: 1.6em;
+      }
+    }
+    .button-continue {
+      button {
+        width: auto;
+        height: 2.8em;
+        font-size: 1.1em;
+        margin-top: 4px;
+      }
+    }
+  }
+  .three-plans {
+    .pay-line-1{
+      img{
+        left: 106px;
+      }
+    }
+  }
+  .legal-assistance{
+    clear: both;
+    padding: 0 10px;
+    margin-top: 30px;
+  }
+  .legal-banner {
+    padding: 25px;
+    color:white;
+    background-color: grey;
+  }
+
+
+  .legalplan :hover{
+    cursor: pointer;
+    color:white;
+    padding: 0 0 0  400px;
+    text-decoration: underline;
+  }
+  .legal-select{
+    margin: 40px 0 30px 0;
+    text-align: right;
+  }
+
+}
+
+#paymentNavSummary {
+  margin-top: 147px;
+  padding-left: 6%;
+}
+
+@media all and (max-width: 1620px) {
+  #step-payment-plan {
+    margin-left: 21%;
+  }
+}
+
+@media all and (max-width: 1505px) {
+  #step-payment-plan {
+    width: 700px;
+    .highlight-payment-box{
+      .pay-line-1{
+        img{
+          left: 62px;
+        }
+      }
+    }
+    .three-plans {
+      .pay-line-1{
+        img{
+          left: 88px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1318px) {
+  #step-payment-plan {
+    width: 600px;
+    .highlight-payment-box{
+      .pay-line-1{
+        img{
+          left: 49px;
+        }
+      }
+    }
+    .three-plans {
+      .pay-line-1{
+        img{
+          left: 72px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1199px) {
+  #step-payment-plan {
+    width: 100%;
+    margin-left: 0;
+    .highlight-payment-box{
+      .pay-line-1{
+        img{
+          left: 43%;
+          top:-21px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  #step-payment-plan {
+    //margin-top: 60px;
+    .highlight-payment-box {
+      .pay-line-1 {
+        img {
+          left: 47%;
+          bottom: 17.6%;
+        }
+      }
+    }
+    .payment-box {
+      float: inherit;
+      width: 100%;
+      .button-continue {
+        button {
+          width: 70%;
+        }
+      }
+    }
+    .legal-assistance{
+      padding: 0;
+    }
+    .btn-margin {
+      float: inherit;
+    }
+    .legal-select{
+      text-align: center;
+    }
+  }
+}
+@media all and (max-width: 515px){
+  #step-payment-plan {
+    .highlight-payment-box {
+      .pay-line-1 {
+        img {
+          left: 44%;
+          bottom: 17.2%;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 355px) {
+  #step-payment-plan {
+    .highlight-payment-box {
+      .pay-line-1 {
+        img {
+          bottom: 16.6%;
+        }
+      }
+    }
+  }
+}
+
+/*** End payment-plan ***/

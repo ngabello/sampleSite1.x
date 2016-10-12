@@ -1,0 +1,47 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-additional-history"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+    <h3 class="section-header"><i class="fa fa-file-text fa-fw"></i>Drivers - Additional History</h3>
+    <form>
+      <div ng-repeat="driver in additionalHistorySummary.drivers">
+        <h4 style="color: #015289;">{{ driver.name }}</h4>
+          <div class="form-group">
+          <label class="form-left">Number of misdemeanors</label>
+          <select class="form-right form-control" ng-model="driver.misdemeanors">
+            <option value="">Select</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3+">3+</option>
+            <option value="Unsure">Unsure</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-left">Number of felonies</label>
+          <select class="form-right form-control" ng-model="driver.felonies">
+            <option value="">Select</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3+">3+</option>
+            <option value="Unsure">Unsure</option>
+          </select>
+        </div>
+
+        <hr />
+      </div>
+      <div class="button-continue btn-margin">
+        <button id="btnContinue" ng-disabled="ab" single-click=""
+                ng-click="go()">Continue
+        </button>
+      </div>
+
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+
+</div>

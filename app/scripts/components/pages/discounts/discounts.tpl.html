@@ -1,0 +1,104 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-discount" class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn" refresh="" error-scroll="">
+      <div class="row">
+
+          <h3 class="section-header"><i class="fa fa-tag fa-fw"></i> Discounts</h3>
+          <p id="discount-message">
+            {{ policyHolder.FirstName}} you've qualified for these great discounts! <br/>
+            You are one click away from your personalized quote.
+          </p>
+      </div>
+      <form name="discountsForm" novalidate>
+          <fieldset>
+              <div class="row">
+                  <div class="form-group">
+                      <ul class="example-animate-container">
+                          <li class="animate-repeat" ng-repeat="discount in discountsSummary.discounts | filter: discountFilter | orderBy:'Name'">
+                            <i class="fa fa-check-circle" style="color: #01AC1E;"></i> {{discount.Desc + ' Discount'}}<sup ng-if="discount.Desc == 'Electronic Signature' || discount.Desc =='Paperless'">1</sup>
+                          </li>
+                          <li class="animate-repeat" ng-if="discountsSummary.discounts.length == 0">
+                              <strong>No discounts found...</strong>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="explanations" ng-if="discountsSummary.discounts.length > 0">
+                      <p><span class="super">1 </span>To receive these discounts, you must provide a valid email address.<br />&nbsp;&nbsp;If you do not wish to participate, please call 1-877-321-2096.</p>
+                  </div>
+
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="row">
+          <hr/>
+          <div ng-if="!newEmail">
+            <div class="form-group">
+              <label class="control-label form-left">Confirm email address</label>
+              <div class="form-right">{{ policyHolder.EmailAddress }} <a style="cursor: pointer;" ng-click="editEmail()" title="Edit email">edit</a></div>
+            </div>
+          </div>
+          <div ng-if="newEmail">
+            <!-- Email Address -->
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[formSubmitted && discountsForm.discountEmail.$invalid]">
+              <label class="control-label form-left">Enter email address</label>
+
+              <div ng-messages="discountsForm.discountEmail.$error" ng-if="formSubmitted">
+                <div ng-message="required">please enter a valid e-mail address</div>
+                <div ng-message="email">please enter a valid email address</div>
+              </div>
+              <input class="form-control form-right inspectletIgnore" id="discountEmail" name="discountEmail"
+                     type="email"
+                     title="Enter email address"
+                     ng-model="policyHolder.EmailAddress" ng-model-options="{ updateOn: 'blur' }"
+                     ng-required="!policyHolder.EmailAddress"/>
+            </div>
+
+            <!--Email Confirm -->
+            <div class="form-group"
+                 ng-class="{true: 'has-error'}[formSubmitted && discountsForm.discountEmailConfirm.$invalid]">
+              <label class="control-label form-left">Confirm email address</label>
+
+              <div ng-messages="discountsForm.discountEmailConfirm.$error" ng-if="formSubmitted">
+                <div ng-message="required">please confirm your e-mail address</div>
+                <div ng-message="email">please enter a valid e-mail address</div>
+                <div ng-message="validator">e-mail addresses must match</div>
+              </div>
+              <input class="form-control form-right inspectletIgnore" name="discountEmailConfirm" type="email"
+                     title="Confirm email address"
+                     ng-model="policyHolder.EmailAddressConfirm"
+                     ui-validate="'$value==policyHolder.EmailAddress'" ui-validate-watch="'policyHolder.EmailAddress'"/>
+              <span style="font-size: 14px;color: gray;float: right;"><i class="fa fa-lock"></i>Your information is secure and will not be shared.</span>
+            </div>
+          </div>
+
+          <!-- Social security number -->
+          <div class="form-group"
+               ng-class="{true: 'has-error'}[formSubmitted && discountsForm.discountSsn.$invalid]">
+            <label class="control-label form-left">Social security number</label>
+            <div ng-messages="discountsForm.discountSsn.$error"
+                 ng-if="formSubmitted && discountsForm.discountSsn.$error">
+              <div ng-message="pattern">Please provide a valid social security number</div>
+            </div>
+            <div>
+              <input id="discountSsn" class="form-control form-right inspectletIgnore" ssn-mask="" name="discountSsn" type="password"
+                     ng-model="policyHolder.SocialSecurityNumber" title="Social security number" ui-mask="999-99-9999"
+                     ng-pattern="/^(?!000)(?!666)(?!9)\d{3}[-]?(?!00)\d{2}[-]?(?!0000)\d{4}$/" />
+            </div>
+            <span style="font-size: 13px;color: gray;float: right;">Not required, but will generate the most accurate
+                      quote.
+                  </span>
+           </div>
+
+
+          <div class="button-continue btn-margin">
+            <button id="btnContinue" ng-click="savePolicyHolder(discountsForm)" single-click="">Continue
+            </button>
+            <!--<div><button class="btnOrange smallText" id="btnContinue" ng-click="savePolicyHolder(true)">Continue</button></div>-->
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div></div>

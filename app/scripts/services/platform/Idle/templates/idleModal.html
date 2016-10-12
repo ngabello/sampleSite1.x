@@ -1,0 +1,36 @@
+<!--<div class="modal-header">-->
+    <!--<h3>This is a test</h3>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+    <!--<p>{{modalOptions.bodyText}}</p>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+    <!--<button type="button" class="btn"-->
+            <!--data-ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>-->
+    <!--<button class="btn btn-primary"-->
+            <!--data-ng-click="modalOptions.ok();">{{modalOptions.actionButtonText}}</button>-->
+<!--</div>-->
+<!--<div class="modal-header">-->
+  <!--<h3>You're Idle. Do Something!</h3>-->
+<!--</div>-->
+<!--<div ng-idle-countdown="countdown" ng-init="countdown=5" class="modal-body">-->
+  <!--You'll be logged out in <span class="label label-warning">{{countdown}}</span> second(s).-->
+  <!--<progressbar max="5" value="countdown" class="progress-striped active"></progressbar>-->
+<!--</div>-->
+
+
+<div id="modal-template">
+  <div class="modal-header alert-warning">
+    <h3><i class="fa fa-exclamation-triangle"></i> You have been idle for awhile</h3>
+  </div>
+  <div class=modal-body>
+    <div ng-idle-countdown="countdown" ng-init="countdown=60" class="modal-body">
+      Your online security is important to us. Due to inactivity, your session will expire in <span class="label label-warning">{{countdown}}</span> second(s).<br />
+      <progressbar max="60" value="countdown" class="progress-striped active" type="warning" style="margin-top: 10px;"></progressbar>
+    </div>
+  </div>
+  <!--<div class="modal-footer">-->
+    <!--<button class="btn btn-primary" ng-click="ok()">OK</button>-->
+    <!--<button ng-show="showCancelBtn" class="btn btn-warning" ng-click="cancel()">Cancel</button>-->
+  <!--</div>-->
+</div>

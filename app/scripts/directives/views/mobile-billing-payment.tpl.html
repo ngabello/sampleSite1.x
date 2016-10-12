@@ -1,0 +1,23 @@
+<label class="control-label form-left">Payment</label>
+
+<div class="form-right">
+  <ul>
+    <li id="payment-amount">{{ billingSummary.bindRequest.PayPlan.DownPaymentAmount | currency}}</li>
+    <li class="plan-detail" ng-if="billingSummary.bindRequest.PayPlan.NumberOfInstallments > 1">
+              <span class="">and {{ billingSummary.bindRequest.PayPlan.NumberOfInstallments }} payments of <span
+                class="money-payment-small">{{ billingSummary.bindRequest.PayPlan.InstallmentAmount | currency}}</span></span><br/>
+    </li>
+    <li class="plan-detail" ng-if="billingSummary.bindRequest.PayPlan.NumberOfInstallments == 1">
+      <span class="">and 1 payment of <span class="money-payment-small">{{ billingSummary.bindRequest.PayPlan.InstallmentAmount | currency}}</span></span><br/>
+
+    </li>
+    <li class="plan-detail" ng-if="billingSummary.bindRequest.PayPlan.NumberOfInstallments == 0">
+      <div ng-if="planSummary.address.State == 'TX'">
+        <span class="savings">You save  15%!</span>
+      </div>
+      <div ng-if="planSummary.address.State != 'TX'">
+        <span class="savings">You save  10%!</span>
+      </div>
+    </li>
+  </ul>
+</div>

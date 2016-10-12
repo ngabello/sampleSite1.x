@@ -1,0 +1,70 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="step-driver-details"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+
+    <h3 class="section-header">Driver - {{ driverDetailsState.driver.FirstName + ' ' +
+      driverDetailsState.driver.LastName}}</h3>
+
+    <form name="driverDetailsForm" validate-submit="submitForm(this.driverDetailsForm)">
+      <div class="row-fluid">
+
+        <license-status form="driverDetailsForm" ng-model="driverDetailsState.driver.LicenseStatus"></license-status>
+
+        <div uib-collapse="driverDetailsState.driver.LicenseStatus == 'nonlicensed'">
+          <age-first-licensed form="driverDetailsForm" driver-model="driverDetailsState.driver"
+                              ng-model="driverDetailsState.driver.AgeFirstLicensed"></age-first-licensed>
+        </div>
+
+        <current-insurance form="driverDetailsForm"
+                           ng-model="driverDetailsState.driver.CurrentlyInsured"></current-insurance>
+
+        <insurance-reason form="driverDetailsForm" driver-model="driverDetailsState.driver"
+                          ng-model="driverDetailsState.driver.CurrentInsuranceStatus"></insurance-reason>
+
+        <div uib-collapse="!(driverDetailsState.driver.CurrentlyInsured ||  driverDetailsState.driver.CurrentInsuranceStatus == 'military_overseas' ||
+            driverDetailsState.driver.CurrentInsuranceStatus == 'policy_expired_within_30days')">
+
+          <insurance-lapse form="driverDetailsForm" lapse-collection="driverDetailsState.insuranceLapseStatus"
+                           driver-model="driverDetailsState.driver"
+                           ng-model="driverDetailsState.driver.PreviousLapse"></insurance-lapse>
+
+          <insurance-company form="driverDetailsForm" driver-model="driverDetailsState.driver"
+                             ng-model="driverDetailsState.driver.CurrentInsurer"></insurance-company>
+
+          <years-with-company form="driverDetailsForm" driver-model="driverDetailsState.driver"
+                              ng-model="driverDetailsState.driver.YearsWithCurrentInsurer"></years-with-company>
+
+          <insurance-premium ng-model="driverDetailsState.driver.CurrentProviderPremium"></insurance-premium>
+
+          <bodily-injury-limit form="driverDetailsForm" driver-model="driverDetailsState.driver"
+                               ng-model="driverDetailsState.policy.CurrentInsuranceLimits"></bodily-injury-limit>
+        </div>
+
+        <policy-start-date form="driverDetailsForm"
+                           ng-model="driverDetailsState.policy.EffectiveDate"></policy-start-date>
+
+        <primary-vehicle form="driverDetailsForm"
+                         ng-model="driverDetailsState.driver.PrimaryVehicleID"></primary-vehicle>
+
+        <own-motorcycle form="driverDetailsForm" ng-model="driverDetailsState.policy.HasMotorcycle"></own-motorcycle>
+
+        <other-drivers form="driverDetailsForm"
+                       ng-model="driverDetailsState.quoteState.AdditionalDrivers"></other-drivers>
+
+        <vehicles-in-zipcode form="driverDetailsForm" driver-notifications="driverDetailsState.alerts"
+                             ng-model="driverDetailsState.driver.CurrentZipCode"></vehicles-in-zipcode>
+
+        <div class="button-continue btn-margin">
+          <button class="" id="btnContinue" type="submit"
+                  analytics-on="click" analytics-event="completed policy-holder"><span>Continue</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

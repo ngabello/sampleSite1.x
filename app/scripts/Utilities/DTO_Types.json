@@ -1,0 +1,138 @@
+{
+    "quotesPolicyHolder": {
+        "customerFname": {
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": "First name is required."
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "customerLname": {
+           "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": "Last name is required."
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "customerAddress": {
+            "conditions": [],
+            "constraints": [
+                {
+                    "Size": {
+                        "max": 60,
+                        "message": "Address is required.",
+                        "min": 1
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "customerCounty": {
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull":{
+                        "message": ""
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "customerDob": {
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": "Date of birth is required."
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        }
+    },
+    "quotesDriver": {
+        "gender_dll":{
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": ""
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "maritalStatus_ddl":{
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": "Marital status is required."
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "residencyStatus_ddl":{
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": "Your residency status is required"
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "educationLevel_ddl":{
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": "Education level is required"
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        },
+        "employmentStatus_ddl":{
+            "conditions": [],
+            "constraints": [
+                {
+                    "NotNull": {
+                        "message": "Employment status is required"
+                    }
+                },
+                {
+                    "type": "String"
+                }
+            ]
+        }
+    }
+}

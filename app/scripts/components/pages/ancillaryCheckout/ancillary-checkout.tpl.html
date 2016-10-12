@@ -1,0 +1,69 @@
+<div class="row">
+  <div legal-plan-summary=""
+       class="summary-padding visible-xs visible-sm visible-md col-md-7 col-sm-12 col-md-offset-3 animated fadeIn"
+       style="padding: 0;"></div>
+  <div id="step-ancillary-Checkout"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+    <h4 class="section-header hidden-xs hidden-sm hidden-md">Checkout</h4>
+
+    <form name="ancillaryForm" novalidate>
+      <div id="checkout-text">
+        <h5>Legal Protection Plan</h5>
+
+        <p>Exclusive to new Elephant policy holders through a partnership with Legal Resources&reg;.</p><br/>
+
+        <span>What other benefits will you receive?</span>
+
+        <div id="checkout-protection">
+          <ul>
+            <li><i class="fa fa-check-circle" style="color: #01AC1E;"></i>You'll save 25% on attorney fees for
+              pre-existing legal matters.
+            </li>
+            <li><i class="fa fa-check-circle" style="color: #01AC1E;"></i>Huge savings on life events like bankruptcy,
+              divorce or adoption.
+            </li>
+            <li><i class="fa fa-check-circle" style="color: #01AC1E;"></i>Access to a nationwide network of highly
+              qualified attorneys.
+            </li>
+          </ul>
+          <br/>
+        </div>
+        <hr>
+        <div>
+          <h5 style="width: 49%;display: inline-block;">Billing Information</h5>
+        </div>
+        <br/>
+
+        <div class="clearfix">
+          <uib-alert ng-repeat="alert in ancillaryCheckoutSummary.paymentAlerts" type="{{alert.type}}"
+                 close="closePaymentAlert($index)">
+            <div ng-bind-html="alert.msg"></div>
+          </uib-alert>
+        </div>
+
+        <div>
+          <!-- Credit Card Information -->
+          <billing-utilities billing-information="ancillaryCheckoutSummary.inquiry"></billing-utilities>
+        </div>
+
+
+      </div>
+      <div>
+        <div class="button-continue btn-margin">
+          <button id="btnContinue"
+                  ng-click="makePayment(ancillaryForm.$valid)" single-click="">Purchase
+          </button>
+        </div>
+        <a id="btnCancel" class="remove" ng-click="cancelPayment()" style="float: right;cursor: pointer;">Cancel</a><br/>
+
+        <div class="help-block" style="font-size: .65em;clear: both;">By submitting this payment, you agree to the
+          Terms
+          and Conditions.
+        </div>
+      </div>
+    </form>
+  </div>
+  <div legal-plan-summary="" class="summary-padding hidden-xs hidden-md hidden-sm col-sm-4  col-lg-3"></div>
+</div>
+

@@ -1,0 +1,8 @@
+#environment:
+   #language: nodejs
+   # testing codeship3
+
+#build:
+   #run: npm install
+   #run: bower install --dev
+   #run: grunt build

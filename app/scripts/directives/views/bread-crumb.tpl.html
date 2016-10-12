@@ -1,0 +1,95 @@
+<div class="animated fadeIn bread-crumb">
+  <div class="col-md-offset-3 col-lg-5 col-md-7"
+       style="padding-left: 0px; padding-right: 0px;background: #f8f8f8;border-radius:2px;">
+    <div ng-show="currentCrumb.breadCrumbBeforeQuote">
+      <div style="display: inline-block;width: 19.3%" class="">
+        <img src="images/car.svg" class="car"
+             ng-show="'Start' == currentCrumb.breadCrumb"/>
+      </div>
+
+      <div style="display: inline-block;width: 19.3%" class="">
+        <img src="images/car.svg" class="car"
+             ng-show="'Drivers' == currentCrumb.breadCrumb "/>
+      </div>
+
+      <div style="display: inline-block;width: 19.3%" class="">
+        <img src="images/car.svg" class="car"
+             ng-show="'Vehicles' == currentCrumb.breadCrumb"/>
+      </div>
+
+      <div style="display: inline-block;width: 19.3%" class="">
+        <img src="images/car.svg" class="car"
+             ng-show="'Discounts' == currentCrumb.breadCrumb"/>
+      </div>
+
+      <div style="display: inline-block;width: 19.3%" class="">
+        <img src="images/car.svg" class="car" ng-show="'Quote' == currentCrumb.breadCrumb"/>
+      </div>
+    </div>
+
+    <div ng-show="!currentCrumb.breadCrumbBeforeQuote">
+      <div style="display: inline-block;width: 24.3%" class="">
+        <img src="images/car.svg" class="car" ng-show="'Quote' == currentCrumb.breadCrumb"/>
+      </div>
+      <div style="display: inline-block;width: 24.3%" class="">
+        <img src="images/car.svg" class="car"
+             ng-show="'ConfirmDrivers' == currentCrumb.breadCrumb"/>
+      </div>
+
+      <div style="display: inline-block;width: 24.3%" class="">
+        <img src="images/car.svg" class="car"
+             ng-show="'ConfirmVehicles' == currentCrumb.breadCrumb"/>
+      </div>
+
+      <div style="display: inline-block;width: 24.3%" class="">
+        <img src="images/car.svg" class="car"
+             ng-show="'Payment' == currentCrumb.breadCrumb"/>
+      </div>
+
+
+    </div>
+
+
+    <!--<div class="" style="background: #0084cb;color: #ffffff;">-->
+    <div class="" style="background: #5B97CB;color: #ffffff;border-radius: 0 0 2px 2px;">
+      <div ng-show="currentCrumb.breadCrumbBeforeQuote">
+        <div style="display: inline-block;width: 19.3%" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Start</div>
+        </div>
+
+        <div style="display: inline-block;width: 19.3%" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Driver</div>
+        </div>
+
+        <div style="display: inline-block;width: 19.3%;" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Vehicles</div>
+        </div>
+
+        <div style="display: inline-block;width: 19.3%;" class="">
+          <div style="margin: auto;text-align: center" class="crumb">Discounts</div>
+        </div>
+
+        <div style="display: inline-block;width:19.3%;" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Quote</div>
+        </div>
+      </div>
+
+      <div ng-show="!currentCrumb.breadCrumbBeforeQuote">
+        <div style="display: inline-block;width:24.3%;" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Quote</div>
+        </div>
+        <div style="display: inline-block;width: 24.33333%;" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Confirm Drivers</div>
+        </div>
+
+        <div style="display: inline-block;width: 24.3%;" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Confirm Vehicles</div>
+        </div>
+
+        <div style="display: inline-block;width: 24.3%;" class="">
+          <div style="margin: auto;text-align: center;" class="crumb">Payment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+<div class="row">
+
+  <div id="step-congratulations"
+       class="customer customer2 margin animated fadeIn">
+
+    <div ng-if="congratulationsSummary.legalPlanResponse" ng-switch="congratulationsSummary.legalPlanResponse.Error">
+      <h3 class="section-header" ng-switch-when="true">Overview</h3>
+      <h3 class="section-header" ng-switch-default="">Congratulations! Your payment was successful</h3>
+    </div>
+    <div ng-if="!congratulationsSummary.legalPlanResponse">
+      <h3 class="section-header">Congratulations!</h3>
+    </div>
+
+
+    <div id="congratulations-image">
+      <img src="images/mobile-hank04-shadow.png" id="congratulations-hank-image"/>
+    </div>
+
+    <div id="congratulations-label">
+      <div id="message" style="">
+        <div ng-if="congratulationsSummary.legalPlanResponse"
+             ng-switch="congratulationsSummary.legalPlanResponse.Error">
+          <span id="welcome" ng-switch-when="true">Legal plan purchase unsuccessful</span>
+          <span id="welcome" ng-switch-default="">Legal plan purchase successful</span>
+        </div>
+        <div ng-if="!congratulationsSummary.legalPlanResponse">
+          <span id="welcome">Welcome to the herd!</span>
+        </div>
+
+        <p style="font-weight: bold;" ng-if="!congratulationsSummary.legalPlanResponse">
+          Thank you for choosing Elephant Insurance!
+        </p>
+
+        <!--message-->
+        <p ng-if="!congratulationsSummary.legalPlanResponse || !congratulationsSummary.legalPlanResponse.Error">
+          You will receive an email with a printable version of your new policy documents and insurance cards, shortly.
+          Please take a moment to review these carefully. You can manage your policy online at myElephant.
+        </p>
+
+        <p ng-if="congratulationsSummary.legalPlanResponse && congratulationsSummary.legalPlanResponse.Error">
+          Please visit myElephant to retry your purchase. You will receive an email with a printable version of your new
+          policy documents and insurance cards, shortly.
+          Please take a moment to review these carefully.
+        </p>
+
+
+      </div>
+      <div id="congratulations-info" class="row">
+        <div class="list-text">
+          <div>
+            <span>Policy holder:</span><br/>
+            <span ng-bind="congratulationsSummary.policyHolder.getFullName()"></span>
+          </div>
+          <div>
+            <span>Policy number:</span><br/>
+            <span ng-bind="congratulationsSummary.policy.PolicyNumber"></span>
+          </div>
+          <div>
+            <span>Policy term:</span><br/>
+            <span ng-bind="congratulationsSummary.policy.EffectiveDate"></span> -- <span
+            ng-bind="congratulationsSummary.policyEndDate"></span>
+          </div>
+        </div>
+        <div class="list-text">
+          <div>
+            <span>Insured drivers:</span><br/>
+            <span ng-repeat="driver in congratulationsSummary.drivers"><span
+              ng-bind="driver.getFullName()"></span> <br/></span>
+          </div>
+          <div>
+            <span>Insured vehicles:</span><br/>
+            <span ng-repeat="vehicle in congratulationsSummary.vehicles"><span ng-bind="vehicle.Year"></span> <span
+              ng-bind="vehicle.Make"></span>  <span ng-bind="vehicle.Model"></span><br/></span>
+          </div>
+          <div>
+            <span>Annual policy premium:</span><br/>
+            $<span ng-bind="congratulationsSummary.paymentPlan.PayPlan.TotalCostWithFees"></span>
+          </div>
+        </div>
+        <div id="ancillary-offers" style="">
+          <!--Legal plan display-->
+          <div class="legal-offer" ng-if="congratulationsSummary.legalPlan && !congratulationsSummary.legalPlan.Denied
+          && !congratulationsSummary.legalPlanResponse && congratulationsSummary.ancillaryDisplay.name == 'LegalPlan'">
+            <h4>Add Elephant's Legal Protection Plan for only $<span
+              ng-bind="congratulationsSummary.legalPlan.IndividualCost"></span>
+              per month.</h4>
+            <p style="font-size: 1em;">
+              Did you know you are now qualified to sign up to receive 100% legal coverage for you and the drivers on
+              your auto policy for only <strong> $<span
+              ng-bind="congratulationsSummary.legalPlan.IndividualCost"></span> per month?*</strong>
+            </p>
+            <div>
+              <a ng-click="signUp()">Sign up for $<span
+                ng-bind="congratulationsSummary.legalPlan.IndividualCost"></span> a
+                month*
+              </a>
+            </div>
+          </div>
+          <!--My Elephant display-->
+          <div class="legal-offer">
+            <h4>Continue to myElephant to manage your policy</h4>
+            <p>You will need your <strong>policy number: <span
+              ng-bind="congratulationsSummary.policy.PolicyNumber"></span></strong> to
+              enroll</p>
+            <div>
+              <a target="_blank"
+                 href="https://mypolicy.pachyderm.com/users/sign_up?pId={{congratulationsSummary.policy.PolicyNumber}}&lName={{congratulationsSummary.policyHolder.LastName}}">Manage
+                my policy
+              </a>
+            </div>
+          </div>
+          <!--Bundle display-->
+          <div id="ancillary-bundle" ng-if="congratulationsSummary.ancillaryDisplay.name !== 'LegalPlan'" ng-class="{'two-icons': congratulationsSummary.ancillaryDisplay.name == 'Renters' ||
+              congratulationsSummary.ancillaryDisplay.name == 'HomeOwners'}">
+            <div>
+              <span>SAVE WHEN YOU BUNDLE!</span>
+            </div>
+            <div>
+              <figure>
+                <img src="images/auto50.png"/>
+                <figcaption>Auto</figcaption>
+              </figure>
+              <i ng-if="congratulationsSummary.ancillaryDisplay.name == 'Renters' ||
+              congratulationsSummary.ancillaryDisplay.name == 'HomeOwners'" class="fa fa-plus"></i>
+              <figure>
+                <img src="images/home50.png"/>
+                <figcaption ng-bind="viewLogic(1)"></figcaption>
+              </figure>
+              <figure ng-if="viewLogic(2)">
+                <img src="images/bike50.png"/>
+                <figcaption>Bike</figcaption>
+              </figure>
+              <div class="ancillary-button">
+                <button class="" ng-click="ancillaryNav()">Learn more</button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div id="legal-container" ng-if="congratulationsSummary.legalPlan && !congratulationsSummary.legalPlan.Denied
+      && congratulationsSummary.ancillaryDisplay.name == 'LegalPlan'">
+        <hr/>
+        <div id="legal-text"
+             ng-if="congratulationsSummary.state == 'VA' || congratulationsSummary.State || congratulationsSummary.State == 'IL'">
+          <p>
+            *100% attorney fee coverage in connection with representation before the District Court in the Member's
+            state
+            of residence for infractions and misdemeanor traffic
+            offenses for Member with a valid driver's license not subject to restriction or suspension at the time of
+            the
+            offense. Limited to one District Court appearance per
+            plan year. Alcohol or controlled substance related traffic offenses are provided at a 25% attorney fee
+            discount. Any traffic violation received prior to Member's
+            effective date of Plan will be covered at a 25% discount.
+          </p><br/>
+
+          <p>
+            **Fee is per insured driver on auto policy. To qualify, an individual Legal Protection Plan must be
+            purchased
+            for all drivers.
+          </p><br/>
+
+          <p>
+            Terms and Conditions: This legal plan is provided by Legal Resources of Virginia, Inc., to Elephant policy
+            holders residing in Virginia and Maryland. Member must use a Legal Resources plan
+            attorney to receive plan benefits. Member responsible for all non-attorney costs such as filing fees, court
+            costs, fines assessed, etc. Please refer to the plan contract for
+            actual terms, coverage, conditions, and exclusions. <b>Any communication with attorney regarding
+            representation is confidential. The attorney-client relationship begins
+            when attorney is retained.</b>
+          </p>
+        </div>
+        <div id="legal-text" ng-if="congratulationsSummary.state == 'TX'">
+          <p>
+            *100% attorney fee coverage in connection with representation before the Justice of the Peace or Municipal
+            Court in the Member’s state of residence for Class C Misdemeanor infractions and other misdemeanor traffic
+            offenses for Member with a valid driver’s license not subject to restriction or suspension at the time of
+            the offense. Limited to one County Court appearance per plan year. Alcohol or controlled substance related
+            traffic offenses are provided at a 25% attorney fee discount. Any traffic violation received prior to
+            Member’s effective date of Plan will be covered at a 25% discount. Fee is per insured driver on auto policy.
+            To qualify, an individual Legal Protection Plan must be purchased for all drivers.
+          </p><br/>
+
+          <p>
+            **Fee is per insured driver on auto policy. To qualify, an individual Legal Protection Plan must be
+            purchased for all drivers.
+          </p><br/>
+
+          <p>
+            Terms and Conditions: This legal plan is provided by Legal Resources of Texas, LLC., to Elephant
+            policyholders residing in Texas. Member must use a Legal Resources plan attorney to receive plan benefits.
+            Member responsible for all non-attorney costs such as filing fees, court costs, fines assessed, etc. Please
+            refer to the plan contract for actual terms, conditions, and exclusions. <b>Any communication with attorney
+            regarding representation is confidential. The attorney-client relationship begins when attorney is
+            retained.</b>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

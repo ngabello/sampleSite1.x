@@ -1,0 +1,15 @@
+<div id="modal-template">
+  <div class="message-modal-header {{description}}">
+    <h3><i class="fa {{iconClass}}"></i> {{ title }}</h3>
+  </div>
+  <div class=modal-body>
+    <p class="message" style="font-size: 17px;color: rgba(0,0,0,.8);">{{ message }}</p>
+    <!--<p class="description" ng-show="description">{{ description }}</p>-->
+    <p><small style="color:#737373;">Ready to save money on your car insurance? Pick your route.</small></p>
+    <div id="quote_compare" media-alpha="{{ page }}" ng-init="mediaAlphaLoad"></div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" style="float: left;" ng-click="retrieve()">Retrieve Quote</button>
+    <button class="btn btn-warning" ng-click="continue()">Start new quote</button>
+  </div>
+</div>

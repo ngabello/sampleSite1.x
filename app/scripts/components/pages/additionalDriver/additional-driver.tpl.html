@@ -1,0 +1,113 @@
+<div id="mobileMenu" mobile-nav-summary="" class="hidden-lg"></div>
+
+<div bread-crumbs class="row"></div>
+<div class="row">
+  <div id="stepAddDriver"
+       class="customer customer2 col-sm-12 col-md-offset-3 col-lg-offset-3 col-md-7 col-lg-5 margin animated fadeIn"
+       refresh="" error-scroll="">
+    <h3 class="section-header" ng-if="addnlDriverState.driver.RelationshipToInsured != 'spouse'"><i
+      class="fa fa-list-ul fa-fw"></i>Additional
+      Driver</h3>
+
+    <h3 class="section-header" ng-if="addnlDriverState.driver.RelationshipToInsured == 'spouse'"><i
+      class="fa fa-list-ul fa-fw"></i>Spouse
+    </h3>
+
+    <form name="additionalDriverForm" novalidate="" validate-submit="submitForm(this.additionalDriverForm)">
+
+      <div id="addDriver_content">
+        <fieldset class="one">
+
+          <!--Alerts-->
+          <div>
+            <uib-alert ng-repeat="alert in addnlDriverState.alerts" type="{{alert.type}}"
+                       close="closeAlert($index)">{{alert.msg}}
+            </uib-alert>
+          </div>
+          <!--End Alerts-->
+
+          <div class="form-group">
+            <div ng-if="addnlDriverState.totalDrivers >=1">
+              <div ng-if="addnlDriverState.driver.RelationshipToInsured != 'spouse'">
+                <div ng-if="addnlDriverState.driver.ID && addnlDriverState.totalDrivers > 1"
+                     style="float: right;cursor: pointer;">
+                  <a id="removeDriverLink" ng-click="removeDriver(addnlDriverState.driver.ID)">Remove</a>
+                </div>
+                <div ng-if="!addnlDriverState.driver.ID" style="float: right;cursor: pointer;">
+                  <a id="cancelDriverLink" ng-click="removeDriver()">Cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+        <div class="row-fluid">
+
+          <driver-name form="additionalDriverForm" ng-model="addnlDriverState.driver"></driver-name>
+
+          <gender form="additionalDriverForm" ng-model="addnlDriverState.driver.Gender"></gender>
+
+          <relationship-to-insured form="additionalDriverForm"
+                                   driver-model="addnlDriverState.driver"
+                                   ng-model="addnlDriverState.driver.RelationshipToInsured"></relationship-to-insured>
+
+          <license-status form="additionalDriverForm" ng-model="addnlDriverState.driver.LicenseStatus"></license-status>
+
+          <!-- Do they drive any of your vehicles (Active Driver)-->
+          <drives-twice form="additionalDriverForm"
+                        ng-model="addnlDriverState.driver.DrivesAnyListedVehicles"></drives-twice>
+
+
+          <birth-date form="additionalDriverForm" ng-model="addnlDriverState.driver.DateOfBirth" min-age="15"
+                      max-age="98"></birth-date>
+
+          <div uib-collapse="addnlDriverState.driver.LicenseStatus == 'nonlicensed'">
+            <age-first-licensed form="additionalDriverForm" driver-model="addnlDriverState.driver"
+                                ng-model="addnlDriverState.driver.AgeFirstLicensed"></age-first-licensed>
+          </div>
+
+          <!-- Marital Status -->
+          <div ng-if="addnlDriverState.driver.RelationshipToInsured != 'spouse'">
+            <marital-status form="additionalDriverForm" driver-model="addnlDriverState.driver"
+                            ng-model="addnlDriverState.driver.MaritalStatus"></marital-status>
+          </div>
+          <div ng-if="addnlDriverState.driver.RelationshipToInsured === 'spouse'">
+            <marital-status-label></marital-status-label>
+          </div>
+
+          <div ng-if="addnlDriverState.driver.RelationshipToInsured == 'spouse'">
+            <education-level form="additionalDriverForm"
+                             ng-model="addnlDriverState.driver.HighestEducationLevel"></education-level>
+            <employment-status form="additionalDriverForm" ng-model="addnlDriverState.driver"></employment-status>
+            <occupation form="additionalDriverForm" ng-model="addnlDriverState.driver"></occupation>
+            <military form="additionalDriverForm" ng-model="addnlDriverState.driver"></military>
+            <attending-school form="additionalDriverForm"
+                              ng-model="addnlDriverState.driver"></attending-school>
+          </div>
+
+          <student-enrollment form="additionalDriverForm" driver-model="addnlDriverState.driver"
+                              ng-model="addnlDriverState.driver.CurrentlyEnrolled"></student-enrollment>
+
+          <good-student form="additionalDriverForm" additional-driver="true"
+                        ng-model="addnlDriverState.driver"></good-student>
+        </div>
+
+      </div>
+
+      <!-- Add another driver -->
+      <add-driver form="additionalDriverForm" state="addnlDriverState"
+                  ng-model="addnlDriverState.addDriver"
+                  show="addnlDriverState.showAdditionalDriver"></add-driver>
+
+      <fieldset class="btns">
+        <div>
+          <div class="button-continue btn-margin">
+            <button class="" id="btnContinue" type="submit"><span>Continue</span>
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div id="navSummary" nav-summary="" class="visible-lg"></div>
+</div>

@@ -1,0 +1,21 @@
+<div>
+  <div class="modal-header">
+    <i class="fa fa-times" style="float: right;font-size: 1.5em;cursor:pointer;" ng-click="ok()"></i>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+    <h5>Why your price changed</h5>
+
+    <p>
+      <strong>Vehicle Information</strong> We updated your vehicle based on the VIN you provided.
+    </p>
+
+    <p>
+      <strong>Driving Record</strong> Your initial quote was based on information you provided. We've verified your driving record which
+      may have recalculated your quote.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" ng-click="ok()">close</button>
+  </div>
+</div>

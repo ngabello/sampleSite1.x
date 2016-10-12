@@ -1,0 +1,105 @@
+
+<div id="desktop-nav-summary">
+  <div class="desktop-menu">
+    <div class="desktop-menu-inner">
+      <ul class="list-unstyled">
+        <div class="submenu">My Quote:</div>
+        <li><span ng-bind="navSummary.quote.QuoteNumber"></span></li>
+
+        <li ng-if="navSummary.drivers.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('drivers')" style="cursor: pointer;">
+            Drivers <i class="pull-right glyphicon"
+                       ng-class="{'fa fa-chevron-down': driversOpen, 'fa fa-chevron-right': !driversOpen}"></i>
+          </div>
+
+          <div  class="" uib-collapse="!driversOpen">
+            <ul ng-repeat="driver in navSummary.drivers" class="list-unstyled">
+              <li ng-if="navSummary.blockLeadLinks">
+                <span ng-bind="driver.getFullName()"></span>
+              </li>
+              <li ng-if="!navSummary.blockLeadLinks">
+                <div ng-if="driver.PrimaryDriver">
+                  <a class="" href="#/{{navSummary.journeyPrefix}}policy-holder/{{ driver.ID}}">
+                    <span style="float:left;">Edit</span><span ng-bind="driver.getFullName()"></span></a>
+                </div>
+                <div ng-if="!driver.PrimaryDriver">
+                  <a class="" href="#/{{navSummary.journeyPrefix}}additional-driver/{{ driver.ID}}">
+                    <span style="float:left;">Edit</span><span ng-bind="driver.getFullName()"></span></a>
+                </div>
+              </li>
+            </ul>
+
+            <a ng-if="navSummary.addDriverEnabled && !navSummary.blockLeadLinks" href="#/{{navSummary.journeyPrefix}}additional-driver/0"><i class="fa fa-plus fa-fw"></i> add driver</a>
+          </div>
+        </li>
+
+        <li ng-if="navSummary.vehicles.length > 0">
+          <hr>
+          <div class="submenu" ng-click="toggle('vehicles')" style="cursor: pointer;">
+            Vehicles
+            <i class="pull-right glyphicon"
+               ng-class="{'fa fa-chevron-down': vehiclesOpen, 'fa fa-chevron-right': !vehiclesOpen}"></i>
+          </div>
+
+          <div class="" uib-collapse="!vehiclesOpen">
+            <ul >
+              <li ng-repeat="vehicle in navSummary.vehicles" class="list-unstyled">
+                <div ng-if="navSummary.blockLeadLinks">
+                  <span ng-bind="vehicle.getVehicleDescription()"></span>
+                </div>
+                <div ng-if="!navSummary.blockLeadLinks">
+                    <a class="" href="#/{{navSummary.journeyPrefix}}vehicle/{{ vehicle.ID}}">
+                      <span style="float:left;">Edit</span><span ng-bind="vehicle.getVehicleDescription()"></span></a>
+                </div>
+              </li>
+            </ul>
+            <a ng-if="!navSummary.blockLeadLinks" href="#/{{navSummary.journeyPrefix}}vehicle/0"><i class="fa fa-plus fa-fw"></i> add vehicle</a>
+          </div>
+        </li>
+
+        <!-- Discounts -->
+        <li ng-if="navSummary.discounts.length > 0">
+          <hr>
+          <div class="submenu">
+            Discounts:
+
+          </div>
+
+          <ul class="side-discounts">
+            <li ng-repeat="discount in navSummary.discounts | filter: discountFilter" class="list-unstyled">
+
+              <i class=""></i> {{ discount.Desc }}
+            </li>
+          </ul>
+        </li>
+        </li>
+        <li ng-if="navSummary.quoteIntent.Policy.EffectiveDate && navSummary.policyTermsEnabled">
+          <div class="submenu">
+             Policy Terms
+          </div>
+          <div class="">
+            <a class="" href="#/{{navSummary.journeyPrefix}}driver-details/{{ navSummary.policyHolder.ID}}">
+              <span style="float:left;">Edit</span> {{ navSummary.policy.EffectiveDate | date:
+              'MM/dd/yyyy'}}</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="ancillary-inner" ng-if="showAncillary">
+      <ul>
+        <li ng-repeat="ancillary in navSummary.ancillaryCollection"
+            uib-popover="{{ancillary.PopOver}}"
+            popover-placement="left" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{ancillary.PopOverTitle}}">
+          <div class="img-container">
+            <img ng-src="{{ancillary.Image}}" /> </div>
+
+          <span ng-bind-html="ancillary.Description"></span>
+          <!--<hr ng-if="navSummary.ancillaryCollection.indexOf(ancillary) !== (navSummary.ancillaryCollection.length - 1)"/>-->
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</div>

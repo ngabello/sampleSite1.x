@@ -1,0 +1,15 @@
+<div id="modal-template">
+  <div class="message-modal-header {{description}}">
+    <h3><i class="fa {{iconClass}}"></i> {{ title }}</h3>
+  </div>
+  <div class=modal-body>
+    <p class="message" style="font-size: 17px;color: rgba(0,0,0,.8);">{{ message }}</p>
+    <!--<p class="description" ng-show="description">{{ description }}</p>-->
+    <p><small id="contact-message" style="color:#737373;">if you continue to have issues contact a sales representative at 1-877-321-9911.</small></p>
+    <div id="quote_compare" media-alpha="{{ page }}" ng-init="mediaAlphaLoad"></div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button ng-show="showCancelBtn" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

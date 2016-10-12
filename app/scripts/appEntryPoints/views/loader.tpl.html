@@ -1,0 +1,15 @@
+<spinner class="loading-msg" name="booksSpinner" img-src="../styles/images/spin.gif" on-loaded="spinnerLoaded(spinnerApi)">
+  <div ng-init="loadingMsg = 'Loading'" ng-include="'../views/platform/loadingTemplate.html'"></div>
+</spinner>
+<div ng-switch="content">
+  <div ng-switch-when="toy">
+    <toy-landing></toy-landing>
+  </div>
+  <div ng-switch-default>
+    <default-landing></default-landing>
+  </div>
+</div>
+
+<div class="row">
+
+</div>
